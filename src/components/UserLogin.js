@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
-import { createUser }       from '../actions/users'
+import { setUser }          from '../actions/users'
 
 class UserLogin extends Component {
 
@@ -23,7 +23,8 @@ class UserLogin extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.createUser(this.state)
+    this.props.setUser(this.state)
+    this.props.history.push("/home/")
   }
 
   render() {
@@ -52,4 +53,4 @@ class UserLogin extends Component {
 
 }
 
-export default connect(null, { createUser })(UserLogin)
+export default connect(null, { setUser })(UserLogin)

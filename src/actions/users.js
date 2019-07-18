@@ -1,14 +1,37 @@
 const createUser = (user) => {
-  return {
-    type: "CREATE_USER",
-    payload: user
+  return function(dispatch){
+    fetch('http://localhost:3030/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: user.username,
+          password: user.password1,
+          xp: 0
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: "CREATE_USER",
+        payload: data
+      })
+    )
   }
 }
 
 const setUser = (user) => {
-  return {
-    type: "SET_USER",
-    payload: user
+  return function(dispatch){
+    fetch('http://localhost:3030/users')
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: "CREATE_USER",
+        payload: data
+      })
+    )
   }
 }
 

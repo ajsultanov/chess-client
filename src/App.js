@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <div className="My-App">
         <Menu />
-        <Route exact path="/signup/" component={UserSignup} />
-        <Route path="/login" component={UserLogin} />
+        <Route path="/signup/" component={UserSignup} />
+        <Route path="/login/" component={UserLogin} />
       </div>
     </BrowserRouter>
   );

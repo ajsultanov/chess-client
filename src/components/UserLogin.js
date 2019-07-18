@@ -26,13 +26,6 @@ class UserLogin extends Component {
     this.props.createUser(this.state)
   }
 
-  componentDidMount() {
-
-    fetch('http://localhost:3000/users/1')
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-  }
-
   render() {
     return (
       <div>
@@ -46,7 +39,7 @@ class UserLogin extends Component {
           </p>
           <p>
             <input
-              type="text"
+              type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password"
               placeholder="password" />

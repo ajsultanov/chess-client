@@ -52,14 +52,14 @@ class UserSignup extends Component {
           </p>
           <p>
             <input
-              type="text"
+              type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password1"
               placeholder="password" />
           </p>
           <p>
             <input
-              type="text"
+              type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password2"
               placeholder="retype password" />

@@ -8,15 +8,7 @@ export default function manageUsers(state = {
 
       return {
         ...state,
-        currentUser: action.user
-      }
-
-    case "SET_USER":
-      console.log("loggin a user, boss")
-
-      return {
-        ...state,
-        currentUser: action.user
+        currentUser: action.payload
       }
 
     case "LOG_OUT":

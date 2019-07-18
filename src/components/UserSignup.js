@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { createUser }       from '../actions/users'
 
-class UserLogin extends Component {
+class UserSignup extends Component {
 
   state = {
     username: '',
-    password: ''
+    password1: '',
+    password2: ''
   }
 
   handleOnNameChange = event => {
@@ -17,20 +18,25 @@ class UserLogin extends Component {
 
   handleOnPasswordChange = event => {
     this.setState({
-      password: event.target.value
+      [event.target.id]: event.target.value
     });
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.createUser(this.state)
+    if (this.state.username && this.state.password1) {
+      if (this.passwordCheck()) {
+        this.props.createUser(this.state)
+      } else {
+        window.alert("password must be the same")
+      }
+    } else {
+      window.alert("please fill out all fields")
+    }
   }
 
-  componentDidMount() {
-
-    fetch('http://localhost:3000/users/1')
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+  passwordCheck = () => {
+    return this.state.password1 === this.state.password2;
   }
 
   render() {
@@ -48,8 +54,15 @@ class UserLogin extends Component {
             <input
               type="text"
               onChange={(event) => this.handleOnPasswordChange(event)}
-              id="password"
+              id="password1"
               placeholder="password" />
+          </p>
+          <p>
+            <input
+              type="text"
+              onChange={(event) => this.handleOnPasswordChange(event)}
+              id="password2"
+              placeholder="retype password" />
           </p>
           <input type="submit" />
         </form>
@@ -59,4 +72,4 @@ class UserLogin extends Component {
 
 }
 
-export default connect(null, { createUser })(UserLogin)
+export default connect(null, { createUser })(UserSignup)

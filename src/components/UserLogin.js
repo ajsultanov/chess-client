@@ -21,6 +21,11 @@ class UserLogin extends Component {
     });
   }
 
+  handleOnSubmit = event => {
+    event.preventDefault();
+    this.props.createUser(this.state)
+  }
+
   render() {
     return (
       <div>

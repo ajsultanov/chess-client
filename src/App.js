@@ -1,11 +1,13 @@
-import React from 'react';
+import React      from 'react';
+import UserLogin  from './components/UserLogin'
+import ShowUsers  from './components/ShowUsers'
 import './App.css';
-import UserLogin from './components/UserLogin'
 
 function App() {
   return (
     <div className="My-App">
       <UserLogin />
+      <ShowUsers />
     </div>
   );
 }

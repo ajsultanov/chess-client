@@ -7,7 +7,7 @@ class ProfileContainer extends Component {
   render() {
     return (
       <div>
-        My Profile
+        My Profile!!!
         <Profile />
       </div>
 

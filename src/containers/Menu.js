@@ -10,7 +10,7 @@ class Menu extends Component {
       <div style={{backgroundColor:"#59D",width:"95%",height:"40px",padding:"10px"}}>
 
         <Link to="/home/">
-          Menu
+          Home
         </Link>
 
         {this.props.currentUser ?

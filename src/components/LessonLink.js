@@ -4,10 +4,6 @@ import { Link }             from 'react-router-dom'
 
 class LessonLink extends Component {
 
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   render() {
     return (
       <Link to={`${this.props.id}`}>
@@ -19,7 +15,6 @@ class LessonLink extends Component {
       </Link>
     );
   }
-
 }
 
 const mapStateToProps = state => {

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 class CurrentLesson extends Component {
 
   render() {
-    console.log(this.props);
     return (
       <Link to={"/home/"}>
         <div style={{margin:"5px",height:"100px", border:"2px solid green"}}>

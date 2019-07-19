@@ -3,14 +3,13 @@ import { connect }          from 'react-redux';
 import { fetchLessons }     from '../actions'
 import LessonLink           from '../components/LessonLink'
 
-class Lessons extends Component {
+class LessonsContainer extends Component {
 
   componentDidMount = () => {
     this.props.fetchLessons()
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         Lessons!
@@ -28,4 +27,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchLessons })(Lessons)
+export default connect(mapStateToProps, { fetchLessons })(LessonsContainer)

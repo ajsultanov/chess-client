@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 
-
 class Profile extends Component {
+
+  componentDidMount() {
+    console.log(this.props);
+  }
 
   render() {
     return (
-      <div>
-        Here's a big ol profile
-        <p>p{}</p>
+      <div style={{margin:"5px",height:"100px",border:"2px solid red"}}>
+        Here's a big ol profile yes hello<br/>
+        P is for Profile<br/>
       </div>
     );
   }

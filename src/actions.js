@@ -16,10 +16,9 @@ const createUser = (user) => {
     })
     .then(resp => resp.json())
     .then(data => dispatch({
-        type: "CREATE_USER",
+        type: 'CREATE_USER',
         payload: data
-      }),
-      /*...*/
+      })
     )
   }
 }
@@ -41,7 +40,7 @@ const setUser = (user) => {
     })
     .then(resp => resp.json())
     .then(data => dispatch({
-        type: "CREATE_USER",
+        type: 'CREATE_USER',
         payload: data
       })
     )
@@ -49,11 +48,26 @@ const setUser = (user) => {
 }
 
 const logout = () => {
-  return {type: "LOG_OUT"}
+  return {type: 'LOG_OUT'}
+}
+
+const fetchLessons = () => {
+  return function(dispatch){
+    fetch('http://localhost:3030/lessons')
+    .then(res => res.json())
+    .then(data => {
+      dispatch({
+        type: 'FETCH_LESSONS',
+        payload: data
+      })
+    });
+
+  }
 }
 
 export {
   createUser,
   setUser,
-  logout
+  logout,
+  fetchLessons
 }

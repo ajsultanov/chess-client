@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link }             from "react-router-dom";
 import { connect }          from 'react-redux';
-import { logout }           from '../actions/users'
+import { logout }           from '../actions'
 
 class Menu extends Component {
 
   render() {
 
     return (
-      <div style={{backgroundColor:"#59D",width:"95%",height:"40px",padding:"10px"}}>
+      <div style={{backgroundColor:"#59D",width:"98%",height:"40px",padding:"10px"}}>
 
         <Link to="/home/">
           Home
@@ -17,7 +17,7 @@ class Menu extends Component {
         {this.props.currentUser ?
           <span style={{float:"right"}}>
             <span>
-              {this.props.currentUser.username}
+              user: {this.props.currentUser.username} (replace me with an img)
             </span>
             <span> | </span>
             <Link to="/logout/"

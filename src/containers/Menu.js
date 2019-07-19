@@ -6,6 +6,7 @@ import { logout }           from '../actions/users'
 class Menu extends Component {
 
   render() {
+
     return (
       <div style={{backgroundColor:"#59D",width:"95%",height:"40px",padding:"10px"}}>
 

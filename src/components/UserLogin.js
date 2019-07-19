@@ -24,7 +24,7 @@ class UserLogin extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.setUser(this.state)
-    this.props.history.push("/home/")
+    setTimeout(() => this.props.history.push("/home/"), 100)
   }
 
   render() {

@@ -15,22 +15,21 @@ class App extends Component {
   render(){
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
-
         this.props.currentUser
         ? <Component {...props}/>
-        : <Redirect to="/login" />
+        : <Redirect to="/login/" />
       )}/>
     )
 
     return (
       <BrowserRouter>
         <Menu />
-        <Link to="/protected/">Protected Page</Link>
+        {/*<Link to="/protected/">Protected Page</Link>*/}
 
         <Route path="/signup/" component={UserSignup} />
         <Route path="/login/" component={UserLogin} />
         <Route path="/logout/" component={UserLogin} />
-        <PrivateRoute path="/protected/" component={ProfileContainer} />
+        <PrivateRoute path="/home/" component={ProfileContainer} />
       </BrowserRouter>
     );
   }

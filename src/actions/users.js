@@ -18,7 +18,8 @@ const createUser = (user) => {
     .then(data => dispatch({
         type: "CREATE_USER",
         payload: data
-      })
+      }),
+      /*...*/
     )
   }
 }

@@ -8,9 +8,11 @@ import LessonLink           from '../components/LessonLink'
 
 class LessonsContainer extends Component {
 
-  componentDidMount = () => {
-    this.props.fetchLessons()
-  }
+  /* this should already have been fetched when App loads */
+
+  // componentDidMount = () => {
+  //   this.props.fetchLessons()
+  // }
 
   render() {
     return (

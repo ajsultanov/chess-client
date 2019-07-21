@@ -9,7 +9,7 @@ class CurrentLesson extends Component {
 
   render() {
     return (
-      <Link to={"/home/"}>
+      <Link to={`/lessons/${this.props.currentLesson}`}>
         <div style={{margin:"5px",height:"100px", border:"2px solid green"}}>
           Current Lesson Linkie
         </div>

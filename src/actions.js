@@ -1,3 +1,4 @@
+/* creates a user in the database */
 const createUser = (user) => {
   return function(dispatch){
     fetch('http://localhost:3030/users', {
@@ -23,6 +24,7 @@ const createUser = (user) => {
   }
 }
 
+/* checks user credentials against database, creates a currentUser */
 const setUser = (user) => {
   return function(dispatch){
     fetch('http://localhost:3030/login', {
@@ -45,10 +47,12 @@ const setUser = (user) => {
   }
 }
 
+/* sets currentUser to null */
 const logout = () => {
   return {type: 'LOG_OUT'}
 }
 
+/* gets all lessons from the database */
 const fetchLessons = () => {
   return function(dispatch){
     fetch('http://localhost:3030/lessons')
@@ -58,10 +62,11 @@ const fetchLessons = () => {
         type: 'FETCH_LESSONS',
         payload: data
       })
-    });
+    })
   }
 }
 
+/* sets the currentLesson */
 const setCurrentLesson = (lesson) => {
   return {
     type: 'SET_CURRENT_LESSON',
@@ -69,6 +74,7 @@ const setCurrentLesson = (lesson) => {
   }
 }
 
+/* gets the individual slide objects associated with a lesson from the database */
 const getLessonContent = lessonId => {
   return function(dispatch){
     fetch(`http://localhost:3030/lessons/${lessonId}/puzzles`)
@@ -80,7 +86,6 @@ const getLessonContent = lessonId => {
     )
   }
 }
-
 
 export {
   createUser,

@@ -2,7 +2,8 @@ export default function reducer(state = {
 
   currentUser: null,
   currentLesson: null,
-  allLessons: []
+  allLessons: [],
+  lessonContent: []
 
 }, action) {
   switch (action.type) {
@@ -26,6 +27,20 @@ export default function reducer(state = {
       return {
         ...state,
         allLessons: action.payload
+      }
+
+    case "SET_CURRENT_LESSON":
+      console.log("settin the lesson, boss")
+      return {
+        ...state,
+        currentLesson: action.payload
+      }
+
+    case "FETCH_CONTENT":
+      console.log("fetchin the content, boss")
+      return {
+        ...state,
+        lessonContent: action.payload
       }
 
     default:

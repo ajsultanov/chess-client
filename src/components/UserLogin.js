@@ -1,3 +1,6 @@
+/* ^ App ^ */
+/* this component allows the user to log in, sets current user */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { setUser }          from '../actions'

@@ -1,3 +1,6 @@
+/* ^ App ^ */
+/* this component allows the user to sign up, creates a user, and sets current user */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { createUser }       from '../actions'

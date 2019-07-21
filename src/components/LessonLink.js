@@ -1,3 +1,6 @@
+/* ^ LessonsContainer ^ */
+/* this component is a link on the all lessons page */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom'
@@ -6,7 +9,7 @@ class LessonLink extends Component {
 
   render() {
     return (
-      <Link to={`${this.props.id}`}>
+      <Link to={`/lessons/${this.props.id}`}>
         <div style={{padding:"5px",margin:"5px",height:"100px",border:"2px solid red"}}>
           Welcome to the lesssssson
           <h3>{this.props.title}</h3>

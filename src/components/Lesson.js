@@ -1,27 +1,44 @@
+/* ^ App ^ */
+/* this component is the lesson page itself, containing slides (cmp) and puzzles (cmp) */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
-
+import { setCurrentLesson } from '../actions';
+import { getLessonContent } from '../actions';
 
 class Lesson extends Component {
 
+  lessonId = this.props.match.params.id - 1;
+  currentLesson = this.props.allLessons[this.lessonId]
+
+  componentDidMount = () => {
+    this.props.setCurrentLesson(this.currentLesson)
+    setTimeout(() => console.log(this.props.currentLesson), 100)
+
+    this.props.getLessonContent(this.lessonId)
+  }
+
   render() {
-    const lessonId = this.props.match.params.id;
-    const currentLesson = this.props.allLessons[lessonId - 1]
+    console.log("lesson content:", this.props.lessonContent);
 
     return (
-      <React.Fragment>
+      <div style={{border:"2px solid limegreen"}}>
         <div>This is the lesson!</div>
-        <div>{currentLesson.title}</div>
-        <div>{currentLesson.description}</div>
-      </React.Fragment>
+        <div>title: {this.currentLesson.title} <br/>
+        description: {this.currentLesson.description}</div>
+        <div>--> this is where the slides/puzzles will go</div>
+        <div>this is where the controls will go</div>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    allLessons: state.allLessons
+    allLessons: state.allLessons,
+    currentLesson: state.currentLesson,
+    lessonContent: state.lessonContent
   }
 }
 
-export default connect(mapStateToProps)(Lesson)
+export default connect(mapStateToProps, { setCurrentLesson, getLessonContent })(Lesson)

@@ -1,3 +1,6 @@
+/* ^ ProfileContainer ^ */
+/* this component render the user profile on the home page */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 

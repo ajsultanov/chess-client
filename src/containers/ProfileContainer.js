@@ -1,3 +1,6 @@
+/* ^ App ^ */
+/* this component is a page that shows the profile (cmp), a link to the current lesson (cmp), and a link to the allLessons page */
+
 import React, { Component } from 'react';
 import Profile              from '../components/Profile';
 import CurrentLesson        from '../components/CurrentLesson';

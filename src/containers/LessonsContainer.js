@@ -1,3 +1,6 @@
+/* ^ App ^ */
+/* this component is a page that renders links to each of the lessons */
+
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { fetchLessons }     from '../actions'

@@ -1,3 +1,5 @@
+/* ^ Index ^ */
+
 import React, { Component}      from 'react';
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect }              from "react-redux";
@@ -34,6 +36,9 @@ class App extends Component {
         <Route path="/signup/"        component={UserSignup} />
         <Route path="/login/"         component={UserLogin} />
         <Route path="/logout/"        component={UserLogin} />
+
+      {/* everything below must be changed back to a PrivateRoute for login to work!! */}
+
         <Route path="/home/"          component={ProfileContainer} />
         <Route exact path="/lessons/" component={LessonsContainer} />
         <Route path="/lessons/:id"    component={Lesson} />

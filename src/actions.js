@@ -32,10 +32,8 @@ const setUser = (user) => {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        //user: {
-          username: user.username,
-          password: user.password
-        //}
+        username: user.username,
+        password: user.password
       })
     })
     .then(resp => resp.json())
@@ -61,13 +59,34 @@ const fetchLessons = () => {
         payload: data
       })
     });
-
   }
 }
+
+const setCurrentLesson = (lesson) => {
+  return {
+    type: 'SET_CURRENT_LESSON',
+    payload: lesson
+  }
+}
+
+const getLessonContent = lessonId => {
+  return function(dispatch){
+    fetch(`http://localhost:3030/lessons/${lessonId}/puzzles`)
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: 'FETCH_CONTENT',
+        payload: data
+      })
+    )
+  }
+}
+
 
 export {
   createUser,
   setUser,
   logout,
-  fetchLessons
+  fetchLessons,
+  setCurrentLesson,
+  getLessonContent
 }

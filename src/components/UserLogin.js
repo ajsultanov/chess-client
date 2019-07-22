@@ -4,13 +4,18 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { setUser }          from '../actions'
-import '../styles.css';
 
 class UserLogin extends Component {
 
   state = {
     username: '',
     password: ''
+  }
+
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    border:"2px solid green",
   }
 
   handleOnNameChange = event => {
@@ -33,7 +38,7 @@ class UserLogin extends Component {
 
   render() {
     return (
-      <div>
+      <div style={this.styles}>
         <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <p>
             <input

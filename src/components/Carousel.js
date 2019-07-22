@@ -5,9 +5,14 @@ import React, { Component } from 'react';
 import Slide                from './Slide';
 import LeftArrow            from './LeftArrow';
 import RightArrow           from './RightArrow';
-import '../styles.css';
 
 class Carousel extends Component {
+
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    border:"2px solid mediumorchid",
+  }
 
   state = {
     currentIndex: 0
@@ -44,7 +49,7 @@ class Carousel extends Component {
   render() {
     console.log("carousel props: ", this.props);
     return (
-      <div className="carousel" style={{border:"2px solid purple"}}>
+      <div className="carousel" style={this.styles}>
         inside the carousel component
 
         {/* this index should do a bunch of stuff */}

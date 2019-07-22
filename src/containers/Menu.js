@@ -5,14 +5,19 @@ import React, { Component } from 'react';
 import { Link }             from "react-router-dom";
 import { connect }          from 'react-redux';
 import { logout }           from '../actions'
-import '../styles.css';
 
 class Menu extends Component {
 
-  render() {
+  styles = {
+    backgroundColor:"#59D",
+    width:"98%",
+    height:"40px",
+    padding:"10px",
+  }
 
+  render() {
     return (
-      <div style={{backgroundColor:"#59D",width:"98%",height:"40px",padding:"10px"}}>
+      <div style={this.styles}>
 
         <Link to="/home/">
           Home

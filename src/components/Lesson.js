@@ -6,9 +6,14 @@ import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom';
 import { setCurrentLesson, getLessonContent } from '../actions';
 import Carousel from './Carousel';
-import '../styles.css';
 
 class Lesson extends Component {
+
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    border:"2px solid limegreen",
+  }
 
   /* this comes from the url */
   lessonId = this.props.match.params.id
@@ -27,7 +32,7 @@ class Lesson extends Component {
     return (
       <div>
         <Link to="/lessons/">Back to lessons</Link>
-        <div style={{border:"2px solid limegreen",padding:"5px",margin:"5px"}}>
+        <div style={this.styles}>
           <div>title: {this.currentLesson.title} <br/>
           description: {this.currentLesson.description}</div>
           <Carousel lessonContent={this.props.lessonContent}/>

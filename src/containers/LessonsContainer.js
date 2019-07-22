@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { fetchLessons }     from '../actions'
 import LessonLink           from '../components/LessonLink'
-import '../styles.css';
 
 class LessonsContainer extends Component {
 
@@ -15,9 +14,15 @@ class LessonsContainer extends Component {
   //   this.props.fetchLessons()
   // }
 
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    border:"2px solid darkseagreen",
+  }
+
   render() {
     return (
-      <div>
+      <div style={this.styles}>
         Lessons!
         {this.props.allLessons.map(lesson => {
           return <LessonLink key={lesson.id} {...lesson} />

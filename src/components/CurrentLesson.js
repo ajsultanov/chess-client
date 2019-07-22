@@ -4,14 +4,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import '../styles.css';
 
 class CurrentLesson extends Component {
+
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    height:"100px",
+    border:"2px solid green",
+  }
 
   render() {
     return (
       <Link to={`/lessons/${this.props.currentLesson}`}>
-        <div style={{padding:"5px",margin:"5px",height:"100px", border:"2px solid green"}}>
+        <div style={this.styles}>
           Link to Current Lesson
         </div>
       </Link>

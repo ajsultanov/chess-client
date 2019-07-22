@@ -2,11 +2,16 @@
 /* this component is a container for the lesson content shown at any one given time, dictated by the currentIndex */
 
 import React from 'react'
-import '../styles.css';
 
 /* should be taking the index prop it has been passed and taking data out of the lessonContent array  */
 
 const Slide = props => {
+
+  const styles = {
+    padding:"5px",
+    margin:"5px",
+    border:"2px solid orange",
+  }
 
   let index = props.index
   const slides = props.lessonContent
@@ -16,7 +21,7 @@ const Slide = props => {
   const description = slides[index] ? slides[index].description : "not found"
   const positions = slides[index] ? slides[index].positions : "not found"
 
-  return <div className="slide" style={{border:"2px solid red"}}>
+  return <div className="slide" style={styles}>
     inside the slide component
     <h3>{title}</h3>
     <h4>{description}</h4>

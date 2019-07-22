@@ -3,12 +3,15 @@
 
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
-import '../styles.css';
 
 class Profile extends Component {
 
-  componentDidMount() {
-    console.log(this.props);
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    height:"100px",
+    border:"2px solid red",
+    lineHeight: "10px",
   }
 
   render() {
@@ -17,7 +20,7 @@ class Profile extends Component {
     const xp = this.props.currentUser ? this.props.currentUser.xp : "not found"
 
     return (
-      <div style={{padding:"5px",margin:"5px",height:"100px",border:"2px solid red",lineHeight:"10px"}}>
+      <div style={this.styles}>
         <h3>User Profile</h3>
         <p>username: {name}</p>
         <p>xp: {xp}</p>

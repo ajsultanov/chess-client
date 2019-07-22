@@ -2,11 +2,19 @@
 /* this component advances the currentIndex by one */
 
 import React from 'react';
-import '../styles.css';
 
 const RightArrow = (props) => {
+
+  const styles = {
+    display: "inline-block",
+    cursor: "pointer",
+    color: "blue",
+    fontSize: "24px",
+    margin: "5px 10px",
+  }
+
   return (
-    <div className="navArrow nextArrow" onClick={props.goToNextSlide}>
+    <div className="navArrow nextArrow" onClick={props.goToNextSlide} style={styles}>
       <span className="arrow-right">▶</span>
     </div>
   );

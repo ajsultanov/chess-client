@@ -5,13 +5,20 @@ import React, { Component } from 'react';
 import Profile              from '../components/Profile';
 import CurrentLesson        from '../components/CurrentLesson';
 import { Link }             from 'react-router-dom'
-import '../styles.css';
 
 class ProfileContainer extends Component {
 
+  styles = {
+    padding:"5px",
+    margin:"5px",
+    width:"98%",
+    border:"3px solid sienna",
+    borderRadius:"5px",
+  }
+
   render() {
     return (
-      <div style={{width:"99%",border:"3px solid black",borderRadius:"5px"}}>
+      <div style={this.styles}>
         <Profile />
 
         <CurrentLesson />

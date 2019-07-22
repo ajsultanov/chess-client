@@ -9,6 +9,7 @@ import ProfileContainer         from './containers/ProfileContainer'
 import LessonsContainer         from './containers/LessonsContainer'
 import Menu                     from './containers/Menu'
 import Lesson                   from './components/Lesson'
+import Board                    from './Board'
 import { fetchLessons }         from './actions'
 import './App.css';
 
@@ -42,6 +43,11 @@ class App extends Component {
         <Route path="/home/"          component={ProfileContainer} />
         <Route exact path="/lessons/" component={LessonsContainer} />
         <Route path="/lessons/:id"    component={Lesson} />
+
+      {/* test routes */}
+
+        <Route path="/board"    component={Board} />
+
       </BrowserRouter>
     );
   }

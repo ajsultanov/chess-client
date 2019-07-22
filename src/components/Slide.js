@@ -23,9 +23,9 @@ const Slide = props => {
 
   return <div className="slide" style={styles}>
     inside the slide component
-    <h3>{title}</h3>
+    <h3>{id} - {title}</h3>
     <h4>{description}</h4>
-    <h4>mhm</h4>
+    <h4>{positions[0]}</h4>
   </div>
 }
 

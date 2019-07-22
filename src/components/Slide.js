@@ -1,11 +1,26 @@
 /* ^ Carousel ^ */
+/* this component is a container for the lesson content shown at any one given time, dictated by the currentIndex */
 
 import React from 'react'
+import '../styles.css';
+
+/* should be taking the index prop it has been passed and taking data out of the lessonContent array  */
 
 const Slide = props => {
-  console.log("from slide:", props);
-  return <div className="slide" >
+
+  let index = props.index
+  const slides = props.lessonContent
+
+  const id = slides[index] ? slides[index].id : "not found"
+  const title = slides[index] ? slides[index].title : "not found"
+  const description = slides[index] ? slides[index].description : "not found"
+  const positions = slides[index] ? slides[index].positions : "not found"
+
+  return <div className="slide" style={{border:"2px solid red"}}>
     inside the slide component
+    <h3>{title}</h3>
+    <h4>{description}</h4>
+    <h4>mhm</h4>
   </div>
 }
 

@@ -12,7 +12,7 @@ import Lesson                   from './components/Lesson'
 import { fetchLessons }         from './actions'
 import './App.css';
 
-console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:-5px -5px 3px #458,0px -5px 3px #458,5px -5px 3px #458,5px 0px 3px #458,5px 5px 3px #458,0px 5px 3px #458,-5px 5px 3px #458,-5px 0px 3px #458;")
+console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:-5px -5px 3px #456,0px -5px 3px #458,5px -5px 3px #459,5px 0px 3px #45A,5px 5px 3px #45C,0px 5px 3px #45A,-5px 5px 3px #459,-5px 0px 3px #458;")
 
 class App extends Component {
 

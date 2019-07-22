@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { fetchLessons }     from '../actions'
 import LessonLink           from '../components/LessonLink'
+import '../styles.css';
 
 class LessonsContainer extends Component {
 

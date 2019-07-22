@@ -1,16 +1,25 @@
+/* ^ Lesson ^ */
+/* this component holds the slide and arrow button components and the slideshow logic */
+
 import React, { Component } from 'react';
 import Slide                from './Slide';
 import LeftArrow            from './LeftArrow';
 import RightArrow           from './RightArrow';
+import '../styles.css';
 
 class Carousel extends Component {
 
   state = {
-    currentIndex: 0,
-    lessonContent: this.props.lessonContent
+    currentIndex: 0
   }
 
   goToPrevSlide = () => {
+    /* if this is the first slide in the array
+    [!] does nothing... */
+    if (this.state.currentIndex === 0) {
+      console.log("nope!");
+    }
+
     console.log("new index:", this.state.currentIndex - 1);
     this.setState({
       ...this.state,
@@ -19,13 +28,11 @@ class Carousel extends Component {
   }
 
   goToNextSlide = () => {
-    // if (this.state.currentIndex === this.state.images.length - 1) {
-    //   /*
-    //   if this is the last slide in the array
-    //   redirect to lesson completion page
-    //   */
-    //   console.log("all done!");
-    // }
+    /* if this is the last slide in the array
+    [!] redirect to lesson completion page... */
+    if (this.state.currentIndex === this.props.lessonContent.length - 1) {
+      console.log("all done!");
+    }
 
     console.log("new index:", this.state.currentIndex + 1);
     this.setState({
@@ -35,15 +42,18 @@ class Carousel extends Component {
   }
 
   render() {
-    console.log("carousel state: ", this.state);
+    console.log("carousel props: ", this.props);
     return (
       <div className="carousel" style={{border:"2px solid purple"}}>
         inside the carousel component
+
+        {/* this index should do a bunch of stuff */}
         <Slide
           index={this.state.currentIndex}
-          lessonContent={this.state.lessonContent}
+          lessonContent={this.props.lessonContent}
         />
         <LeftArrow goToPrevSlide={this.goToPrevSlide} />
+        <span>{this.state.currentIndex + 1 + "/" + this.props.lessonContent.length}</span>
         <RightArrow goToNextSlide={this.goToNextSlide} />
       </div>
     )

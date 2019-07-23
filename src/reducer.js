@@ -47,7 +47,7 @@ export default function reducer(state = {
       console.log("fetchin the content, boss")
       return {
         ...state,
-        lessonContent: action.payload
+        lessonContent: [...state.lessonContent, action.payload]
       }
 
     default:

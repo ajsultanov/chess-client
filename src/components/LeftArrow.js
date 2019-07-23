@@ -1,4 +1,4 @@
-/* ^ Carousel ^ */
+/* ^ Carousel ^ & ^ ExampleBoard ^ */
 /* this component decrements the currentIndex by one */
 
 import React from 'react';
@@ -14,7 +14,7 @@ const LeftArrow = (props) => {
   }
 
   return (
-    <div className="navArrow backArrow" onClick={props.goToPrevSlide} style={styles}>
+    <div className="navArrow backArrow" onClick={props.goToPrev} style={styles}>
       <span className="arrow-left">◀</span>
     </div>
   );

@@ -14,13 +14,6 @@ class Board extends Component {
     history: [],
   }
 
-  componentDidMount() {
-    this.setState({
-      fen: this.props.positions[0]
-    })
-    console.log(this.props.positions);
-  }
-
   componentDidUpdate(prevState) {
     if (this.state.validSquares.length === 0) {
       this.resetBoard()
@@ -155,7 +148,8 @@ class Board extends Component {
 
     return (
       <div>
-        <div>This is da board</div>
+        <div>Hello yes this is
+          board</div>
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
@@ -178,6 +172,7 @@ class Board extends Component {
             })
           }
         </p>
+        <p>{chess.fen()}</p>
 
       </div>
     );

@@ -1,36 +1,68 @@
 /* ^ Carousel ^ */
-/* this component is a container for the lesson content shown at any one given time, dictated by the currentIndex */
+/* this component is a container for the lesson content shown at any one given time, dictated by the posIndex */
 
-import React from 'react'
+import React, { Component } from 'react'
 import Board from '../Board'
+import ExampleBoard from '../ExampleBoard'
+import LeftArrow            from "./LeftArrow";
+import RightArrow           from "./RightArrow";
 
 /* should be taking the index prop it has been passed and taking data out of the lessonContent array  */
 
-const Slide = props => {
+class Slide extends Component {
 
-  const styles = {
+  state = {
+    posIndex: 0,
+  }
+
+  styles = {
     padding:"5px",
     margin:"5px",
     border:"2px solid orange",
+    overflow:"hidden"
   }
 
-  const index = props.index
-  const slides = props.lessonContent
+  goToPrevPos = () => {
+    console.log("back!!");
+    if (this.state.posIndex !== 0) {
+      this.setState({
+        posIndex: this.state.posIndex - 1
+      })
+    }
+  }
 
-  const id = slides[index] ? slides[index].id : "not found"
-  const title = slides[index] ? slides[index].title : "not found"
-  const description = slides[index] ? slides[index].description : "not found"
-  const positions = slides[index] ? slides[index].positions : "not found"
+  goToNextPos = () => {
+    console.log("next!!");
+    if (this.state.posIndex !== this.props.lessonContent.positions.length - 1) {
+      this.setState({
+        posIndex: this.state.posIndex + 1
+      })
+    }
+  }
 
-  console.log(slides[index]);
+  render() {
+    if (!this.props.lessonContent) {
+      return <div />
+    } else {
 
-  return <div className="slide" style={styles}>
-    inside the slide component
-    <h3>id: {slides[index].id} - title: {title}</h3>
-    <h4>desc: {description}</h4>
-    <h4>1st position: {positions[0]}</h4>
-    <Board positions={positions}/>
-  </div>
+      const slide = this.props.lessonContent
+
+      return <div className="slide" style={this.styles}>
+        [inside the slide component]
+        <h4>id: {slide.id} - title: {slide.title}</h4>
+        <p>desc: {slide.description}</p>
+        <p>pos: {slide.positions[this.state.posIndex]}</p>
+        <ExampleBoard
+          positions={slide.positions}
+          index={this.state.posIndex}
+        />
+        <LeftArrow goToPrev={this.goToPrevPos} />
+        <span>moves</span>
+        <RightArrow goToNext={this.goToNextPos} />
+
+      </div>
+    }
+  }
 }
 
 export default Slide

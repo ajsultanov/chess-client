@@ -37,6 +37,7 @@ class App extends Component {
         <Route path="/signup/"        component={UserSignup} />
         <Route path="/login/"         component={UserLogin} />
         <Route path="/logout/"        component={UserLogin} />
+        <Route path="/play/"          component={Board} />
 
       {/* everything below must be changed back to a PrivateRoute for login to work!! */}
 

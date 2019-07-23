@@ -14,7 +14,7 @@ const RightArrow = (props) => {
   }
 
   return (
-    <div className="navArrow nextArrow" onClick={props.goToNextSlide} style={styles}>
+    <div className="navArrow nextArrow" onClick={props.goToNext} style={styles}>
       <span className="arrow-right">▶</span>
     </div>
   );

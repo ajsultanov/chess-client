@@ -28,7 +28,6 @@ class Lesson extends Component {
   }
 
   render() {
-    console.log("lesson:", this.props.lessonContent);
     return (
       <div>
         <Link to="/lessons/">Back to lessons</Link>

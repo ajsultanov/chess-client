@@ -14,10 +14,12 @@ class Board extends Component {
     history: [],
   }
 
-  lightSquares = [0,  2,  4,  6,  9,  11, 13, 15,
-                  16, 18, 20, 22, 25, 27, 29, 31,
-                  32, 34, 36, 38, 41, 43, 45, 47,
-                  48, 50, 52, 54, 57, 59, 61, 63]
+  componentDidMount() {
+    this.setState({
+      fen: this.props.positions[0]
+    })
+    console.log(this.props.positions);
+  }
 
   componentDidUpdate(prevState) {
     if (this.state.validSquares.length === 0) {
@@ -88,6 +90,11 @@ class Board extends Component {
     })
   }
 
+  lightSquares = [0,  2,  4,  6,  9,  11, 13, 15,
+                  16, 18, 20, 22, 25, 27, 29, 31,
+                  32, 34, 36, 38, 41, 43, 45, 47,
+                  48, 50, 52, 54, 57, 59, 61, 63]
+
   resetBoard() {
     let allSquares = document.querySelectorAll("[data-squareid]")
     allSquares.forEach((square, i) => {
@@ -135,6 +142,7 @@ class Board extends Component {
   }
 
   render() {
+
     if (this.state.highlightedSquare) {
       this.resetBoard()
       this.highlightSquare(this.state.highlightedSquare)
@@ -145,26 +153,32 @@ class Board extends Component {
       })
     }
 
-
     return (
       <div>
         <div>This is da board</div>
-        <Chessboard
-          width={400}
-          position={this.state.fen}
-          onSquareClick={this.onSquareClick}
-        />
 
-        <ul>
-          {this.state.history.map((move, i) => {
-            let j = Math.floor(i / 2) + 1
-            if (i % 2 === 0) {
-              return <li key={i}>{j}.{move}</li>
-            } else {
-              return <li key={i}>{j}...{move}</li>
-            }
-          })}
-        </ul>
+        <div style={{float:"left",marginRight:"10px"}}>
+          <Chessboard
+            width={400}
+            position={this.state.fen}
+            onSquareClick={this.onSquareClick}
+          />
+        </div>
+
+        <p>
+          {
+            this.state.history.map((move, i) => {
+              let j = Math.floor(i / 2) + 1
+
+              if (i % 2 === 0) {
+                return <span key={i}>{j + ". " + move}</span>
+              } else {
+                return <span key={i}>{"\v\v" + move}<br/></span>
+              }
+            })
+          }
+        </p>
+
       </div>
     );
   }

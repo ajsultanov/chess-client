@@ -1,11 +1,9 @@
-/* ^ App ^ */
+/* ^ LessonContainer ^ */
 /* this component is the lesson page itself, containing slides (cmp) and puzzles (cmp) */
 
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom';
-import { setCurrentLesson, getLessonContent } from '../actions';
-import Carousel from './Carousel';
+import Carousel             from './Carousel';
 
 class Lesson extends Component {
 
@@ -15,38 +13,22 @@ class Lesson extends Component {
     border:"2px solid limegreen",
   }
 
-  /* this comes from the url */
-  lessonId = this.props.match.params.id
-  /* allLessons is an array that starts at 0, lesson ids start at 1 */
-  currentLesson = this.props.allLessons[this.lessonId - 1]
-
-  componentDidMount = () => {
-    this.props.setCurrentLesson(this.currentLesson.id)
-    //setTimeout(() => console.log("current lesson:", this.props.currentLesson), 100)
-
-    this.props.getLessonContent(this.lessonId)
-  }
-
   render() {
-    return (
-      <div>
-        <Link to="/lessons/">Back to lessons</Link>
-        <div style={this.styles}>
-          <div>title: {this.currentLesson.title} <br/>
-          description: {this.currentLesson.description}</div>
-          <Carousel lessonContent={this.props.lessonContent}/>
+    if (!this.props.lesson) {
+      return <div />
+    } else {
+      return (
+        <div>
+          <Link to="/lessons/">Back to lessons</Link>
+          <div style={this.styles}>
+            <div>{this.props.lesson.title}&nbsp; - &nbsp;
+            {this.props.lesson.description}</div>
+            <Carousel lesson={this.props.lesson}/>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    allLessons: state.allLessons,         // array of objects (lessons)
-    currentLesson: state.currentLesson,   // int (lesson id)
-    lessonContent: state.lessonContent    // array of objects (slides)
-  }
-}
-
-export default connect(mapStateToProps, { setCurrentLesson, getLessonContent })(Lesson)
+export default Lesson

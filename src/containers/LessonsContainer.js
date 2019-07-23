@@ -8,12 +8,6 @@ import LessonLink           from '../components/LessonLink'
 
 class LessonsContainer extends Component {
 
-  /* this should already have been fetched when App loads */
-
-  // componentDidMount = () => {
-  //   this.props.fetchLessons()
-  // }
-
   styles = {
     padding:"5px",
     margin:"5px",

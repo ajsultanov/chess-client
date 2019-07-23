@@ -1,8 +1,9 @@
 export default function reducer(state = {
 
   currentUser: null,
-  currentLesson: 1,
+  currentLesson: "",
   allLessons: [],
+  lesson: {},
   lessonContent: []
 
 }, action) {
@@ -41,13 +42,27 @@ export default function reducer(state = {
         currentLesson: action.payload,
       }
 
+    case "SET_LESSON":
+      console.log("settin the lesson OBJECT, boss")
+      return {
+        ...state,
+        lesson: action.payload,
+      }
+
     /* gets slide components when an individual lesson is opened
     [!] i think im having an issue here with async stuff... */
     case "FETCH_CONTENT":
       console.log("fetchin the content, boss")
       return {
         ...state,
-        lessonContent: [...state.lessonContent, action.payload]
+        lessonContent: action.payload
+      }
+
+    case "CLEAR_CONTENT":
+      console.log("clearin the content, boss")
+      return {
+        ...state,
+        lessonContent: []
       }
 
     default:

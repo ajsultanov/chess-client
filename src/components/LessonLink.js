@@ -14,9 +14,7 @@ class LessonLink extends Component {
     border:"2px solid red",
   }
 
-
   render() {
-    console.log(this.props);
     return (
       <Link to={`/lessons/${this.props.id}`}>
         <div style={this.styles}>

@@ -79,9 +79,29 @@ const setCurrentLesson = (lesson) => {
   }
 }
 
+/* sets the lesson object */
+/* ^ LessonContainer ^ */
+const setLesson = (lesson) => {
+  return {
+    type: 'SET_LESSON',
+    payload: lesson
+  }
+}
+
 /* gets the individual slide objects associated with a lesson from the database */
 /* ^ Lesson ^ */
-const getLessonContent = lessonId => {
+const getLessonSlides = lessonId => {
+  return function(dispatch){
+    fetch(`http://localhost:3030/lessons/${lessonId}/slides`)
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: 'FETCH_CONTENT',
+        payload: data
+      })
+    )
+  }
+}
+const getLessonPuzzles = lessonId => {
   return function(dispatch){
     fetch(`http://localhost:3030/lessons/${lessonId}/puzzles`)
     .then(resp => resp.json())
@@ -99,5 +119,7 @@ export {
   logout,
   fetchLessons,
   setCurrentLesson,
-  getLessonContent
+  setLesson,
+  getLessonSlides,
+  getLessonPuzzles
 }

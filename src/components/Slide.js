@@ -2,12 +2,11 @@
 /* this component is a container for the lesson content shown at any one given time, dictated by the posIndex */
 
 import React, { Component } from 'react'
-import Board from '../Board'
-import ExampleBoard from '../ExampleBoard'
+import ExampleBoard         from '../ExampleBoard'
 import LeftArrow            from "./LeftArrow";
 import RightArrow           from "./RightArrow";
 
-/* should be taking the index prop it has been passed and taking data out of the lessonContent array  */
+/* should be taking the index prop it has been passed and taking data out of the content array  */
 
 class Slide extends Component {
 
@@ -33,7 +32,7 @@ class Slide extends Component {
 
   goToNextPos = () => {
     console.log("next!!");
-    if (this.state.posIndex !== this.props.lessonContent.positions.length - 1) {
+    if (this.state.posIndex !== this.props.content.positions.length - 1) {
       this.setState({
         posIndex: this.state.posIndex + 1
       })
@@ -41,11 +40,11 @@ class Slide extends Component {
   }
 
   render() {
-    if (!this.props.lessonContent) {
+    if (!this.props.content) {
       return <div />
     } else {
 
-      const slide = this.props.lessonContent
+      const slide = this.props.content
 
       return <div className="slide" style={this.styles}>
         [inside the slide component]

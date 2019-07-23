@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import Chess                from "chess.js";
 import Chessboard           from "chessboardjsx";
-
-let chess = new Chess();
 
 class ExampleBoard extends Component {
 
@@ -12,7 +9,6 @@ class ExampleBoard extends Component {
   }
 
   render() {
-
     //console.log("current position should be: ", this.props.positions[this.props.index]);
 
     return (

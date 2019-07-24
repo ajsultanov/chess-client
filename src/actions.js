@@ -1,6 +1,6 @@
 /* creates a user in the database */
 /* ^ UserSignup ^ */
-const createUser = (user) => {
+const createUser = user => {
   return function(dispatch){
     fetch('http://localhost:3030/users', {
       method: 'POST',
@@ -27,7 +27,7 @@ const createUser = (user) => {
 
 /* checks user credentials against database, creates a currentUser */
 /* ^ UserLogin ^ */
-const setUser = (user) => {
+const setUser = user => {
   return function(dispatch){
     fetch('http://localhost:3030/login', {
       method: 'POST',
@@ -72,7 +72,7 @@ const fetchLessons = () => {
 
 /* sets the currentLesson */
 /* ^ Lesson ^ */
-const setCurrentLesson = (lesson) => {
+const setCurrentLesson = lesson => {
   return {
     type: 'SET_CURRENT_LESSON',
     payload: lesson
@@ -81,14 +81,14 @@ const setCurrentLesson = (lesson) => {
 
 /* sets the lesson object */
 /* ^ LessonContainer ^ */
-const setLesson = (lesson) => {
+const setLesson = lesson => {
   return {
     type: 'SET_LESSON',
     payload: lesson
   }
 }
 
-/* gets the individual slide objects associated with a lesson from the database */
+/* gets the slide & puzzle objects associated with a lesson from the database */
 /* ^ Lesson ^ */
 const getLessonSlides = lessonId => {
   return function(dispatch){
@@ -113,6 +113,30 @@ const getLessonPuzzles = lessonId => {
   }
 }
 
+const completeLesson = (userId, xp) => {
+  console.log(userId, xp);
+  return function(dispatch){
+    fetch(`http://localhost:3030/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        id: userId,
+        xp: xp
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: 'COMPLETE_LESSON',
+        payload: data
+      })
+    )
+  }
+}
+
+
 export {
   createUser,
   setUser,
@@ -121,5 +145,6 @@ export {
   setCurrentLesson,
   setLesson,
   getLessonSlides,
-  getLessonPuzzles
+  getLessonPuzzles,
+  completeLesson
 }

@@ -9,8 +9,8 @@ import { logout }           from '../actions'
 class Menu extends Component {
 
   styles = {
-    backgroundColor:"#59D",
-    width:"98%",
+    backgroundColor:"#6BF",
+    width:"800px",
     height:"40px",
     padding:"10px",
   }

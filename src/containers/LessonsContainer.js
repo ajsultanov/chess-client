@@ -9,8 +9,8 @@ import LessonLink           from '../components/LessonLink'
 class LessonsContainer extends Component {
 
   styles = {
-    padding:"5px",
-    margin:"5px",
+    width:"796px",
+    padding:"10px",
     border:"2px solid darkseagreen",
   }
 

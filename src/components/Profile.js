@@ -6,12 +6,18 @@ import { connect }          from 'react-redux';
 
 class Profile extends Component {
 
+  ok = "https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+
   styles = {
     padding:"5px",
     margin:"5px",
-    height:"100px",
+    height:"200px",
+    color:"white",
     border:"2px solid red",
     lineHeight: "10px",
+    backgroundImage:`url(${this.ok})`,
+    backgroundSize:"cover",
+    backgroundPosition:"50% 70%",
   }
 
   render() {

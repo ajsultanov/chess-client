@@ -7,11 +7,16 @@ import { Link } from 'react-router-dom'
 
 class CurrentLesson extends Component {
 
+  ok = "https://images.unsplash.com/photo-1529699310859-b163e33e4556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1122&q=80"
+
   styles = {
     padding:"5px",
     margin:"5px",
     height:"100px",
     border:"2px solid green",
+    backgroundImage:`url(${this.ok})`,
+    backgroundSize:"100%",
+    backgroundPosition:"25% 60%",
   }
 
   render() {

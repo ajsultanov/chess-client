@@ -13,8 +13,8 @@ class UserLogin extends Component {
   }
 
   styles = {
-    padding:"5px",
-    margin:"5px",
+    width:"796px",
+    padding:"10px",
     border:"2px solid green",
   }
 
@@ -33,7 +33,7 @@ class UserLogin extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     this.props.setUser(this.state)
-    setTimeout(() => this.props.history.push("/home/"), 100)
+    this.props.history.push("/home/")
   }
 
   render() {

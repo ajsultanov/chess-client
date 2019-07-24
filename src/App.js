@@ -10,10 +10,11 @@ import LessonContainer          from './containers/LessonContainer'
 import LessonsContainer         from './containers/LessonsContainer'
 import Menu                     from './containers/Menu'
 import Board                    from './Board'
+import Splash                   from './Splash'
 import { fetchLessons }         from './actions'
 import './App.css';
 
-console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:-5px -5px 3px #456,0px -5px 3px #458,5px -5px 3px #459,5px 0px 3px #45A,5px 5px 3px #45C,0px 5px 3px #45A,-5px 5px 3px #459,-5px 0px 3px #458;")
+console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:0px 5px 3px #A45,-5px 5px 3px #945,-5px 0px 3px #645,-5px -5px 3px #534,0px -5px 3px #645,5px -5px 3px #945,5px 0px 3px #A45,5px 5px 3px #E45")
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
         <Route path="/login/"         component={UserLogin} />
         <Route path="/logout/"        component={UserLogin} />
         <Route path="/play/"          component={Board} />
+        <Route exact path="/"         component={Splash} />
 
       {/* everything below must be changed back to a PrivateRoute for login to work!! */}
 

@@ -10,7 +10,8 @@ class Lesson extends Component {
   styles = {
     padding:"5px",
     margin:"5px",
-    border:"2px solid limegreen",
+    backgroundColor:"#f8f8f8",
+    border:"2px solid lightblue",
   }
 
   render() {

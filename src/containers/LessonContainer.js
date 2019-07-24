@@ -12,16 +12,15 @@ import { setCurrentLesson,
 class LessonContainer extends Component {
 
   styles = {
-    padding:"5px",
-    margin:"5px",
+    width:"796px",
+    padding:"10px",
+    marginTop:"10px",
+    backgroundColor:"#f4f4f4",
     border:"2px solid darkseagreen",
   }
 
   componentDidMount() {
     this.props.setCurrentLesson(this.props.match.params.id)
-    // this.props.setLesson(this.props.allLessons[this.props.currentLesson])
-    // this.props.getLessonSlides(this.props.currentLesson)
-    // this.props.getLessonPuzzles(this.props.currentLesson)
   }
 
   render() {

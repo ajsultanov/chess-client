@@ -2,7 +2,11 @@
 /* this component holds the slide and arrow button components and the slideshow logic */
 
 import React, { Component } from 'react';
+import { Link }             from 'react-router-dom'
+import { connect }          from 'react-redux'
+import { completeLesson }   from '../actions'
 import Slide                from './Slide';
+import Puzzle               from './Puzzle';
 import LeftArrow            from './LeftArrow';
 import RightArrow           from './RightArrow';
 
@@ -11,6 +15,7 @@ class Carousel extends Component {
   styles = {
     padding:"5px",
     margin:"5px",
+    backgroundColor:"#fcfcfc",
     border:"2px solid mediumorchid",
     overflow:"hidden"
   }
@@ -43,9 +48,8 @@ class Carousel extends Component {
 
     let lessonContent = [...this.props.lesson.slides, ...this.props.lesson.puzzles].sort((a, b) => a.sort_order - b.sort_order);
 
-    console.log('SLIDES', this.props.lesson.slides);
-    console.log('PUZZLES', this.props.lesson.puzzles);
-    console.log('LESSON CONTENT', lessonContent);
+    this.props.currentUser ? console.log(this.props.currentUser) : console.log("no user");
+    this.props.currentUser ? console.log(this.props.currentUser.user_lessons[this.props.lesson.id - 1]) : console.log("no userlesson");
 
     if (!this.props.lesson) {
       return <div />
@@ -54,17 +58,38 @@ class Carousel extends Component {
         <div className="carousel" style={this.styles}>
           [inside the carousel component]
 
-          {/* this index should do a bunch of stuff */}
-          <Slide
-            content={lessonContent[this.state.slideIndex]}
-          />
+          {
+            lessonContent[this.state.slideIndex].style === "slide"
+            ? <Slide content={lessonContent[this.state.slideIndex]}/>
+            : <Puzzle content={lessonContent[this.state.slideIndex]}/>
+          }
+
           <LeftArrow goToPrev={this.goToPrevSlide} />
-          <span>{this.state.slideIndex + 1 + "/" + this.props.lesson.length}</span>
+          <span>{this.state.slideIndex + 1 + "/" + lessonContent.length}</span>
           <RightArrow goToNext={this.goToNextSlide} />
+
+          {
+            this.state.slideIndex + 1 === lessonContent.length
+            ?
+            <div onClick={() => this.props.completeLesson(this.props.currentUser.id, 25)}>
+              <Link to="/lessons/">Complete this Lesson</Link>
+            </div>
+            :
+            null
+          }
         </div>
       )
     }
   }
 }
 
-export default Carousel
+//onClick={this.props.completeLesson(this.props.currentUser)}
+//this.props.completeLesson(this.props.currentUser, this.userLesson, 25)
+
+const mapStateToProps = state => {
+  return ({
+    currentUser: state.currentUser
+  })
+}
+
+export default connect(mapStateToProps, { completeLesson })(Carousel)

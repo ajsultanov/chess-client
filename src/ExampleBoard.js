@@ -13,8 +13,6 @@ class ExampleBoard extends Component {
 
     return (
       <div>
-        <div>Hello yes this is board</div>
-
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
             width={200}

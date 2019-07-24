@@ -65,6 +65,14 @@ export default function reducer(state = {
         lessonContent: []
       }
 
+    case "COMPLETE_LESSON":
+      console.log("completin the lesson, boss")
+      console.log(action.payload)
+      return {
+        ...state,
+        currentLesson: state.currentLesson + 1
+      }
+
     default:
       return state;
   }

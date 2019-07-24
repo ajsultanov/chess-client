@@ -67,7 +67,6 @@ class Menu extends Component {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-    currentLesson: state.currentLesson
   }
 }
 

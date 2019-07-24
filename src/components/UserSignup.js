@@ -36,6 +36,7 @@ class UserSignup extends Component {
     if (this.state.username && this.state.password1) {
       if (this.passwordCheck()) {
         this.props.createUser(this.state)
+        this.props.history.push("/home/")
       } else {
         window.alert("password must be the same")
       }

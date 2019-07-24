@@ -7,7 +7,7 @@ class Splash extends Component {
 
   render() {
     return (
-      <div style={{width:"800px",height:"500px",padding:"10px",backgroundImage:`url(${this.ok})`,backgroundSize:"100%"}}>
+      <div style={{width:"800px",height:"500px",padding:"10px",backgroundImage:`url(${this.ok})`,backgroundSize:"100%",boxShadow:"inset 0px 0px 100px crimson"}}>
       <span style={{fontSize:"36px",color:"pink"}}>
       SPLASH PAGE!!!!!</span>
 

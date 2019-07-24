@@ -2,7 +2,6 @@
 /* this component render the user profile on the home page */
 
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
 
 class Profile extends Component {
 
@@ -18,27 +17,18 @@ class Profile extends Component {
     backgroundImage:`url(${this.ok})`,
     backgroundSize:"cover",
     backgroundPosition:"50% 70%",
+    boxShadow:"inset 0px 0px 20px black"
   }
 
   render() {
-
-    const name = this.props.currentUser ? this.props.currentUser.username : "not found"
-    const xp = this.props.currentUser ? this.props.currentUser.xp : "not found"
-
     return (
       <div style={this.styles}>
         <h3>User Profile</h3>
-        <p>username: {name}</p>
-        <p>xp: {xp}</p>
+        <h1>username: {this.props.username.toUpperCase()}</h1>
+        <p>xp: {this.props.xp}</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.currentUser  // object
-  }
-}
-
-export default connect(mapStateToProps)(Profile)
+export default Profile

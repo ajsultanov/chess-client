@@ -12,6 +12,7 @@ const createUser = user => {
         user: {
           username: user.username,
           password: user.password1,
+          current_lesson: 1,
           xp: 0
         }
       })
@@ -28,6 +29,7 @@ const createUser = user => {
 /* checks user credentials against database, creates a currentUser */
 /* ^ UserLogin ^ */
 const setUser = user => {
+  console.log("setuser--", user);
   return function(dispatch){
     fetch('http://localhost:3030/login', {
       method: 'POST',
@@ -72,10 +74,25 @@ const fetchLessons = () => {
 
 /* sets the currentLesson */
 /* ^ Lesson ^ */
-const setCurrentLesson = lesson => {
-  return {
-    type: 'SET_CURRENT_LESSON',
-    payload: lesson
+const setCurrentLesson = (user, lesson) => {
+
+  return function(dispatch) {
+    fetch(`http://localhost:3030/users/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        current_lesson: lesson
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: 'SET_CURRENT_LESSON',
+        payload: data
+      })
+    )
   }
 }
 
@@ -113,18 +130,19 @@ const getLessonPuzzles = lessonId => {
   }
 }
 
-const completeLesson = (userId, xp) => {
-  console.log(userId, xp);
+const completeLesson = (user, xp) => {
+  console.log(user.id, xp);
   return function(dispatch){
-    fetch(`http://localhost:3030/users/${userId}`, {
+    fetch(`http://localhost:3030/users/${user.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        id: userId,
-        xp: xp
+        id: user.id,
+        xp: xp,
+        current_lesson: user.current_lesson,
       })
     })
     .then(resp => resp.json())

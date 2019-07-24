@@ -1,7 +1,6 @@
 export default function reducer(state = {
 
   currentUser: null,
-  currentLesson: "",
   allLessons: [],
   lesson: {},
   lessonContent: []
@@ -33,13 +32,12 @@ export default function reducer(state = {
         allLessons: action.payload
       }
 
-    /* sets currentLesson when an individual lesson is opened
-    [!] i want to set this for the currentUser as well but dont know how... */
+    /* sets currentLesson when an individual lesson is opened */
     case "SET_CURRENT_LESSON":
-      console.log("settin the lesson, boss")
+      console.log("settin the lesson on the user, boss")
       return {
         ...state,
-        currentLesson: action.payload,
+        currentUser: action.payload,
       }
 
     case "SET_LESSON":
@@ -67,7 +65,6 @@ export default function reducer(state = {
 
     case "COMPLETE_LESSON":
       console.log("completin the lesson, boss")
-      console.log(action.payload)
       return {
         ...state,
         currentLesson: state.currentLesson + 1

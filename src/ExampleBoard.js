@@ -9,7 +9,6 @@ class ExampleBoard extends Component {
   }
 
   render() {
-    //console.log("current position should be: ", this.props.positions[this.props.index]);
 
     return (
       <div>
@@ -17,6 +16,8 @@ class ExampleBoard extends Component {
           <Chessboard
             width={200}
             position={this.props.positions[this.props.index]}
+            transitionDuration={200}
+            allowDrag={() => false}
           />
         </div>
       </div>

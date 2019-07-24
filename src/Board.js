@@ -93,9 +93,9 @@ class Board extends Component {
     allSquares.forEach((square, i) => {
       square.style.boxShadow = ""
       if (this.lightSquares.includes(i)) {
-        square.style.backgroundColor = "rgb(240, 217, 181)"
+        square.style.backgroundColor = "#B5CCF0"
       } else {
-        square.style.backgroundColor = "rgb(181, 136, 99)"
+        square.style.backgroundColor = "#6390B5"
       }
     })
   }
@@ -109,27 +109,27 @@ class Board extends Component {
         /* light squares */
         if (chess.get(id) && !(id === this.state.selectedSquare)) {
           /* attack */
-          mySquare.style.backgroundColor = "#f60"
-          mySquare.style.boxShadow = "inset 0 0 20px #F0D9B5"
+          mySquare.style.backgroundColor = "#d16ff6"
+          mySquare.style.boxShadow = "inset 0 0 20px #B5CCF0"
         } else {
           mySquare.style.backgroundColor = "#ACFCD0"
-          mySquare.style.boxShadow = "inset 0 0 20px #F0D9B5"
+          mySquare.style.boxShadow = "inset 0 0 20px #B5CCF0"
         }
       }
       else {
         /* dark squares */
         if (chess.get(id) && !(id === this.state.selectedSquare)) {
           /* attack */
-          mySquare.style.backgroundColor = "#c30"
-          mySquare.style.boxShadow = "inset 0 0 20px #B58863"
+          mySquare.style.backgroundColor = "#ab34c0"
+          mySquare.style.boxShadow = "inset 0 0 20px #6390B5"
         } else {
           mySquare.style.backgroundColor = "#6AC784"
-          mySquare.style.boxShadow = "inset 0 0 20px #B58863"
+          mySquare.style.boxShadow = "inset 0 0 20px #6390B5"
         }
       }
       /* selected square */
       if (id === this.state.selectedSquare) {
-        mySquare.style.backgroundColor = "#FFDD22"
+        mySquare.style.backgroundColor = "#d0a825"
       }
     }
   }
@@ -156,6 +156,8 @@ class Board extends Component {
             width={400}
             position={this.state.fen}
             onSquareClick={this.onSquareClick}
+            lightSquareStyle={{backgroundColor:'#B5CCF0'}}
+            darkSquareStyle={{backgroundColor:'#6390B5'}}
           />
         </div>
 

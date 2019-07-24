@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react'
 import ExampleBoard         from '../ExampleBoard'
+import TestBoard            from '../TestBoard'
 import LeftArrow            from "./LeftArrow";
 import RightArrow           from "./RightArrow";
 
@@ -41,6 +42,10 @@ class Puzzle extends Component {
   }
 
   render() {
+
+    console.log(this.props.content);
+    console.log("index: ", this.state.posIndex);
+
     if (!this.props.content) {
       return <div />
     } else {
@@ -51,14 +56,24 @@ class Puzzle extends Component {
         [inside the puzzle component]
         <h4>id: {puzzle.id} - title: {puzzle.title}</h4>
         <p>desc: {puzzle.description}</p>
-        <ExampleBoard
-          positions={puzzle.positions}
-          index={this.state.posIndex}
-        />
-        <p>pos: {puzzle.positions[this.state.posIndex]}</p>
-        <LeftArrow goToPrev={this.goToPrevPos} />
-        <span>moves</span>
-        <RightArrow goToNext={this.goToNextPos} />
+        { this.props.content.style === "puzzle" ?
+          <React.Fragment>
+            <ExampleBoard
+              positions={puzzle.positions}
+              index={this.state.posIndex}
+            />
+            <p>pos: {puzzle.positions[this.state.posIndex]}</p>
+            <LeftArrow goToPrev={this.goToPrevPos} />
+            <span>moves</span>
+            <RightArrow goToNext={this.goToNextPos} />
+          </React.Fragment>
+        :
+          <TestBoard
+            positions={puzzle.positions}
+            index={this.state.posIndex}
+          />
+        }
+
 
       </div>
     }

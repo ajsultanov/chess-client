@@ -48,9 +48,6 @@ class Carousel extends Component {
 
     let lessonContent = [...this.props.lesson.slides, ...this.props.lesson.puzzles].sort((a, b) => a.sort_order - b.sort_order);
 
-    this.props.currentUser ? console.log(this.props.currentUser) : console.log("no user");
-    this.props.currentUser ? console.log(this.props.currentUser.user_lessons[this.props.lesson.id - 1]) : console.log("no userlesson");
-
     if (!this.props.lesson) {
       return <div />
     } else {
@@ -71,7 +68,7 @@ class Carousel extends Component {
           {
             this.state.slideIndex + 1 === lessonContent.length
             ?
-            <div onClick={() => this.props.completeLesson(this.props.currentUser.id, 25)}>
+            <div onClick={() => this.props.completeLesson(this.props.currentUser, this.props.lesson.xp_worth)}>
               <Link to="/lessons/">Complete this Lesson</Link>
             </div>
             :

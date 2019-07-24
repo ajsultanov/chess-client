@@ -20,15 +20,18 @@ class LessonContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.setCurrentLesson(this.props.match.params.id)
+    if (this.props.currentUser) {
+      this.props.setCurrentLesson(this.props.currentUser, this.props.match.params.id)
+    }
   }
 
   render() {
+    //console.log(this.props.currentUser.currentLesson);
     return (
       <div style={this.styles}>
         {
           this.props.allLessons.length !== 0
-          ? <Lesson lesson={this.props.allLessons[this.props.currentLesson - 1]}/>
+          ? <Lesson lesson={this.props.allLessons[this.props.match.params.id - 1]}/>
           : null
         }
       </div>
@@ -38,8 +41,8 @@ class LessonContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.currentUser,
     allLessons: state.allLessons,
-    currentLesson: state.currentLesson,
     lesson: state.lesson
   }
 }

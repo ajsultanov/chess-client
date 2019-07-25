@@ -41,6 +41,9 @@ class ProfileContainer extends Component {
   }
 
   render() {
+
+    const currentLessonTitle = this.props.allLessons[this.props.currentUser.current_lesson].title
+
     return (
       <div style={this.styles}>
         {
@@ -51,11 +54,18 @@ class ProfileContainer extends Component {
                 xp={this.props.currentUser.xp}
               />
 
-              <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
-                <div style={this.styles3}>
-                  Current Lesson
-                </div>
-              </Link>
+              { this.props.currentUser.current_lesson
+                ? <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
+                    <div style={this.styles3}>
+                      Current Lesson ({`${currentLessonTitle}`})
+                    </div>
+                  </Link>
+                : <Link to={`/lessons/1`}>
+                    <div style={this.styles3}>
+                      Go to the first Lesson!
+                    </div>
+                  </Link>
+              }
 
               <Link to="/lessons/">
                 <div style={this.styles2}>
@@ -72,7 +82,8 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    allLessons: state.allLessons
   }
 }
 

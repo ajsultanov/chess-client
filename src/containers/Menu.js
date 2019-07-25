@@ -19,7 +19,7 @@ class Menu extends Component {
     return (
       <div style={this.styles}>
 
-        <Link to="/home/">
+        <Link to="/home">
           Hello Chess
         </Link>
 
@@ -29,15 +29,15 @@ class Menu extends Component {
               user: {this.props.currentUser.username}
             </span>
             <span> | </span>
-            <Link to="/lessons/">
+            <Link to="/lessons">
               Lessons
             </Link>
             <span> | </span>
-            <Link to="/play/">
+            <Link to="/play">
               Play!
             </Link>
             <span> | </span>
-            <Link to="/logout/"
+            <Link to="/login"
             onClick={this.props.logout}>
               Log Out
             </Link>
@@ -46,15 +46,15 @@ class Menu extends Component {
           :
 
           <span style={{float:"right"}}>
-            <Link to="/play/">
+            <Link to="/play">
               Play! (take this out)
             </Link>
             <span> | </span>
-            <Link to="/signup/">
+            <Link to="/signup">
               Sign Up
             </Link>
             <span> | </span>
-            <Link to="/login/">
+            <Link to="/login">
               Log In
             </Link>
           </span>

@@ -1,3 +1,5 @@
+import 'react-router-dom'
+
 /* creates a user in the database */
 /* ^ UserSignup ^ */
 const createUser = user => {
@@ -12,7 +14,7 @@ const createUser = user => {
         user: {
           username: user.username,
           password: user.password1,
-          current_lesson: 1,
+          current_lesson: null,
           xp: 0
         }
       })
@@ -75,7 +77,6 @@ const fetchLessons = () => {
 /* sets the currentLesson */
 /* ^ Lesson ^ */
 const setCurrentLesson = (user, lesson) => {
-
   return function(dispatch) {
     fetch(`http://localhost:3030/users/${user.id}`, {
       method: 'PATCH',
@@ -130,7 +131,7 @@ const getLessonPuzzles = lessonId => {
   }
 }
 
-const completeLesson = (user, xp) => {
+const addXP = (user, xp) => {
   console.log(user.id, xp);
   return function(dispatch){
     fetch(`http://localhost:3030/users/${user.id}`, {
@@ -147,12 +148,35 @@ const completeLesson = (user, xp) => {
     })
     .then(resp => resp.json())
     .then(data => dispatch({
-        type: 'COMPLETE_LESSON',
+        type: 'ADD_XP',
         payload: data
       })
     )
   }
 }
+const markAsComplete = (ul) => {
+  console.log("markascomplete:", ul);
+  return function(dispatch){
+    fetch(`http://localhost:3030/user_lessons/${ul.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: ul.user_id,
+        completed: true
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => dispatch({
+        type: 'MARK_COMPLETE',
+        payload: data
+      })
+    )
+  }
+}
+
 
 
 export {
@@ -164,5 +188,6 @@ export {
   setLesson,
   getLessonSlides,
   getLessonPuzzles,
-  completeLesson
+  addXP,
+  markAsComplete
 }

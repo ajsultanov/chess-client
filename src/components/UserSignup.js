@@ -36,7 +36,6 @@ class UserSignup extends Component {
     if (this.state.username && this.state.password1) {
       if (this.passwordCheck()) {
         this.props.createUser(this.state)
-        this.props.history.push("/home/")
       } else {
         window.alert("password must be the same")
       }
@@ -49,7 +48,12 @@ class UserSignup extends Component {
     return this.state.password1 === this.state.password2;
   }
 
+  componentDidUpdate() {
+    if (this.props.user) {this.props.history.push("/home")}
+  }
+
   render() {
+
     return (
       <div style={this.styles}>
         <form onSubmit={(event) => this.handleOnSubmit(event)}>

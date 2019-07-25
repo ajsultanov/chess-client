@@ -20,6 +20,10 @@ class TestBoard extends Component {
     }
   }
 
+  onDrop = () => {
+    this.resetBoard()
+  }
+
   onSquareClick = square => {
     if (square === this.state.selectedSquare) {
       this.reClick(square)
@@ -45,23 +49,136 @@ class TestBoard extends Component {
       selectedSquare: square,
       highlightedSquare: "",
     })
+
+    /* for current piece and valid move highlighting */
+    if (test.moves({square: square}).length > 0) {  // if there are valid moves
+      console.log("get ye moves here, valid moves!!")
+
+      this.setState({
+        highlightedSquare: square,
+        validSquares: test.moves({square: square}).map(move => {
+          return move.match(/[a-h][1-8]/)           // pull the square out of the move
+        })
+      })
+    }
+    else {
+      this.setState(
+        {
+          highlightedSquare: "",
+          validSquares: []
+        }
+      )
+    }
+
+    /* creates a move object */
+    let move = test.move({
+      from: this.state.selectedSquare,
+      to: square,
+    })
+
+    /* if move invalid */
+    if (move === null) return;
+
+    /* if move valid, updates state */
+    this.setState({
+      fen: test.fen(),
+      history: test.history(),
+      selectedSquare: ""
+    })
+  }
+
+  lightSquares = [0,  2,  4,  6,  9,  11, 13, 15,
+                  16, 18, 20, 22, 25, 27, 29, 31,
+                  32, 34, 36, 38, 41, 43, 45, 47,
+                  48, 50, 52, 54, 57, 59, 61, 63]
+
+  resetBoard() {
+    let allSquares = document.querySelectorAll("[data-squareid]")
+    allSquares.forEach((square, i) => {
+      square.style.boxShadow = ""
+      if (this.lightSquares.includes(i)) {
+        square.style.backgroundColor = "#CBF0B5"
+      } else {
+        square.style.backgroundColor = "#90B563"
+      }
+    })
+  }
+
+  highlightSquare = square => {
+    let mySquare = document.querySelector(`[data-squareid=${square}]`)
+    if (mySquare) {
+      let id = mySquare.dataset.squareid
+
+      if (mySquare.dataset.testid === "white-square") {
+        /* light squares */
+        if (test.get(id) && !(id === this.state.selectedSquare)) {
+          /* attack */
+          mySquare.style.backgroundColor = "#d16ff6"
+          mySquare.style.boxShadow = "inset 0 0 20px #CBF0B5"
+        } else {
+          mySquare.style.backgroundColor = "#ACE5FC"
+          mySquare.style.boxShadow = "inset 0 0 20px #CBF0B5"
+        }
+      }
+      else {
+        /* dark squares */
+        if (test.get(id) && !(id === this.state.selectedSquare)) {
+          /* attack */
+          mySquare.style.backgroundColor = "#ab34c0"
+          mySquare.style.boxShadow = "inset 0 0 20px #90B563"
+        } else {
+          mySquare.style.backgroundColor = "#6ABCC7"
+          mySquare.style.boxShadow = "inset 0 0 20px #90B563"
+        }
+      }
+      /* selected square */
+      if (id === this.state.selectedSquare) {
+        mySquare.style.backgroundColor = "#e89845"
+      }
+    }
   }
 
   render() {
-    console.log(test.ascii());
+
+    if (this.state.highlightedSquare) {
+      this.resetBoard()
+      this.highlightSquare(this.state.highlightedSquare)
+    }
+    if (this.state.validSquares) {
+      this.state.validSquares.forEach(square => {
+        this.highlightSquare(square)
+      })
+    }
+
     return (
       <div>
+        <div>Hello yes this is board</div>
+
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={200}
-            position={this.props.positions[this.props.index]}
-            transitionDuration={200}
+            width={256}
+            position={this.props.positions[0]}
+            onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#CBF0B5'}}
             darkSquareStyle={{backgroundColor:'#90B563'}}
-            boardStyle={{cursor:"pointer"}}
-            //onMouseOverSquare={() => {}}
           />
         </div>
+
+        <p>
+          {
+            this.state.history.map((move, i) => {
+              let j = Math.floor(i / 2) + 1
+
+              if (i % 2 === 0) {
+                return <span key={i}>{j + ". " + move}</span>
+              } else {
+                return <span key={i}>{"\v\v" + move}<br/></span>
+              }
+            })
+          }
+        </p>
+        <p>{test.fen()}</p>
+
       </div>
     );
   }

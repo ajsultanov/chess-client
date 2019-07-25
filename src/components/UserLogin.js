@@ -31,9 +31,12 @@ class UserLogin extends Component {
   }
 
   handleOnSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     this.props.setUser(this.state)
-    this.props.history.push("/home/")
+  }
+
+  componentDidUpdate() {
+    if (this.props.user) {this.props.history.push("/home")}
   }
 
   render() {

@@ -42,9 +42,7 @@ class Puzzle extends Component {
   }
 
   render() {
-
-    console.log(this.props.content);
-    console.log("index: ", this.state.posIndex);
+    console.log("pos index: ", this.state.posIndex);
 
     if (!this.props.content) {
       return <div />
@@ -70,7 +68,7 @@ class Puzzle extends Component {
         :
           <TestBoard
             positions={puzzle.positions}
-            index={this.state.posIndex}
+            moves={puzzle.moves}
           />
         }
 

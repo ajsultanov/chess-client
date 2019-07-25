@@ -17,6 +17,8 @@ class Slide extends Component {
   }
 
   render() {
+    console.log("slide id: ", this.props.content.id);
+
     if (!this.props.content) {
       return <div />
     } else {
@@ -27,7 +29,7 @@ class Slide extends Component {
         [inside the slide component]
         <h4>id: {slide.id} - title: {slide.title}</h4>
         <p>desc: {slide.description}</p>
-        <img src={slide.image} style={{height:"200px",width:"200px",border:"1px solid black",display:"block",position:"relative", float:"left", marginRight:"10px"}} alt="ok" />
+        <img src={slide.image} style={{height:"256px",width:"256px",border:"1px solid black",display:"block",position:"relative", float:"left", marginRight:"10px"}} alt="ok" />
         <p>{slide.content}</p>
       </div>
     }

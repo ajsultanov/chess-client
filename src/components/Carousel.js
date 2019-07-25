@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Link }             from 'react-router-dom'
 import { connect }          from 'react-redux'
-import { completeLesson }   from '../actions'
+import { addXP, markAsComplete } from '../actions'
 import Slide                from './Slide';
 import Puzzle               from './Puzzle';
 import LeftArrow            from './LeftArrow';
@@ -15,7 +15,7 @@ class Carousel extends Component {
   styles = {
     padding:"5px",
     margin:"5px",
-    backgroundColor:"#fcfcfc",
+    backgroundColor:"#eee",
     border:"2px solid mediumorchid",
     overflow:"hidden"
   }
@@ -44,6 +44,24 @@ class Carousel extends Component {
     }
   }
 
+  ul = this.props.currentUser.user_lessons.find(ul => {
+    return ul.lesson_id === this.props.currentUser.current_lesson
+  })
+
+  finishLesson = () => {
+    if (this.ul) {
+      if (this.ul.completed) {
+        window.alert("UH UH NOP")
+      } else {
+        console.log("IM TRYINNNN!!!!!")
+        this.props.markAsComplete(this.ul)
+        this.props.addXP(this.props.currentUser, this.props.lesson.xp_worth)
+      }
+    } else {
+      console.log(this.props.currentUser);
+    }
+  }
+
   render() {
 
     let lessonContent = [...this.props.lesson.slides, ...this.props.lesson.puzzles].sort((a, b) => a.sort_order - b.sort_order);
@@ -68,11 +86,11 @@ class Carousel extends Component {
           {
             this.state.slideIndex + 1 === lessonContent.length
             ?
-            <div onClick={() => this.props.completeLesson(this.props.currentUser, this.props.lesson.xp_worth)}>
-              <Link to="/lessons/">Complete this Lesson</Link>
-            </div>
+              <div onClick={() => this.finishLesson()}>
+                <Link to="/lessons/">Complete this Lesson</Link>
+              </div>
             :
-            null
+              null
           }
         </div>
       )
@@ -80,13 +98,10 @@ class Carousel extends Component {
   }
 }
 
-//onClick={this.props.completeLesson(this.props.currentUser)}
-//this.props.completeLesson(this.props.currentUser, this.userLesson, 25)
-
 const mapStateToProps = state => {
   return ({
     currentUser: state.currentUser
   })
 }
 
-export default connect(mapStateToProps, { completeLesson })(Carousel)
+export default connect(mapStateToProps, { addXP, markAsComplete })(Carousel)

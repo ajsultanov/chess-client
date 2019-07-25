@@ -17,7 +17,6 @@ class Profile extends Component {
     backgroundImage:`url(${this.ok})`,
     backgroundSize:"cover",
     backgroundPosition:"50% 70%",
-    boxShadow:"inset 0px 0px 20px black"
   }
 
   render() {

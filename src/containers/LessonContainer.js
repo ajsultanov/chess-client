@@ -15,12 +15,13 @@ class LessonContainer extends Component {
     width:"796px",
     padding:"10px",
     marginTop:"10px",
-    backgroundColor:"#f4f4f4",
+    backgroundColor:"#ccc",
     border:"2px solid darkseagreen",
   }
 
   componentDidMount() {
-    if (this.props.currentUser) {
+    console.log("cdm in lC - ", this.props.currentUser);
+    if (this.props.currentUser.current_lesson === null) {
       this.props.setCurrentLesson(this.props.currentUser, this.props.match.params.id)
     }
   }
@@ -42,8 +43,7 @@ class LessonContainer extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    allLessons: state.allLessons,
-    lesson: state.lesson
+    allLessons: state.allLessons
   }
 }
 

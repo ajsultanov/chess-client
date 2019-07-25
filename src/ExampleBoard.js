@@ -14,7 +14,7 @@ class ExampleBoard extends Component {
       <div>
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={200}
+            width={256}
             position={this.props.positions[this.props.index]}
             transitionDuration={200}
             allowDrag={() => false}

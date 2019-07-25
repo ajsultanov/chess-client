@@ -63,12 +63,18 @@ export default function reducer(state = {
         lessonContent: []
       }
 
-    case "COMPLETE_LESSON":
-      console.log("completin the lesson, boss")
+    case "ADD_XP":
+      console.log("addin the xp, boss -- ", action.payload)
       return {
         ...state,
-        currentLesson: state.currentLesson + 1
+        currentLesson: state.currentLesson + 1,
+        currentUser: action.payload
       }
+
+    case "MARK_COMPLETE":
+      console.log("completin the lesson, boss -- ", action.payload)
+      console.log("marking complete:", state.currentUser);
+      return {...state, currentUser: { ...state.currentUser, user_lessons: action.payload }}
 
     default:
       return state;

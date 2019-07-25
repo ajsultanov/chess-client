@@ -27,7 +27,7 @@ class App extends Component {
       <Route {...rest} render={(props) => (
         this.props.currentUser
         ? <Component {...props}/>
-        : <Redirect to="/login/" />
+        : <Redirect to="/login" />
       )}/>
     )
 
@@ -35,17 +35,17 @@ class App extends Component {
       <BrowserRouter>
         <Menu />
 
-        <Route path="/signup/"        component={UserSignup} />
-        <Route path="/login/"         component={UserLogin} />
-        <Route path="/logout/"        component={UserLogin} />
-        <Route path="/play/"          component={Board} />
+        <Route path="/signup"         render={(props) => <UserSignup {...props} user={this.props.currentUser} />} />
+        <Route path="/login"          render={(props) => <UserLogin {...props} user={this.props.currentUser} />} />
+        <Route path="/logout"         component={UserLogin} />
+        <Route path="/play"           component={Board} />
         <Route exact path="/"         component={Splash} />
 
       {/* everything below must be changed back to a PrivateRoute for login to work!! */}
 
-        <Route path="/home/"          component={ProfileContainer} />
-        <Route exact path="/lessons/" component={LessonsContainer} />
-        <Route path="/lessons/:id"    component={LessonContainer} />
+        <PrivateRoute path="/home"           component={ProfileContainer} />
+        <PrivateRoute exact path="/lessons"  component={LessonsContainer} />
+        <PrivateRoute path="/lessons/:id"    component={LessonContainer} />
 
       {/* test routes */}
 

@@ -14,10 +14,14 @@ class Board extends Component {
     history: [],
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate() {
     if (this.state.validSquares.length === 0) {
       this.resetBoard()
     }
+  }
+
+  onDrop = () => {
+    this.resetBoard()
   }
 
   onSquareClick = square => {
@@ -148,12 +152,11 @@ class Board extends Component {
 
     return (
       <div>
-        <div>Hello yes this is
-          board</div>
+        <div>Hello yes this is board</div>
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={400}
+            width={512}
             position={this.state.fen}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#B5CCF0'}}

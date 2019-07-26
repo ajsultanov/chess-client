@@ -40,9 +40,12 @@ class ProfileContainer extends Component {
     boxShadow:"inset 0px 0px 20px black"
   }
 
-  render() {
+  currentLessonTitle = ""
 
-    const currentLessonTitle = this.props.allLessons[this.props.currentUser.current_lesson].title
+  render() {
+    if (this.props.currentUser.current_lesson !== null) {
+      this.currentLessonTitle = this.props.allLessons[this.props.currentUser.current_lesson - 1].title
+    }
 
     return (
       <div style={this.styles}>
@@ -57,7 +60,7 @@ class ProfileContainer extends Component {
               { this.props.currentUser.current_lesson
                 ? <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
                     <div style={this.styles3}>
-                      Current Lesson ({`${currentLessonTitle}`})
+                      Current Lesson ({`${this.currentLessonTitle}`})
                     </div>
                   </Link>
                 : <Link to={`/lessons/1`}>

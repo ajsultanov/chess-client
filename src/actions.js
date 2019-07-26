@@ -19,19 +19,22 @@ const createUser = user => {
         }
       })
     })
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'CREATE_USER',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 
 /* checks user credentials against database, creates a currentUser */
 /* ^ UserLogin ^ */
 const setUser = user => {
-  console.log("setuser--", user);
   return function(dispatch){
     fetch('http://localhost:3030/login', {
       method: 'POST',
@@ -44,12 +47,16 @@ const setUser = user => {
         password: user.password
       })
     })
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'CREATE_USER',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 
@@ -64,12 +71,16 @@ const logout = () => {
 const fetchLessons = () => {
   return function(dispatch){
     fetch('http://localhost:3030/lessons')
+    .then(handleErrors)
     .then(res => res.json())
     .then(data => {
       dispatch({
         type: 'FETCH_LESSONS',
         payload: data
       })
+    })
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
     })
   }
 }
@@ -88,12 +99,16 @@ const setCurrentLesson = (user, lesson) => {
         current_lesson: lesson
       })
     })
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'SET_CURRENT_LESSON',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 
@@ -111,23 +126,31 @@ const setLesson = lesson => {
 const getLessonSlides = lessonId => {
   return function(dispatch){
     fetch(`http://localhost:3030/lessons/${lessonId}/slides`)
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'FETCH_CONTENT',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 const getLessonPuzzles = lessonId => {
   return function(dispatch){
     fetch(`http://localhost:3030/lessons/${lessonId}/puzzles`)
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'FETCH_CONTENT',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 
@@ -146,12 +169,16 @@ const addXP = (user, xp) => {
         current_lesson: user.current_lesson,
       })
     })
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'ADD_XP',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
 }
 const markAsComplete = (ul) => {
@@ -168,13 +195,26 @@ const markAsComplete = (ul) => {
         completed: true
       })
     })
+    .then(handleErrors)
     .then(resp => resp.json())
     .then(data => dispatch({
         type: 'MARK_COMPLETE',
         payload: data
       })
     )
+    .catch(() => {
+      console.log("RUH ROH!!!!!")
+    })
   }
+}
+
+const handleErrors = response => {
+  if (!response.ok) {
+    window.alert(`${response.status}: ${response.statusText}\nDid you type in your password correctly?\nDo you still need to sign up?`)
+
+    throw Error(response.status, response.statusText)
+  }
+  return response
 }
 
 

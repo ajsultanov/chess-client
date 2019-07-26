@@ -8,10 +8,12 @@ import { Link }             from 'react-router-dom'
 class LessonLink extends Component {
 
   styles = {
+    color: "white",
     padding:"5px",
     margin:"5px",
     height:"100px",
     border:"2px solid red",
+    backgroundImage:'url(https://source.unsplash.com/random)'
   }
 
   render() {

@@ -20,14 +20,12 @@ class LessonContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("cdm in lC - ", this.props.currentUser);
     if (this.props.currentUser.current_lesson === null) {
       this.props.setCurrentLesson(this.props.currentUser, this.props.match.params.id)
     }
   }
 
   render() {
-    //console.log(this.props.currentUser.currentLesson);
     return (
       <div style={this.styles}>
         {

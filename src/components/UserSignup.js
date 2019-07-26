@@ -37,10 +37,10 @@ class UserSignup extends Component {
       if (this.passwordCheck()) {
         this.props.createUser(this.state)
       } else {
-        window.alert("password must be the same")
+        window.alert("Password must be the same")
       }
     } else {
-      window.alert("please fill out all fields")
+      window.alert("Please fill out all fields")
     }
   }
 

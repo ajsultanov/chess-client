@@ -15,9 +15,10 @@ class Board extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.validSquares.length === 0) {
-      this.resetBoard()
-    }
+    console.log(chess.fen());
+    // if (this.state.validSquares.length === 0) {
+    //   this.resetBoard()
+    // }
   }
 
   onDrop = () => {
@@ -36,7 +37,7 @@ class Board extends Component {
   /* click on the same square twice */
   reClick = square => {
     this.setState({
-      selectedSquare: "",
+      selectedSquare: square,
       highlightedSquare: "",
       validSquares: []
     })
@@ -47,7 +48,7 @@ class Board extends Component {
   newClick = square => {
     this.setState({
       selectedSquare: square,
-      highlightedSquare: "",
+      highlightedSquare: square,
     })
 
     /* for current piece and valid move highlighting */
@@ -83,7 +84,7 @@ class Board extends Component {
     this.setState({
       fen: chess.fen(),
       history: chess.history(),
-      selectedSquare: ""
+      selectedSquare: square
     })
   }
 

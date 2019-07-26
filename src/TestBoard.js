@@ -2,183 +2,128 @@ import React, { Component } from 'react';
 import Chess                from "chess.js";
 import Chessboard           from "chessboardjsx";
 
-let test = new Chess();
+let chess = new Chess();
 
 class TestBoard extends Component {
 
-  state = {
-    fen: "start",
-    selectedSquare: "",
-    highlightedSquare: "",
-    validSquares: [],
-    history: [],
+  // make 'move' from puzzle model an object with a 'from' key
+  // and a 'to' key.
+  // assign a highlight to the 'from' position.
+  // user must choose the highlighted square -> becomes
+  // activeSquare.
+  // user must click on the correct square, that matches the
+  // 'to' position.
+  // then a button for continue appears?
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      position: this.props.positions[0],
+      activeSquare: this.props.moves[0],
+    };
   }
 
-  componentDidUpdate(prevState) {
-    if (this.state.validSquares.length === 0) {
-      this.resetBoard()
-    }
+  componentDidMount() {
+    console.log(this.props.moves[0], this.props.moves[1]);
+    console.log(this.props.positions[0]);
+    this.highlightSquare(this.state.activeSquare);
   }
 
-  onDrop = () => {
-    this.resetBoard()
-  }
-
+  // square = the square thats been clicked on
   onSquareClick = square => {
-    if (square === this.state.selectedSquare) {
-      this.reClick(square)
-    }
-    else {
-      this.newClick(square)
-    }
-  }
 
-  /* click on the same square twice */
-  reClick = square => {
-    this.setState({
-      selectedSquare: "",
-      highlightedSquare: "",
-      validSquares: []
-    })
-    this.resetBoard()
-  }
-
-  /* click on a second square */
-  newClick = square => {
-    this.setState({
-      selectedSquare: square,
-      highlightedSquare: "",
-    })
-
-    /* for current piece and valid move highlighting */
-    if (test.moves({square: square}).length > 0) {  // if there are valid moves
-      console.log("get ye moves here, valid moves!!")
-
+    if (square === this.props.moves[1]){
+      console.log("YAY");
+      // create move
+      chess.move({
+        from: this.state.activeSquare,
+        to: square
+      })
+      // update board state
+      this.unhighlightSquares()
       this.setState({
-        highlightedSquare: square,
-        validSquares: test.moves({square: square}).map(move => {
-          return move.match(/[a-h][1-8]/)           // pull the square out of the move
-        })
+        position: chess.fen(),
+        activeSquare: "",
+      })
+
+      // here is where you do something else when the puzzle is completed
+
+
+
+
+
+    }
+
+
+    // FIX
+    // square is not a valid move or valid piece
+    else {
+      // reset move state
+      console.log("HONK");
+      this.unhighlightSquares()
+      this.setState({
+        activeSquare: "",
+        validSquares: [],
       })
     }
-    else {
-      this.setState(
-        {
-          highlightedSquare: "",
-          validSquares: []
-        }
-      )
-    }
-
-    /* creates a move object */
-    let move = test.move({
-      from: this.state.selectedSquare,
-      to: square,
-    })
-
-    /* if move invalid */
-    if (move === null) return;
-
-    /* if move valid, updates state */
-    this.setState({
-      fen: test.fen(),
-      history: test.history(),
-      selectedSquare: ""
-    })
   }
 
-  lightSquares = [0,  2,  4,  6,  9,  11, 13, 15,
-                  16, 18, 20, 22, 25, 27, 29, 31,
-                  32, 34, 36, 38, 41, 43, 45, 47,
-                  48, 50, 52, 54, 57, 59, 61, 63]
-
-  resetBoard() {
-    let allSquares = document.querySelectorAll("[data-squareid]")
-    allSquares.forEach((square, i) => {
-      square.style.boxShadow = ""
-      if (this.lightSquares.includes(i)) {
-        square.style.backgroundColor = "#CBF0B5"
-      } else {
-        square.style.backgroundColor = "#90B563"
-      }
+  onDrop = ({ sourceSquare, targetSquare }) => {
+    // create move
+    chess.move({
+      from: sourceSquare,
+      to: targetSquare
+    })
+    // update board state
+    this.setState({
+      position: chess.fen(),
+      activeSquare: "",
+      validSquares: [],
+      history: chess.history()
     })
   }
 
   highlightSquare = square => {
     let mySquare = document.querySelector(`[data-squareid=${square}]`)
-    if (mySquare) {
-      let id = mySquare.dataset.squareid
-
-      if (mySquare.dataset.testid === "white-square") {
-        /* light squares */
-        if (test.get(id) && !(id === this.state.selectedSquare)) {
-          /* attack */
-          mySquare.style.backgroundColor = "#d16ff6"
-          mySquare.style.boxShadow = "inset 0 0 20px #CBF0B5"
-        } else {
-          mySquare.style.backgroundColor = "#ACE5FC"
-          mySquare.style.boxShadow = "inset 0 0 20px #CBF0B5"
-        }
-      }
-      else {
-        /* dark squares */
-        if (test.get(id) && !(id === this.state.selectedSquare)) {
-          /* attack */
-          mySquare.style.backgroundColor = "#ab34c0"
-          mySquare.style.boxShadow = "inset 0 0 20px #90B563"
-        } else {
-          mySquare.style.backgroundColor = "#6ABCC7"
-          mySquare.style.boxShadow = "inset 0 0 20px #90B563"
-        }
-      }
-      /* selected square */
-      if (id === this.state.selectedSquare) {
-        mySquare.style.backgroundColor = "#e89845"
-      }
-    }
+    console.log(square);
+    console.log(document.querySelector(`[data-squareid='a1']`))
+    // highlighting on active square
+    // if (square === this.state.activeSquare) {
+      // mySquare.style.boxShadow = "inset 0 0 10px #FFFF00"
+      // mySquare.style.outline = "2px dashed rgba(255,255,255,.5)"
+      // mySquare.style.outlineOffset = "-5px"
+    // }
+  }
+  unhighlightSquares = () => {
+    let allSquares = document.querySelectorAll("[data-squareid]")
+    allSquares.forEach((square) => {
+      square.style.boxShadow = ""
+      square.style.outline = ""
+      square.style.outlineOffset = ""
+    })
   }
 
   render() {
 
-    if (this.state.highlightedSquare) {
-      this.resetBoard()
-      this.highlightSquare(this.state.highlightedSquare)
-    }
-    if (this.state.validSquares) {
-      this.state.validSquares.forEach(square => {
-        this.highlightSquare(square)
-      })
-    }
-
     return (
       <div>
-        <div>Hello yes this is board</div>
+        <div>Hello yes this is NEW board</div>
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
             width={256}
-            position={this.props.positions[0]}
+            position={this.state.position}
             onSquareClick={this.onSquareClick}
-            lightSquareStyle={{backgroundColor:'#CBF0B5'}}
-            darkSquareStyle={{backgroundColor:'#90B563'}}
+            lightSquareStyle={{backgroundColor:'#BCB'}}
+            darkSquareStyle={{backgroundColor:'#898'}}
+            showNotation={false}
+            onDrop={this.onDrop}
+            dropSquareStyle={{
+              outline: "2px dashed rgba(255,240,85,.6)",
+              outlineOffset: "-5px",
+            }}
           />
         </div>
-
-        <p>
-          {
-            this.state.history.map((move, i) => {
-              let j = Math.floor(i / 2) + 1
-
-              if (i % 2 === 0) {
-                return <span key={i}>{j + ". " + move}</span>
-              } else {
-                return <span key={i}>{"\v\v" + move}<br/></span>
-              }
-            })
-          }
-        </p>
-        <p>{test.fen()}</p>
-
       </div>
     );
   }

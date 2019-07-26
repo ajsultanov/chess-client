@@ -46,7 +46,11 @@ class Menu extends Component {
           :
 
           <span style={{float:"right"}}>
-            <Link to="/play">
+            <Link to="/constructor">
+              Constructor (take this one out too)
+            </Link>
+            <span> | </span>
+            <Link to="/board">
               Play! (take this out)
             </Link>
             <span> | </span>

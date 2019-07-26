@@ -10,6 +10,8 @@ import LessonContainer          from './containers/LessonContainer'
 import LessonsContainer         from './containers/LessonsContainer'
 import Menu                     from './containers/Menu'
 import Board                    from './Board'
+import NewBoard                 from './NewBoard'
+import ConstructorBoard         from './ConstructorBoard'
 import Splash                   from './Splash'
 import { fetchLessons }         from './actions'
 import './App.css';
@@ -49,7 +51,8 @@ class App extends Component {
 
       {/* test routes */}
 
-        <Route path="/board"    component={Board} />
+        <Route path="/board"       component={NewBoard} />
+        <Route path="/constructor" component={ConstructorBoard} />
 
       </BrowserRouter>
     );

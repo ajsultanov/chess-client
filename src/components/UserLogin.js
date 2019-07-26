@@ -32,7 +32,11 @@ class UserLogin extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.setUser(this.state)
+    if (this.state.username && this.state.password) {
+      this.props.setUser(this.state)
+    } else{
+      window.alert("Please fill out all fields")
+    }
   }
 
   componentDidUpdate() {

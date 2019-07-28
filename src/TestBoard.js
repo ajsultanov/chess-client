@@ -18,102 +18,51 @@ class TestBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      position: this.props.positions[0],
-      activeSquare: this.props.moves[0],
+      activeSquare: "",
     };
-  }
-
-  componentDidMount() {
-    console.log(this.props.moves[0], this.props.moves[1]);
-    console.log(this.props.positions[0]);
-    this.highlightSquare(this.state.activeSquare);
   }
 
   // square = the square thats been clicked on
   onSquareClick = square => {
 
-    if (square === this.props.moves[1]){
-      console.log("YAY");
-      console.log(chess.fen());
-      // // create move
-      // chess.move({
-      //   from: this.state.activeSquare,
-      //   to: square
-      // })
-      // // update board state
-      // this.unhighlightSquares()
-      // this.setState({
-      //   position: chess.fen(),
-      //   activeSquare: "",
-      // })
-
-      // here is where you do something else when the puzzle is completed
-
-
-      this.props.goToNext()
-      this.setState({
-        position: this.props.positions[this.props.index]
-      })
-
-
-    }
-
-
-    // FIX
-    // square is not a valid move or valid piece
-    else {
-      // reset move state
-      console.log("HONK");
-      this.unhighlightSquares()
+    if (square === this.state.activeSquare) {
       this.setState({
         activeSquare: "",
-        validSquares: [],
       })
+      return null
+    }
+    else {
+
+      if (square === this.props.moves[0]){
+        this.setState({
+          activeSquare: square
+        }, () => this.highlightSquare())
+        return null
+      }
+
+      if (this.state.activeSquare === this.props.moves[0] && square === this.props.moves[1]) {
+        this.props.goToNext()
+        this.setState({
+          activeSquare: "",
+        })
+      }
     }
   }
 
   onDrop = ({ sourceSquare, targetSquare }) => {
-    // create move
-    chess.move({
-      from: sourceSquare,
-      to: targetSquare
-    })
-    // update board state
-    this.setState({
-      position: chess.fen(),
-      activeSquare: "",
-      validSquares: [],
-      history: chess.history()
-    })
+  if (sourceSquare === this.props.moves[0] && targetSquare === this.props.moves[1]) {
+      this.props.goToNext()
+      this.setState({
+        activeSquare: "",
+      })
+    }
   }
 
   highlightSquare = square => {
 
-    console.log(document);
-
-    let mySquare = document.querySelector(`[data-squareid=${square}]`)
-    let allSquares = document.querySelectorAll("[data-squareid]")
-    console.log(square);
-    console.log(mySquare)
-    console.log(allSquares)
-    // highlighting on active square
-    // if (square === this.state.activeSquare) {
-      // mySquare.style.boxShadow = "inset 0 0 10px #FFFF00"
-      // mySquare.style.outline = "2px dashed rgba(255,255,255,.5)"
-      // mySquare.style.outlineOffset = "-5px"
-    // }
-  }
-  unhighlightSquares = () => {
-    let allSquares = document.querySelectorAll("[data-squareid]")
-    allSquares.forEach((square) => {
-      square.style.boxShadow = ""
-      square.style.outline = ""
-      square.style.outlineOffset = ""
-    })
   }
 
   render() {
-
     return (
       <div>
         <div>Hello yes this is TEST board</div>
@@ -121,11 +70,12 @@ class TestBoard extends Component {
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
             width={360}
-            position={this.state.position}
+            position={this.props.positions[this.props.index]}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#BCB'}}
             darkSquareStyle={{backgroundColor:'#898'}}
             showNotation={false}
+            squareStyles={this.state.activeSquare: {backgroundColor: "red"}}
             onDrop={this.onDrop}
             dropSquareStyle={{
               outline: "2px dashed rgba(255,240,85,.6)",

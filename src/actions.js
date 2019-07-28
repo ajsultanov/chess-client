@@ -27,7 +27,7 @@ const createUser = user => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!")
     })
   }
 }
@@ -55,7 +55,7 @@ const setUser = user => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!")
     })
   }
 }
@@ -80,7 +80,7 @@ const fetchLessons = () => {
       })
     })
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!!")
     })
   }
 }
@@ -107,7 +107,7 @@ const setCurrentLesson = (user, lesson) => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!!!")
     })
   }
 }
@@ -149,13 +149,12 @@ const getLessonPuzzles = lessonId => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!!!!!")
     })
   }
 }
 
 const addXP = (user, xp) => {
-  console.log(user.id, xp);
   return function(dispatch){
     fetch(`http://localhost:3030/users/${user.id}`, {
       method: 'PATCH',
@@ -177,12 +176,11 @@ const addXP = (user, xp) => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!!!!!")
     })
   }
 }
 const markAsComplete = (ul) => {
-  console.log("markascomplete", ul);
   return function(dispatch){
     fetch(`http://localhost:3030/user_lessons/${ul.id}`, {
       method: 'PATCH',
@@ -203,14 +201,18 @@ const markAsComplete = (ul) => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!")
+      console.log("RUH ROH!!!!!!!")
     })
   }
 }
 
 const handleErrors = response => {
   if (!response.ok) {
-    window.alert(`${response.status}: ${response.statusText}\nDid you type in your password correctly?\nDo you still need to sign up?`)
+    window.alert(`
+      ${response.status}: ${response.statusText}...
+      Did you type in your password correctly?
+      Do you still need to sign up?
+    `)
 
     throw Error(response.status, response.statusText)
   }

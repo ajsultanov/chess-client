@@ -73,7 +73,6 @@ export default function reducer(state = {
 
     case "MARK_COMPLETE":
       console.log("completin the lesson, boss -- ", action.payload)
-      console.log("marking complete", state.currentUser);
       return {
         ...state,
         currentUser: {

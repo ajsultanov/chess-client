@@ -34,22 +34,26 @@ class TestBoard extends Component {
 
     if (square === this.props.moves[1]){
       console.log("YAY");
-      // create move
-      chess.move({
-        from: this.state.activeSquare,
-        to: square
-      })
-      // update board state
-      this.unhighlightSquares()
-      this.setState({
-        position: chess.fen(),
-        activeSquare: "",
-      })
+      console.log(chess.fen());
+      // // create move
+      // chess.move({
+      //   from: this.state.activeSquare,
+      //   to: square
+      // })
+      // // update board state
+      // this.unhighlightSquares()
+      // this.setState({
+      //   position: chess.fen(),
+      //   activeSquare: "",
+      // })
 
       // here is where you do something else when the puzzle is completed
 
 
-
+      this.props.goToNext()
+      this.setState({
+        position: this.props.positions[this.props.index]
+      })
 
 
     }
@@ -84,9 +88,14 @@ class TestBoard extends Component {
   }
 
   highlightSquare = square => {
+
+    console.log(document);
+
     let mySquare = document.querySelector(`[data-squareid=${square}]`)
+    let allSquares = document.querySelectorAll("[data-squareid]")
     console.log(square);
-    console.log(document.querySelector(`[data-squareid='a1']`))
+    console.log(mySquare)
+    console.log(allSquares)
     // highlighting on active square
     // if (square === this.state.activeSquare) {
       // mySquare.style.boxShadow = "inset 0 0 10px #FFFF00"
@@ -107,11 +116,11 @@ class TestBoard extends Component {
 
     return (
       <div>
-        <div>Hello yes this is NEW board</div>
+        <div>Hello yes this is TEST board</div>
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={256}
+            width={360}
             position={this.state.position}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#BCB'}}
@@ -122,6 +131,7 @@ class TestBoard extends Component {
               outline: "2px dashed rgba(255,240,85,.6)",
               outlineOffset: "-5px",
             }}
+            boardStyle={{border:'5px solid pink',borderRadius:'5px'}}
           />
         </div>
       </div>

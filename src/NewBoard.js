@@ -16,6 +16,14 @@ class NewBoard extends Component {
   // square = the square thats been clicked on
   onSquareClick = square => {
 
+    if (square === this.state.activeSquare) {
+      this.unhighlightSquares()
+      this.setState({
+        activeSquare: "",
+      })
+      return null
+    }
+
     // clicked square is piece from side whose turn it is
     if (chess.get(square) && chess.get(square).color === chess.turn()){
       this.setState(
@@ -100,7 +108,6 @@ class NewBoard extends Component {
   }
   highlightSquare = square => {
     let mySquare = document.querySelector(`[data-squareid=${square}]`)
-
     // highlighting on active square
     if (square === this.state.activeSquare) {
       //mySquare.style.boxShadow = "inset 0 0 10px #B5CCF0"
@@ -145,7 +152,7 @@ class NewBoard extends Component {
             position={this.state.position}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#BBC',boxShadow:'0 0 20px inset rgba(255,192,203,.75)'}}
-            darkSquareStyle={{backgroundColor:'#889',boxShadow:'0 0 20px inset rgba(255,192,203,1)'}}
+            darkSquareStyle={{backgroundColor:'#889',boxShadow:'0 0 20px inset rgba(255,192,203,.75)'}}
             showNotation={false}
             onDrop={this.onDrop}
             dropSquareStyle={{

@@ -54,8 +54,8 @@ class Puzzle extends Component {
         [inside the puzzle component]
         <h4>id: {puzzle.id} - title: {puzzle.title}</h4>
         <p>desc: {puzzle.description}</p>
-        { this.props.content.style === "puzzle" ?
-          <React.Fragment>
+        { this.props.content.style === "puzzle"
+        ? <React.Fragment>
             <ExampleBoard
               positions={puzzle.positions}
               index={this.state.posIndex}
@@ -66,10 +66,14 @@ class Puzzle extends Component {
             <RightArrow goToNext={this.goToNextPos} />
           </React.Fragment>
         :
-          <TestBoard
-            positions={puzzle.positions}
-            moves={puzzle.moves}
-          />
+          <React.Fragment>
+            <TestBoard
+              positions={puzzle.positions}
+              moves={puzzle.moves}
+              goToNext={this.goToNextPos}
+              index={this.state.posIndex}
+            />
+          </React.Fragment>
         }
 
 

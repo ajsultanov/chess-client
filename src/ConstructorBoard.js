@@ -40,6 +40,17 @@ class ConstructorBoard extends Component {
     console.log(chess.fen());
   }
 
+  enterFen = event => {
+    event.preventDefault()
+    let fen = event.target.value
+    if (chess.validate_fen(fen)) {
+      chess.load(fen)
+      this.setState({
+        bool: !this.state.bool
+      })
+    }
+  }
+
   render(){
     return (
       <div>
@@ -50,7 +61,8 @@ class ConstructorBoard extends Component {
           onDrop={this.onDrop}
         />
         <button style={{width:'250px',margin:'10px'}} onClick={() => this.clear()}>clear</button>
-        <button style={{width:'250px',margin:'10px'}} onClick={() => this.print()}>log</button>
+        <button style={{width:'250px',margin:'10px'}} onClick={() => this.print()}>log</button><br/>
+        <label style={{fontSize:'12px'}} for="fen">enter fen string here ></label><input style={{width:'300px',margin:'10px'}} type="text" id="fen" name="fen" size="10" onChange={this.enterFen}/>
       </div>
     )
   }

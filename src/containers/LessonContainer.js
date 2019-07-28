@@ -20,12 +20,15 @@ class LessonContainer extends Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser.current_lesson === null) {
-      this.props.setCurrentLesson(this.props.currentUser, this.props.match.params.id)
+    const cl = this.props.currentUser.current_lesson
+    const id = parseInt(this.props.match.params.id)
+    if (cl === null || cl !== id) {
+      this.props.setCurrentLesson(this.props.currentUser, id)
     }
   }
 
   render() {
+    console.log("current lesson", this.props.currentUser.current_lesson);
     return (
       <div style={this.styles}>
         {

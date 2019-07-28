@@ -15,6 +15,7 @@ class Lesson extends Component {
   }
 
   render() {
+
     if (!this.props.lesson) {
       return <div />
     } else {

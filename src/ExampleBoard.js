@@ -14,10 +14,11 @@ class ExampleBoard extends Component {
       <div>
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={256}
+            width={360}
             position={this.props.positions[this.props.index]}
             transitionDuration={200}
             allowDrag={() => false}
+            boardStyle={{border:'5px solid lightblue',borderRadius:'5px'}}
           />
         </div>
       </div>

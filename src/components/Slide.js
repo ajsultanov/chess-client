@@ -7,7 +7,6 @@ import React, { Component } from 'react'
 
 class Slide extends Component {
 
-
   styles = {
     padding:"5px",
     margin:"5px",

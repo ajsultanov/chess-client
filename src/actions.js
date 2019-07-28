@@ -182,7 +182,7 @@ const addXP = (user, xp) => {
   }
 }
 const markAsComplete = (ul) => {
-  console.log("markascomplete:", ul);
+  console.log("markascomplete", ul);
   return function(dispatch){
     fetch(`http://localhost:3030/user_lessons/${ul.id}`, {
       method: 'PATCH',

@@ -4,6 +4,41 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { createUser }       from '../actions'
+import styled from 'styled-components'
+
+const StyledContent = styled.div`
+  font-size: 1.5em;
+  text-align: center;
+  align-self: center;
+  width: 80%;
+  background-color: papayawhip;
+  border: 3px solid palevioletred;
+  border-radius: 3px;
+
+  display: flex;
+  justify-content: center;
+`;
+const StyledForm = styled.form`
+  margin: 1em;
+  width: 30%;
+  border: 3px solid navy;
+  border-radius: 3px;
+`;
+const Submit = styled.button`
+  background: ${props => props.primary ? "palevioletred" : "white" };
+  color: ${props => props.primary ? "white" : "brown" };
+  margin: 1em;
+  padding: 0.25em 1em;
+  font-weight: bold;
+  font-size: .5em;
+  border: 3px solid ${props => props.primary ? "brown" : "navajowhite" };
+  border-radius: 3px;
+`;
+
+
+
+
+
 
 class UserSignup extends Component {
 
@@ -55,8 +90,9 @@ class UserSignup extends Component {
   render() {
 
     return (
-      <div style={this.styles}>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+      <StyledContent>
+        <StyledForm onSubmit={(event) => this.handleOnSubmit(event)}>
+          <h2 css={`background-color: red`}>Sign Up</h2>
           <p>
             <input
               type="text"
@@ -81,9 +117,10 @@ class UserSignup extends Component {
               placeholder="retype password"
             />
           </p>
-          <input type="submit" />
-        </form>
-      </div>
+          <Submit type="submit" > Submit </Submit>
+          <Submit type="submit" primary > Submit </Submit>
+        </StyledForm>
+      </StyledContent>
     );
   }
 

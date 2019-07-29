@@ -14,9 +14,20 @@ import NewBoard                 from './NewBoard'
 import ConstructorBoard         from './ConstructorBoard'
 import Splash                   from './Splash'
 import { fetchLessons }         from './actions'
+import styled                   from 'styled-components'
 import './App.css';
 
 console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:0px 5px 3px #A45,-5px 5px 3px #945,-5px 0px 3px #645,-5px -5px 3px #534,0px -5px 3px #645,5px -5px 3px #945,5px 0px 3px #A45,5px 5px 3px #E45")
+
+const Wrapper = styled.div`
+  background-color: mistyrose;
+  width: 100%;
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
 
 class App extends Component {
 
@@ -37,6 +48,7 @@ class App extends Component {
 
     return (
       <BrowserRouter>
+      <Wrapper>
         <Menu />
 
         <Route path="/signup"         render={props => <UserSignup {...props} user={this.props.currentUser} />} />
@@ -56,6 +68,7 @@ class App extends Component {
         <Route path="/board"       component={NewBoard} />
         <Route path="/constructor" component={ConstructorBoard} />
 
+      </Wrapper>
       </BrowserRouter>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Chess                from "chess.js";
 import Chessboard           from "chessboardjsx";
-import "./styles.css";
 
 let chess = new Chess();
 

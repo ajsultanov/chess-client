@@ -5,75 +5,92 @@ import React, { Component } from 'react';
 import { Link }             from "react-router-dom";
 import { connect }          from 'react-redux';
 import { logout }           from '../actions'
+import styled           from 'styled-components'
+
+const StyledLink = styled(Link)`
+  color: navy;
+  font-weight: bold;
+  font-size: .75em;
+`;
+const StyledMenu = styled.div`
+  background-color: skyblue;
+  height:40px;
+  padding: 10px 20px;
+  border-bottom: 3px solid navy;
+`;
+const StyledNav = styled.span`
+  background-color: azure;
+  float: right;
+  padding: 0px 12px 4px;
+  border: 3px solid blue;
+  border-radius: 20px;
+`;
+const Logo = styled.h1`
+  display: inline;
+  text-decoration: none;
+  font-weight: normal;
+`;
+
 
 class Menu extends Component {
 
-  styles = {
-    backgroundColor:"#6BF",
-    width:"800px",
-    height:"40px",
-    padding:"10px",
-  }
-
   render() {
     return (
-      <div style={this.styles}>
+      <StyledMenu>
 
-        <Link to= {
+        <StyledLink to= {
           this.props.currentUser
         ?
           "/home"
         :
           "/"
         }>
-          <h2
-            style={{display:"inline", textDecoration:"none"}}
-            className="font-effect-shadow-multiple">
+          <Logo>
             Rookie Chess
-          </h2>
-        </Link>
+          </Logo>
+        </StyledLink>
 
         {
           this.props.currentUser
         ?
-          <span style={{float:"right"}}>
+          <StyledNav>
             <span>
               user: {this.props.currentUser.username}
             </span>
             <span> | </span>
-            <Link to="/lessons">
+            <StyledLink to="/lessons">
               Lessons
-            </Link>
+            </StyledLink>
             <span> | </span>
-            <Link to="/play">
+            <StyledLink to="/play">
               Play!
-            </Link>
+            </StyledLink>
             <span> | </span>
-            <Link to="/login"
+            <StyledLink to="/login"
             onClick={this.props.logout}>
               Log Out
-            </Link>
-          </span>
+            </StyledLink>
+          </StyledNav>
         :
-          <span style={{float:"right"}}>
-            <Link to="/constructor">
+          <StyledNav>
+            <StyledLink to="/constructor">
               Constructor (take this out)
-            </Link>
+            </StyledLink>
             <span> | </span>
-            <Link to="/board">
+            <StyledLink to="/board">
               Play! (take this out)
-            </Link>
+            </StyledLink>
             <span> | </span>
-            <Link to="/signup">
+            <StyledLink to="/signup">
               Sign Up
-            </Link>
+            </StyledLink>
             <span> | </span>
-            <Link to="/login">
+            <StyledLink to="/login">
               Log In
-            </Link>
-          </span>
+            </StyledLink>
+          </StyledNav>
         }
-      </div>
+      </StyledMenu>
     );
   }
 }

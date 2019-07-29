@@ -15,8 +15,11 @@ class Slide extends Component {
     overflow:"hidden"
   }
 
+  componentDidMount() {
+    this.props.goToNext()
+  }
+
   render() {
-    console.log("slide id: ", this.props.content.id);
 
     if (!this.props.content) {
       return <div />
@@ -28,7 +31,11 @@ class Slide extends Component {
         [inside the slide component]
         <h4>id: {slide.id} - title: {slide.title}</h4>
         <p>desc: {slide.description}</p>
-        <img src={slide.image} style={{height:"256px",width:"256px",border:"1px solid black",display:"block",position:"relative", float:"left", marginRight:"10px"}} alt="ok" />
+        <img
+          src={slide.image}
+          style={{height:"360px", width:"256px", border:"1px solid black", display:"block", position:"relative", float:"left", marginRight:"10px"}}
+          alt="ok"
+        />
         <p>{slide.content}</p>
       </div>
     }

@@ -62,21 +62,24 @@ class UserSignup extends Component {
               type="text"
               onChange={(event) => this.handleOnNameChange(event)}
               id="username"
-              placeholder="username" />
+              placeholder="username"
+            />
           </p>
           <p>
             <input
               type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password1"
-              placeholder="password" />
+              placeholder="password"
+            />
           </p>
           <p>
             <input
               type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password2"
-              placeholder="retype password" />
+              placeholder="retype password"
+            />
           </p>
           <input type="submit" />
         </form>

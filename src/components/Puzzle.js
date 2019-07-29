@@ -17,10 +17,7 @@ class Puzzle extends Component {
     overflow:"hidden"
   }
 
-
-
   render() {
-    console.log("pos index: ", this.props.index);
 
     if (!this.props.content) {
       return <div />
@@ -33,16 +30,23 @@ class Puzzle extends Component {
         <h4>id: {puzzle.id} - title: {puzzle.title}</h4>
         <p>desc: {puzzle.description}</p>
 
-        { this.props.content.style === "puzzle"
-        ? <React.Fragment>
+        {
+          this.props.content.style === "puzzle"
+        ?
+          <React.Fragment>
             <ExampleBoard
               positions={puzzle.positions}
               index={this.props.index}
             />
-            <p>pos: {puzzle.positions[this.props.index]}</p>
-            <LeftArrow goToPrev={this.props.goToPrev} />
+            <LeftArrow
+              goToPrev={this.props.goToPrev}
+              active={this.props.index !== 0}
+            />
             <span>moves</span>
-            <RightArrow goToNext={this.props.goToNext} />
+            <RightArrow
+              goToNext={this.props.goToNext}
+              active={this.props.index !== puzzle.positions.length - 1}
+            />
           </React.Fragment>
         :
           <React.Fragment>
@@ -52,9 +56,13 @@ class Puzzle extends Component {
               goToNext={this.props.goToNext}
               index={this.props.index}
             />
-            {this.props.index === this.props.content.positions.length - 1
-            ? <RightArrow goToNext={this.goToNextPos} />
-            : null}
+            {
+              this.props.index === puzzle.positions.length - 1
+            ?
+              <h4>Wow you did it!</h4>
+            :
+              null
+            }
           </React.Fragment>
         }
       </div>

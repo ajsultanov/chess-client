@@ -33,8 +33,12 @@ class LessonContainer extends Component {
       <div style={this.styles}>
         {
           this.props.allLessons.length !== 0
-          ? <Lesson lesson={this.props.allLessons[this.props.match.params.id - 1]}/>
-          : null
+        ?
+          <Lesson
+            lesson={this.props.allLessons[this.props.match.params.id - 1]}
+          />
+        :
+          null
         }
       </div>
     );

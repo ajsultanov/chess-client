@@ -52,14 +52,16 @@ class UserLogin extends Component {
               type="text"
               onChange={(event) => this.handleOnNameChange(event)}
               id="username"
-              placeholder="username" />
+              placeholder="username"
+            />
           </p>
           <p>
             <input
               type="password"
               onChange={(event) => this.handleOnPasswordChange(event)}
               id="password"
-              placeholder="password" />
+              placeholder="password"
+            />
           </p>
           <input type="submit" />
         </form>

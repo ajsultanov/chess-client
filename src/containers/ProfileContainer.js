@@ -50,33 +50,38 @@ class ProfileContainer extends Component {
     return (
       <div style={this.styles}>
         {
-          this.props.currentUser ?
-            <div>
-              <Profile
-                username={this.props.currentUser.username}
-                xp={this.props.currentUser.xp}
-              />
+          this.props.currentUser
+        ?
+          <div>
+            <Profile
+              username={this.props.currentUser.username}
+              xp={this.props.currentUser.xp}
+            />
 
-              { this.props.currentUser.current_lesson
-                ? <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
-                    <div style={this.styles3}>
-                      Current Lesson ({`${this.currentLessonTitle}`})
-                    </div>
-                  </Link>
-                : <Link to={`/lessons/1`}>
-                    <div style={this.styles3}>
-                      Go to the first Lesson!
-                    </div>
-                  </Link>
-              }
-
-              <Link to="/lessons/">
-                <div style={this.styles2}>
-                  Link to All Lessons
+            {
+              this.props.currentUser.current_lesson
+            ?
+              <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
+                <div style={this.styles3}>
+                  Current Lesson ({`${this.currentLessonTitle}`})
                 </div>
               </Link>
-            </div>
-          : null
+            :
+              <Link to={`/lessons/1`}>
+                <div style={this.styles3}>
+                  Go to the first Lesson!
+                </div>
+              </Link>
+            }
+
+            <Link to="/lessons/">
+              <div style={this.styles2}>
+                Link to All Lessons
+              </div>
+            </Link>
+          </div>
+        :
+          null
         }
       </div>
     );

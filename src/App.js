@@ -28,8 +28,10 @@ class App extends Component {
     const PrivateRoute = ({ component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
         this.props.currentUser
-        ? <Component {...props}/>
-        : <Redirect to="/login" />
+        ?
+          <Component {...props}/>
+        :
+          <Redirect to="/login" />
       )}/>
     )
 
@@ -37,8 +39,8 @@ class App extends Component {
       <BrowserRouter>
         <Menu />
 
-        <Route path="/signup"         render={(props) => <UserSignup {...props} user={this.props.currentUser} />} />
-        <Route path="/login"          render={(props) => <UserLogin {...props} user={this.props.currentUser} />} />
+        <Route path="/signup"         render={props => <UserSignup {...props} user={this.props.currentUser} />} />
+        <Route path="/login"          render={props => <UserLogin {...props} user={this.props.currentUser} />} />
         <Route path="/logout"         component={UserLogin} />
         <Route path="/play"           component={Board} />
         <Route exact path="/"         component={Splash} />

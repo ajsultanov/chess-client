@@ -30,7 +30,8 @@ class Carousel extends Component {
   goToPrevSlide = () => {
     if (this.state.slideIndex !== 0) {
       this.setState({
-        slideIndex: this.state.slideIndex - 1
+        slideIndex: this.state.slideIndex - 1,
+        posIndex: 0
       })
     }
   }
@@ -40,7 +41,8 @@ class Carousel extends Component {
 
     if (this.state.slideIndex !== lessonLength - 1) {
       this.setState({
-        slideIndex: this.state.slideIndex + 1
+        slideIndex: this.state.slideIndex + 1,
+        posIndex: 0
       })
     }
   }
@@ -54,9 +56,17 @@ class Carousel extends Component {
   }
 
   goToNextPos = () => {
-    if (this.state.posIndex !== this.lessonContent[this.state.slideIndex].positions.length - 1) {
+
+    if (this.lessonContent[this.state.slideIndex].positions) {
+      if (this.state.posIndex !== this.lessonContent[this.state.slideIndex].positions.length - 1) {
+        this.setState({
+          posIndex: this.state.posIndex + 1
+        })
+      }
+    }
+    else {
       this.setState({
-        posIndex: this.state.posIndex + 1
+        posIndex: 1
       })
     }
   }
@@ -70,7 +80,8 @@ class Carousel extends Component {
       if (this.ul.completed) {
         window.alert("You have already completed this lesson")
         // redirect to lessons
-      } else {
+      }
+      else {
         this.props.markAsComplete(this.ul)
         this.props.addXP(this.props.currentUser, this.props.lesson.xp_worth)
       }
@@ -81,30 +92,46 @@ class Carousel extends Component {
 
     if (!this.props.lesson) {
       return <div />
-    } else {
+    }
+    else {
       return (
         <div className="carousel" style={this.styles}>
           [inside the carousel component]
 
           {
             this.lessonContent[this.state.slideIndex].style === "slide"
-            ? <Slide content={this.lessonContent[this.state.slideIndex]}/>
-            : <Puzzle content={this.lessonContent[this.state.slideIndex]} index={this.state.posIndex} goToNext={this.goToNextPos}
-            goToPrev={this.goToPrevPos}/>
+          ?
+            <Slide
+              content={this.lessonContent[this.state.slideIndex]}
+              goToNext={this.goToNextPos}
+            />
+          :
+            <Puzzle
+              content={this.lessonContent[this.state.slideIndex]}
+              index={this.state.posIndex}
+              goToNext={this.goToNextPos}
+              goToPrev={this.goToPrevPos}
+            />
           }
 
-          <LeftArrow goToPrev={this.goToPrevSlide} />
-          <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length}</span>
-          <RightArrow goToNext={this.goToNextSlide} />
-
+          <LeftArrow
+            goToPrev={this.goToPrevSlide}
+            active={this.state.slideIndex !== 0}
+          />
+          <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length} </span>
           {
-            this.state.slideIndex + 1 === this.lessonContent.length
-            ?
-              <div onClick={() => this.finishLesson()}>
-                <Link to="/lessons/">Complete this Lesson</Link>
-              </div>
-            :
-              null
+            this.state.slideIndex !== this.lessonContent.length - 1
+          ?
+            <RightArrow
+              goToNext={this.goToNextSlide}
+              active={
+                this.state.slideIndex !== this.lessonContent.length - 1 && this.state.posIndex !== 0
+              }
+            />
+          :
+            <button onClick={() => this.finishLesson()}>
+              <Link to="/lessons/" style={{textDecoration:"none"}}>Complete this Lesson</Link>
+            </button>
           }
         </div>
       )

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.14",
     "chess.js": "^0.10.2",
     "chessboardjsx": "^2.4.0",
     "node-sass": "^4.12.0",

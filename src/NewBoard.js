@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chess                from "chess.js";
 import Chessboard           from "chessboardjsx";
+import "./styles.css";
 
 let chess = new Chess();
 
@@ -38,7 +39,6 @@ class NewBoard extends Component {
         let moves = chess.moves({square:square})
         // squares of valid moves
         let squares = moves.map(move => move.match(/[a-h][1-8]/))
-        // array flattening function
         let flat = arr => [].concat(...arr)
 
         // if moves, update valid squares in state
@@ -107,30 +107,37 @@ class NewBoard extends Component {
     })
   }
   highlightSquare = square => {
+    console.log(chess.square_color(square));
     let mySquare = document.querySelector(`[data-squareid=${square}]`)
     // highlighting on active square
     if (square === this.state.activeSquare) {
       //mySquare.style.boxShadow = "inset 0 0 10px #B5CCF0"
-      mySquare.style.outline = "3px dashed rgba(240,240,255,.5)"
+      mySquare.style.outline = "3px solid rgba(255,240,165,1)"
       mySquare.style.outlineOffset = "-5px"
     }
     // highlighting on valid moves
     else {
       // enemy pieces
       if (chess.get(mySquare.dataset.squareid) !== null) {
-        //mySquare.style.boxShadow = "inset 0 0 10px #FCACAD"
-        mySquare.style.outline = "3px dashed rgba(255,240,165,.5)"
-        mySquare.style.outlineOffset = "-5px"
+        // mySquare.style.boxShadow = "inset 0 0 10px #FCACAD"
+        if (chess.square_color(square) === "dark") {
+          mySquare.style.outline = "3px dotted rgba(255,176,170,1)"
+          mySquare.style.outlineOffset = "-5px"
+        }
+        else {
+          mySquare.style.outline = "3px dotted rgba(255,195,195,1)"
+          mySquare.style.outlineOffset = "-5px"
+        }
       }
       // empty square
       else {
-        //mySquare.style.boxShadow = "inset 0 0 10px #ACFCD0"
-        mySquare.style.outline = "3px dashed rgba(210,255,225,.5)"
+        // mySquare.style.boxShadow = "inset 0 0 10px #ACFCD0"
+        mySquare.style.outline = "3px dashed rgba(210,255,225,1)"
         mySquare.style.outlineOffset = "-5px"
       }
-
     }
   }
+
   unhighlightSquares = () => {
     let allSquares = document.querySelectorAll("[data-squareid]")
     allSquares.forEach((square) => {
@@ -141,25 +148,26 @@ class NewBoard extends Component {
   }
 
   render() {
-    console.log("rr");
     return (
       <div>
         <div>Hello yes this is NEW board</div>
+
+        <div className="burp">hmmm</div>
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
             width={500}
             position={this.state.position}
             onSquareClick={this.onSquareClick}
-            lightSquareStyle={{backgroundColor:'#BBC',boxShadow:'0 0 20px inset rgba(255,192,203,.75)'}}
-            darkSquareStyle={{backgroundColor:'#889',boxShadow:'0 0 20px inset rgba(255,192,203,.75)'}}
+            lightSquareStyle={{backgroundColor:'#99A',boxShadow:'0 0 20px inset rgba(255,192,245,.8)'}}
+            darkSquareStyle={{backgroundColor:'#778',boxShadow:'0 0 20px inset rgba(255,192,245,1)'}}
             showNotation={false}
             onDrop={this.onDrop}
             dropSquareStyle={{
-              outline: "3px dashed rgba(255,240,85,.6)",
+              outline: "3px dashed rgba(255,240,165,1)",
               outlineOffset: "-5px",
             }}
-            boardStyle={{border:'10px solid pink',borderRadius:'10px'}}
+            boardStyle={{border:'10px solid rgb(255,192,245)',borderRadius:'10px'}}
             pieces={{
               wK: ({ squareWidth, isDragging }) => (
                 <img

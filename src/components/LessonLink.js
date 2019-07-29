@@ -17,16 +17,19 @@ class LessonLink extends Component {
   }
 
   render() {
-    const ul = this.props.currentUser.user_lessons.find(ul => {
-      return ul.lesson_id === this.props.id
+    const thisLesson = this.props.currentUser.user_lessons.find(thisLesson => {
+      return thisLesson.lesson_id === this.props.id
     })
 
     return (
       <Link to={`/lessons/${this.props.id}`}>
         <div style={this.styles}>
-          { ul.completed
-          ? "******** You did this one already **********"
-          : "Welcome to the lesson"
+          {
+            thisLesson.completed
+          ?
+            "******** You did this one already **********"
+          :
+            "Welcome to the lesson"
           }
           <h3>{this.props.title}</h3>
           <p>{this.props.description}</p>

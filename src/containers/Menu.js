@@ -19,11 +19,23 @@ class Menu extends Component {
     return (
       <div style={this.styles}>
 
-        <Link to="/home">
-          Hello Chess
+        <Link to= {
+          this.props.currentUser
+        ?
+          "/home"
+        :
+          "/"
+        }>
+          <h2
+            style={{display:"inline", textDecoration:"none"}}
+            className="font-effect-shadow-multiple">
+            Rookie Chess
+          </h2>
         </Link>
 
-        {this.props.currentUser ?
+        {
+          this.props.currentUser
+        ?
           <span style={{float:"right"}}>
             <span>
               user: {this.props.currentUser.username}
@@ -42,12 +54,10 @@ class Menu extends Component {
               Log Out
             </Link>
           </span>
-
-          :
-
+        :
           <span style={{float:"right"}}>
             <Link to="/constructor">
-              Constructor (take this one out too)
+              Constructor (take this out)
             </Link>
             <span> | </span>
             <Link to="/board">

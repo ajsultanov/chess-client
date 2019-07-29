@@ -6,20 +6,13 @@ let chess = new Chess();
 
 class TestBoard extends Component {
 
-  // make 'move' from puzzle model an object with a 'from' key
-  // and a 'to' key.
-  // assign a highlight to the 'from' position.
-  // user must choose the highlighted square -> becomes
-  // activeSquare.
-  // user must click on the correct square, that matches the
-  // 'to' position.
-  // then a button for continue appears?
+  state = {
+    activeSquare: "",
+  }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeSquare: "",
-    };
+  componentDidMount() {
+    console.log(this.props);
+    chess.load(this.props.positions[this.props.index])
   }
 
   // square = the square thats been clicked on
@@ -28,15 +21,17 @@ class TestBoard extends Component {
     if (square === this.state.activeSquare) {
       this.setState({
         activeSquare: "",
-      })
+      }, () => this.highlightSquare())
       return null
     }
     else {
+      let moves = chess.moves({square:square})
+      //square === this.props.moves[0]
 
-      if (square === this.props.moves[0]){
+      if (moves.length > 0){
         this.setState({
           activeSquare: square
-        }, () => this.highlightSquare())
+        }, () => this.highlightSquare(square))
         return null
       }
 
@@ -44,7 +39,7 @@ class TestBoard extends Component {
         this.props.goToNext()
         this.setState({
           activeSquare: "",
-        })
+        }, () => this.highlightSquare())
       }
     }
   }
@@ -54,12 +49,24 @@ class TestBoard extends Component {
       this.props.goToNext()
       this.setState({
         activeSquare: "",
-      })
+      }, () => this.highlightSquare())
     }
   }
 
   highlightSquare = square => {
-
+    document.querySelectorAll('[data-squareid]').forEach(boardSquare => {
+      // resets squares
+      boardSquare.dataset.testid === "white-square"
+        ?
+          boardSquare.style.backgroundColor = "#BCB"
+        :
+          boardSquare.style.backgroundColor = "#898"
+          boardSquare.style.boxShadow = ""
+      // highlights active square
+      if (boardSquare.dataset.squareid === square) {
+        boardSquare.style.boxShadow = "0 0 20px inset rgba(255,240,65,.8)"
+      }
+    })
   }
 
   render() {
@@ -75,7 +82,6 @@ class TestBoard extends Component {
             lightSquareStyle={{backgroundColor:'#BCB'}}
             darkSquareStyle={{backgroundColor:'#898'}}
             showNotation={false}
-            squareStyles={this.state.activeSquare: {backgroundColor: "red"}}
             onDrop={this.onDrop}
             dropSquareStyle={{
               outline: "2px dashed rgba(255,240,85,.6)",
@@ -88,5 +94,4 @@ class TestBoard extends Component {
     );
   }
 }
-
 export default TestBoard

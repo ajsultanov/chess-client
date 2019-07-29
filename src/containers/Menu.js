@@ -11,23 +11,24 @@ const StyledLink = styled(Link)`
   color: navy;
   font-weight: bold;
   font-size: .75em;
+  padding: 0px 10px;
+  text-decoration: none;
 `;
 const StyledMenu = styled.div`
   background-color: skyblue;
   height:40px;
   padding: 10px 20px;
-  border-bottom: 3px solid navy;
+  border-bottom: 1px solid;
 `;
 const StyledNav = styled.span`
   background-color: azure;
   float: right;
-  padding: 0px 12px 4px;
-  border: 3px solid blue;
-  border-radius: 20px;
+  padding: 0px 16px 4px;
+  border: 1px solid;
+  border-radius: 24px;
 `;
 const Logo = styled.h1`
   display: inline;
-  text-decoration: none;
   font-weight: normal;
 `;
 
@@ -46,7 +47,7 @@ class Menu extends Component {
           "/"
         }>
           <Logo>
-            Rookie Chess
+            ROOKIE Chess
           </Logo>
         </StyledLink>
 

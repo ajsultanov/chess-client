@@ -16,7 +16,7 @@ class LessonContainer extends Component {
     padding:"10px",
     marginTop:"10px",
     backgroundColor:"#ccc",
-    border:"2px solid darkseagreen",
+    border:"1px solid",
   }
 
   componentDidMount() {

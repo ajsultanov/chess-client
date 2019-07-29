@@ -16,6 +16,7 @@ class UserLogin extends Component {
     width:"796px",
     padding:"10px",
     border:"2px solid green",
+    textAlign: "right",
   }
 
   handleOnNameChange = event => {

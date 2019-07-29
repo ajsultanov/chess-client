@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "BioRhyme", "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Roboto Slab", "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -9,6 +9,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Shrikhand";
+  font-style: normal;
+}
+
+.hello {
+  font-family: "BioRhyme";
+  font-weight: bold;
 }
 
 code {

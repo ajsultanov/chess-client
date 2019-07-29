@@ -11,7 +11,7 @@ class LessonsContainer extends Component {
   styles = {
     width:"796px",
     padding:"10px",
-    border:"2px solid darkseagreen",
+    border:"1px solid",
   }
 
   render() {

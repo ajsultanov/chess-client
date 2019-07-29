@@ -22,11 +22,18 @@ console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:0px 5px 3px #A45,-
 const Wrapper = styled.div`
   background-color: mistyrose;
   width: 100%;
-  min-height: 500px;
+  min-height: 600px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+`;
+const Footer = styled.div`
+  background-color: lightpink;
+  color: white;
+  text-align: right;
+  padding-right: 1em;
+  align-self: flex-end;
 `;
 
 class App extends Component {
@@ -68,6 +75,7 @@ class App extends Component {
         <Route path="/board"       component={NewBoard} />
         <Route path="/constructor" component={ConstructorBoard} />
 
+        <Footer className="hello">Oh, hello</Footer>
       </Wrapper>
       </BrowserRouter>
     );

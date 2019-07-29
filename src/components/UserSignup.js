@@ -8,36 +8,71 @@ import styled from 'styled-components'
 
 const StyledContent = styled.div`
   font-size: 1.5em;
-  text-align: center;
   align-self: center;
-  width: 80%;
+  width: 75%
   background-color: papayawhip;
-  border: 3px solid palevioletred;
+  border: 1px solid;
   border-radius: 3px;
 
   display: flex;
   justify-content: center;
 `;
+
+const Title = styled.h2`
+  background-color: tan;
+  font-weight: normal;
+  font-size: 1.3em;
+  display: inline;
+
+    ::before, ::after {
+      content: "✷✷";
+      font-size: 20px;
+    }
+`;
+
+const StyledBorder = styled.div`
+  width: 30%
+  height: 14em;
+  position: absolute;
+  border: 1px solid;
+  border-radius: 3px;
+  top: 5.5em;
+`;
+
 const StyledForm = styled.form`
   margin: 1em;
   width: 30%;
-  border: 3px solid navy;
-  border-radius: 3px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
+const StyledLabel = styled.label`
+  margin-top: 1em;
+`;
+
+const StyledInput = styled.input`
+  background-color: lavenderblush;
+  font-size: .5em;
+  font-family: BioRhyme;
+  height: 2em;
+  width: 60%;
+  margin: .5em;
+  padding: 0;
+`;
+
 const Submit = styled.button`
-  background: ${props => props.primary ? "palevioletred" : "white" };
-  color: ${props => props.primary ? "white" : "brown" };
+  background: ${props => props.primary ? "palevioletred" : "snow" };
+  color: ${props => props.primary ? "white" : "mediumorchid" };
   margin: 1em;
-  padding: 0.25em 1em;
+  padding: 0.5em 2em;
   font-weight: bold;
   font-size: .5em;
-  border: 3px solid ${props => props.primary ? "brown" : "navajowhite" };
-  border-radius: 3px;
+  border: 2px solid ${props => props.primary ? "brown" : "navajowhite" };
+  border-radius: 6px;
+  z-index: -1;
 `;
-
-
-
-
 
 
 class UserSignup extends Component {
@@ -91,34 +126,34 @@ class UserSignup extends Component {
 
     return (
       <StyledContent>
+        <StyledBorder></StyledBorder>
         <StyledForm onSubmit={(event) => this.handleOnSubmit(event)}>
-          <h2 css={`background-color: red`}>Sign Up</h2>
-          <p>
-            <input
-              type="text"
-              onChange={(event) => this.handleOnNameChange(event)}
-              id="username"
-              placeholder="username"
-            />
-          </p>
-          <p>
-            <input
-              type="password"
-              onChange={(event) => this.handleOnPasswordChange(event)}
-              id="password1"
-              placeholder="password"
-            />
-          </p>
-          <p>
-            <input
-              type="password"
-              onChange={(event) => this.handleOnPasswordChange(event)}
-              id="password2"
-              placeholder="retype password"
-            />
-          </p>
-          <Submit type="submit" > Submit </Submit>
-          <Submit type="submit" primary > Submit </Submit>
+          <Title>Sign Up</Title>
+
+          <StyledLabel htmlFor="username">Username</StyledLabel>
+          <StyledInput
+            type="text"
+            onChange={(event) => this.handleOnNameChange(event)}
+            id="username"
+            placeholder="username"
+          />
+
+          <StyledLabel htmlFor="password1">Password</StyledLabel>
+          <StyledInput
+            type="password"
+            onChange={(event) => this.handleOnPasswordChange(event)}
+            id="password1"
+            placeholder="password"
+          />
+
+          <StyledInput
+            type="password"
+            onChange={(event) => this.handleOnPasswordChange(event)}
+            id="password2"
+            placeholder="retype password"
+          />
+
+          <Submit type="submit"> Submit </Submit>
         </StyledForm>
       </StyledContent>
     );

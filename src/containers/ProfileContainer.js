@@ -15,14 +15,14 @@ class ProfileContainer extends Component {
   styles = {
     width:"796px",
     padding:"10px",
-    border:"2px solid sienna",
+    border:"1px solid",
   }
   styles2 = {
     padding:"5px",
     margin:"5px",
     height:"100px",
     color:"white",
-    border:"2px solid blue",
+    border:"1px solid",
     backgroundImage:`url(${this.twok})`,
     backgroundSize:"100%",
     backgroundPosition:"50% 50%",
@@ -33,7 +33,7 @@ class ProfileContainer extends Component {
     margin:"5px",
     height:"100px",
     color:"white",
-    border:"2px solid green",
+    border:"1px solid",
     backgroundImage:`url(${this.ok})`,
     backgroundSize:"100%",
     backgroundPosition:"25% 60%",

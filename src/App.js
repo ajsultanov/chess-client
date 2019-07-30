@@ -20,15 +20,19 @@ import './App.css';
 console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:0px 5px 3px #A45,-5px 5px 3px #945,-5px 0px 3px #645,-5px -5px 3px #534,0px -5px 3px #645,5px -5px 3px #945,5px 0px 3px #A45,5px 5px 3px #E45")
 
 const Wrapper = styled.div`
+border: 1px solid;
   background-color: mistyrose;
   width: 100%;
   min-height: 600px;
+  max-height: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 `;
+
 const Footer = styled.div`
+border: 1px solid;
   background-color: lightpink;
   color: white;
   text-align: right;

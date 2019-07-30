@@ -15,7 +15,7 @@ class UserLogin extends Component {
   styles = {
     width:"796px",
     padding:"10px",
-    border:"2px solid green",
+    border:"1px solid",
     textAlign: "right",
   }
 

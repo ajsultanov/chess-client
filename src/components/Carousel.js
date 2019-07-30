@@ -76,14 +76,15 @@ class Carousel extends Component {
   })
 
   finishLesson = () => {
+    console.log(this.ul);
     if (this.ul) {
       if (this.ul.completed) {
         window.alert("You have already completed this lesson")
         // redirect to lessons
       }
       else {
-        this.props.markAsComplete(this.ul)
         this.props.addXP(this.props.currentUser, this.props.lesson.xp_worth)
+        this.props.markAsComplete(this.ul)
       }
     }
   }
@@ -130,7 +131,7 @@ class Carousel extends Component {
             />
           :
             <button onClick={() => this.finishLesson()}>
-              <Link to="/lessons/" style={{textDecoration:"none"}}>Complete this Lesson</Link>
+              <Link to="/home" style={{textDecoration:"none"}}>Complete this Lesson</Link>
             </button>
           }
         </div>

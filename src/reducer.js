@@ -77,7 +77,15 @@ export default function reducer(state = {
         ...state,
         currentUser: {
           ...state.currentUser,
-          user_lessons: action.payload
+          user_lessons:
+            state.currentUser.user_lessons.map(ul => {
+              if (ul.id === action.payload.id) {
+                return action.payload
+              }
+              else {
+                return ul
+              }
+            })
         }
       }
 

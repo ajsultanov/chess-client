@@ -9,7 +9,6 @@ import ProfileContainer         from './containers/ProfileContainer'
 import LessonContainer          from './containers/LessonContainer'
 import LessonsContainer         from './containers/LessonsContainer'
 import Menu                     from './containers/Menu'
-import Board                    from './Board'
 import NewBoard                 from './NewBoard'
 import ConstructorBoard         from './ConstructorBoard'
 import Splash                   from './Splash'
@@ -79,7 +78,7 @@ class App extends Component {
         <Route path="/constructor" component={ConstructorBoard} />
 
         <Footer className="hello">
-          <Link to="/board">
+          <Link to="/play">
             Oh, hello
           </Link>
         </Footer>

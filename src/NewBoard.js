@@ -324,6 +324,7 @@ class NewBoard extends Component {
                   if (i % 2 === 0) {
                     return <Move key={i}>{j + "." + move}</Move>
                   }
+                  else { return null }
                 })
               }
             </Moves>
@@ -331,11 +332,11 @@ class NewBoard extends Component {
               <u>Black</u>
               {
                 this.state.history.map((move, i) => {
-                  let j = Math.floor(i / 2) + 1
 
                   if (i % 2 !== 0) {
                     return <Move key={i}>{move}</Move>
                   }
+                  else { return null }
                 })
               }
             </Moves>

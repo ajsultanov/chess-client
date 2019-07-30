@@ -7,25 +7,41 @@ import { Link }             from 'react-router-dom'
 
 class LessonLink extends Component {
 
+    state = {
+      thisLesson: "",
+    }
+
   styles = {
     color: "white",
     padding:"5px",
     margin:"5px",
-    height:"100px",
+    height:"150px",
     border:"2px solid red",
     backgroundImage:'url(https://source.unsplash.com/random)'
   }
 
-  render() {
-    const thisLesson = this.props.currentUser.user_lessons.find(thisLesson => {
-      return thisLesson.lesson_id === this.props.id
+  componentDidMount() {
+
+    console.log(this.props.currentUser);
+
+    const lesson = this.props.currentUser.user_lessons.find(l => {
+      return l.lesson_id === this.props.id
     })
+
+
+
+    this.setState({
+      thisLesson: lesson,
+    })
+  }
+
+  render() {
 
     return (
       <Link to={`/lessons/${this.props.id}`}>
         <div style={this.styles}>
           {
-            thisLesson.completed
+           this.state.thisLesson.completed
           ?
             "******** You did this one already **********"
           :
@@ -41,7 +57,10 @@ class LessonLink extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    allLessons: state.allLessons,
+    lesson: state.lesson,
+    lessonContent: state.lessonContent,
   }
 }
 

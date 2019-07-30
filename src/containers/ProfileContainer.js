@@ -63,7 +63,7 @@ class ProfileContainer extends Component {
             ?
               <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
                 <div style={this.styles3}>
-                  Current Lesson ({`${this.currentLessonTitle}`})
+                  Next Lesson - {`${this.currentLessonTitle}`}
                 </div>
               </Link>
             :

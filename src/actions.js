@@ -181,6 +181,7 @@ const addXP = (user, xp) => {
   }
 }
 const markAsComplete = (ul) => {
+  console.log(ul);
   return function(dispatch){
     fetch(`http://localhost:3030/user_lessons/${ul.id}`, {
       method: 'PATCH',
@@ -201,7 +202,7 @@ const markAsComplete = (ul) => {
       })
     )
     .catch(() => {
-      console.log("RUH ROH!!!!!!!")
+      console.log()
     })
   }
 }

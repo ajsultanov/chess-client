@@ -37,10 +37,16 @@ border: 1px solid red;
 `;
 
 const Logo = styled.h1`
-border: 1px solid;
+/* border: 1px solid; */
   font-weight: normal;
   font-size: 36pt;
-  margin: .25em;
+  margin: 0 .75em;
+  text-decoration: none;
+`;
+const LogoLink = styled(StyledLink)`
+  color: purple;
+  padding: 0;
+  margin: 0;
 `;
 
 
@@ -50,7 +56,7 @@ class Menu extends Component {
     return (
       <StyledMenu>
 
-        <StyledLink to= {
+        <LogoLink to= {
           this.props.currentUser
         ?
           "/home"
@@ -60,15 +66,15 @@ class Menu extends Component {
           <Logo>
             ROOKIE&nbsp;Chess
           </Logo>
-        </StyledLink>
+        </LogoLink>
 
         {
           this.props.currentUser
         ?
           <StyledNav>
-            <span>
-              user: {this.props.currentUser.username}
-            </span>
+            <StyledLink to="/home">
+              Home
+            </StyledLink>
             <span> | </span>
             <StyledLink to="/lessons">
               Lessons
@@ -85,9 +91,6 @@ class Menu extends Component {
           </StyledNav>
         :
           <StyledNav>
-            <StyledLink to="/play">
-              Play! (take this out)
-            </StyledLink>
             <span> | </span>
             <StyledLink to="/signup">
               Sign&nbsp;Up

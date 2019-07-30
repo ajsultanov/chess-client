@@ -6,7 +6,7 @@ import styled               from "styled-components";
 let chess = new Chess();
 
 const StyledContent = styled.div`
-border: 1px solid;
+border: 1px solid blue;
   background-color: honeydew;
   margin: 1em;
   padding: 1em;
@@ -19,35 +19,44 @@ border: 1px solid;
 const BoardContainer = styled.div`
 border: 1px solid;
   background-color: wheat;
+  max-height: 32em;
   display: flex;
 `;
 
-const Moves = styled.p`
+const MovesContainer = styled.div`
 border: 1px solid;
   background-color: papayawhip;
   margin: .5em .5em .5em 1em ;
   display: flex;
-  flex-direction: column;
-  width: 8em;
+  width: 12em;
   line-height: 2em;
 
   /* ???? */
-  max-height: 100%;
-  overflow: scroll;
+  background-size: cover;
+  max-height: inherit;
+  overflow: auto;
 `;
-const Move1 = styled.span`
+const Moves = styled.div`
 border: 1px solid red;
-  width: 100%;
+  background-color: papayawhip;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 6em;
+  padding: .25em;
+  line-height: 2em;
 `;
-const Move2 = styled.span`
-border: 1px solid blue;
-  width: 1em;
+const Move = styled.p`
+border: 1px solid;
+  margin: 0;
+  text-align: left;
 `;
 
 const Button = styled.button`
   border: 1px solid;
   margin: 1em;
-  padding: .5em 2.5em;
+  padding: 0 2em;
   font-size: 1em;
   font-family: BioRhyme;
   display: inline;
@@ -166,7 +175,7 @@ class NewBoard extends Component {
     // highlighting on valid moves
     else {
       // enemy pieces
-      if (chess.get(mySquare.dataset.squareid) !== null) {
+      if (mySquare && chess.get(mySquare.dataset.squareid) !== null) {
         // mySquare.style.boxShadow = "inset 0 0 10px #FCACAD"
         if (chess.square_color(square) === "dark") {
           mySquare.style.outline = "3px dotted rgba(255,176,170,1)"
@@ -305,27 +314,32 @@ class NewBoard extends Component {
               )
             }}
           />
-          <Moves>
-            {
-              this.state.history.map((move, i) => {
-                let j = Math.floor(i / 2) + 1
+          <MovesContainer>
+            <Moves>
+              <u>White</u>
+              {
+                this.state.history.map((move, i) => {
+                  let j = Math.floor(i / 2) + 1
 
-                if (i % 2 === 0) {
-                  return <div>
+                  if (i % 2 === 0) {
+                    return <Move key={i}>{j + "." + move}</Move>
+                  }
+                })
+              }
+            </Moves>
+            <Moves>
+              <u>Black</u>
+              {
+                this.state.history.map((move, i) => {
+                  let j = Math.floor(i / 2) + 1
 
-                    <Move1 key={i}>{j + ". " + move}</Move1>
-
-                  </div>
-                } else {
-                  return <div>
-
-                    <Move2 key={i}>{move}</Move2>
-
-                  </div>
-                }
-              })
-            }
-          </Moves>
+                  if (i % 2 !== 0) {
+                    return <Move key={i}>{move}</Move>
+                  }
+                })
+              }
+            </Moves>
+          </MovesContainer>
         </BoardContainer>
         <div>
           <Button>Import Position</Button>

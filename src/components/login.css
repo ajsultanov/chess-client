@@ -7,7 +7,7 @@ border: 1px solid red;
   font-size: 1.3em;
   display: inline;
   padding: 0 .5em;
-  margin: 0 0 .5em;
+  margin: 0 0 .75em;
 }
 
 .border {
@@ -22,7 +22,7 @@ border: 1px solid red;
 .form {
 border: 1px dashed lime;
   z-index: 1;
-  margin: 1em;
+  margin: 1em 1em 2em;
   width: 40%;
   display: flex;
   flex-direction: column;

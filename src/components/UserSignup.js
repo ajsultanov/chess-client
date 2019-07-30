@@ -19,11 +19,19 @@ const StyledContent = styled.div`
   justify-content: center;
 `;
 
+const StyledBorder = styled.div`
+  width: 30%;
+  height: 14.5em;
+  position: absolute;
+  border: 2px solid;
+  border-radius: 0px;
+  top: 8em;
+`;
 
 const SubmitButton = styled.button`
+border: 2px solid ${props => props.active ? "brown" : "navajowhite" };
   background-color: ${props => props.active ? "palevioletred" : "pink" };
   color: ${props => props.active ? "white" : "navajowhite" };
-  /* border: 2px solid ${props => props.active ? "brown" : "navajowhite" }; */
 
     &:hover {
       box-shadow: 0 0 1em inset ${props => props.active ? "mediumorchid" : "transparent" };
@@ -82,7 +90,7 @@ class UserSignup extends Component {
 
     return (
       <StyledContent>
-        <div className="border"/>
+        <StyledBorder />
         <form className="form" onSubmit={(event) => this.handleOnSubmit(event)}>
           <h2 className="title">Sign&nbsp;Up</h2>
 

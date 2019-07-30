@@ -1,8 +1,57 @@
 import React, { Component } from 'react';
 import Chess                from "chess.js";
 import Chessboard           from "chessboardjsx";
+import styled               from "styled-components";
 
 let chess = new Chess();
+
+const StyledContent = styled.div`
+border: 1px solid;
+  background-color: honeydew;
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const BoardContainer = styled.div`
+border: 1px solid;
+  background-color: wheat;
+  display: flex;
+`;
+
+const Moves = styled.p`
+border: 1px solid;
+  background-color: papayawhip;
+  margin: .5em .5em .5em 1em ;
+  display: flex;
+  flex-direction: column;
+  width: 8em;
+  line-height: 2em;
+
+  /* ???? */
+  max-height: 100%;
+  overflow: scroll;
+`;
+const Move1 = styled.span`
+border: 1px solid red;
+  width: 100%;
+`;
+const Move2 = styled.span`
+border: 1px solid blue;
+  width: 1em;
+`;
+
+const Button = styled.button`
+  border: 1px solid;
+  margin: 1em;
+  padding: .5em 2.5em;
+  font-size: 1em;
+  font-family: BioRhyme;
+  display: inline;
+`;
 
 class NewBoard extends Component {
 
@@ -148,12 +197,8 @@ class NewBoard extends Component {
 
   render() {
     return (
-      <div>
-        <div>Hello yes this is NEW board</div>
-
-        <div className="burp">hmmm</div>
-
-        <div style={{float:"left",marginRight:"10px"}}>
+      <StyledContent>
+        <BoardContainer>
           <Chessboard
             width={500}
             position={this.state.position}
@@ -260,8 +305,33 @@ class NewBoard extends Component {
               )
             }}
           />
+          <Moves>
+            {
+              this.state.history.map((move, i) => {
+                let j = Math.floor(i / 2) + 1
+
+                if (i % 2 === 0) {
+                  return <div>
+
+                    <Move1 key={i}>{j + ". " + move}</Move1>
+
+                  </div>
+                } else {
+                  return <div>
+
+                    <Move2 key={i}>{move}</Move2>
+
+                  </div>
+                }
+              })
+            }
+          </Moves>
+        </BoardContainer>
+        <div>
+          <Button>Import Position</Button>
+          <Button>Export Position</Button>
         </div>
-      </div>
+      </StyledContent>
     );
   }
 }

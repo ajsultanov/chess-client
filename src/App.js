@@ -1,7 +1,7 @@
 /* ^ Index ^ */
 
 import React, { Component}      from 'react';
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Link } from "react-router-dom";
 import { connect }              from "react-redux";
 import UserSignup               from './components/UserSignup'
 import UserLogin                from './components/UserLogin'
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 border: 1px solid;
   background-color: mistyrose;
   width: 100%;
-  min-height: 600px;
+  min-height: 700px;
   max-height: 100%;
 
   display: flex;
@@ -65,7 +65,7 @@ class App extends Component {
         <Route path="/signup"         render={props => <UserSignup {...props} user={this.props.currentUser} />} />
         <Route path="/login"          render={props => <UserLogin {...props} user={this.props.currentUser} />} />
         <Route path="/logout"         component={UserLogin} />
-        <Route path="/play"           component={Board} />
+        <Route path="/play"           component={NewBoard} />
         <Route exact path="/"         component={Splash} />
 
       {/* everything below must be changed back to a PrivateRoute for login to work!! */}
@@ -74,12 +74,16 @@ class App extends Component {
         <PrivateRoute exact path="/lessons"  component={LessonsContainer} />
         <PrivateRoute path="/lessons/:id"    component={LessonContainer} />
 
-      {/* test routes */}
+      {/* dev routes */}
 
-        <Route path="/board"       component={NewBoard} />
         <Route path="/constructor" component={ConstructorBoard} />
 
-        <Footer className="hello">Oh, hello</Footer>
+        <Footer className="hello">
+          <Link to="/board">
+            Oh, hello
+          </Link>
+        </Footer>
+
       </Wrapper>
       </BrowserRouter>
     );

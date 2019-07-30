@@ -4,74 +4,30 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { createUser }       from '../actions'
-import styled from 'styled-components'
+import styled               from 'styled-components'
+import './login.css'
 
 const StyledContent = styled.div`
   font-size: 1.5em;
   align-self: center;
   width: 75%
+  margin: 1rem;
   background-color: papayawhip;
   border: 1px solid;
-  border-radius: 3px;
-
+  border-radius: 0px;
   display: flex;
   justify-content: center;
 `;
 
-const Title = styled.h2`
-  background-color: tan;
-  font-weight: normal;
-  font-size: 1.3em;
-  display: inline;
 
-    ::before, ::after {
-      content: "✷✷";
-      font-size: 20px;
+const SubmitButton = styled.button`
+  background-color: ${props => props.active ? "palevioletred" : "pink" };
+  color: ${props => props.active ? "white" : "navajowhite" };
+  /* border: 2px solid ${props => props.active ? "brown" : "navajowhite" }; */
+
+    &:hover {
+      box-shadow: 0 0 1em inset ${props => props.active ? "mediumorchid" : "transparent" };
     }
-`;
-
-const StyledBorder = styled.div`
-  width: 30%
-  height: 14em;
-  position: absolute;
-  border: 1px solid;
-  border-radius: 3px;
-  top: 5.5em;
-`;
-
-const StyledForm = styled.form`
-  margin: 1em;
-  width: 30%;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StyledLabel = styled.label`
-  margin-top: 1em;
-`;
-
-const StyledInput = styled.input`
-  background-color: lavenderblush;
-  font-size: .5em;
-  font-family: BioRhyme;
-  height: 2em;
-  width: 60%;
-  margin: .5em;
-  padding: 0;
-`;
-
-const Submit = styled.button`
-  background: ${props => props.primary ? "palevioletred" : "snow" };
-  color: ${props => props.primary ? "white" : "mediumorchid" };
-  margin: 1em;
-  padding: 0.5em 2em;
-  font-weight: bold;
-  font-size: .5em;
-  border: 2px solid ${props => props.primary ? "brown" : "navajowhite" };
-  border-radius: 6px;
-  z-index: -1;
 `;
 
 
@@ -126,35 +82,45 @@ class UserSignup extends Component {
 
     return (
       <StyledContent>
-        <StyledBorder></StyledBorder>
-        <StyledForm onSubmit={(event) => this.handleOnSubmit(event)}>
-          <Title>Sign Up</Title>
+        <div className="border"/>
+        <form className="form" onSubmit={(event) => this.handleOnSubmit(event)}>
+          <h2 className="title">Sign&nbsp;Up</h2>
 
-          <StyledLabel htmlFor="username">Username</StyledLabel>
-          <StyledInput
+          <label className="label" htmlFor="username">Enter&nbsp;a&nbsp;Username</label>
+          <input
+            className="input"
             type="text"
             onChange={(event) => this.handleOnNameChange(event)}
             id="username"
             placeholder="username"
           />
 
-          <StyledLabel htmlFor="password1">Password</StyledLabel>
-          <StyledInput
+          <label className="label" htmlFor="password1">Enter&nbsp;a&nbsp;Password</label>
+          <input
+            className="input"
             type="password"
             onChange={(event) => this.handleOnPasswordChange(event)}
             id="password1"
             placeholder="password"
           />
 
-          <StyledInput
+          <input
+            className="input"
             type="password"
             onChange={(event) => this.handleOnPasswordChange(event)}
             id="password2"
             placeholder="retype password"
           />
 
-          <Submit type="submit"> Submit </Submit>
-        </StyledForm>
+          <SubmitButton
+            className="submit"
+            type="submit"
+            active={this.state.username && this.state.password1 && this.state.password2}
+          >
+            Submit
+          </SubmitButton>
+
+        </form>
       </StyledContent>
     );
   }

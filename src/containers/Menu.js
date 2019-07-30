@@ -85,7 +85,7 @@ class Menu extends Component {
           </StyledNav>
         :
           <StyledNav>
-            <StyledLink to="/board">
+            <StyledLink to="/play">
               Play! (take this out)
             </StyledLink>
             <span> | </span>

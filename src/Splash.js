@@ -10,7 +10,7 @@ const Billboard = styled.div`
 border: 1px solid;
   width: 80%;
   height: 600px;
-  margin: 1em;
+  margin: 1rem;
   padding: 2em;
   align-self: center;
   background-image: url(${ok});

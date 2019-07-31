@@ -25,14 +25,14 @@ border: 1px solid;
   background-repeat: repeat;
 
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  overflow: hidden;
+  /* min-height: 100vh; */
+  min-height: 96vh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
 `;
 
 const Footer = styled.div`
@@ -41,7 +41,9 @@ border: 1px solid;
   color: white;
   text-align: right;
   padding-right: 1em;
-  /* align-self: flex-end; */
+  overflow: hidden;
+  height: 4vh;
+  vertical-align: middle;
 `;
 
 class App extends Component {

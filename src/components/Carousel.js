@@ -15,10 +15,12 @@ const StyledContent = styled.div`
 border: 1px solid;
   background-color: lightcyan;
   margin: 0;
-  width: 90%;
+  width: 96%;
   min-width: 600px;
   margin: .5em;
   padding: .5em;
+
+  overflow: auto;
 `;
 
 const LessonNav = styled.div`
@@ -29,24 +31,26 @@ border: 1px solid;
   align-items: center;
 `;
 
-const ButtonContainer = styled.div`
-border: 1px solid;
-  background-color: yellow;
-  width: 100px;
-`;
-
-const PreviousButton = styled(LeftArrow)`
-border: 1px solid;
-  background-color: white;
-`;
-
 const NextButton = styled(RightArrow)`
 border: 1px solid;
   background-color: green;
 `;
 
+const FinishDiv = styled.div`
+border: 1px solid limegreen;
+  background-color: mistyrose;
+  width: 200px;
+  font-size: 1.25em;
+  text-align: center;
+  padding: 10px;
+  margin: .5em;
+  height: 30px;
+`;
+
 const FinishButton = styled(Link)`
-border: 1px solid;
+border: 1px solid red;
+  background: salmon;
+  font-size: .75em;
 `
 
 
@@ -152,30 +156,26 @@ class Carousel extends Component {
             />
           }
           <LessonNav>
-            <ButtonContainer>
-              <PreviousButton
+              <LeftArrow
                 goToPrev={this.goToPrevSlide}
                 active={this.state.slideIndex !== 0}
               />
-            </ButtonContainer>
             <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length} </span>
             {
               this.state.slideIndex !== this.lessonContent.length - 1
             ?
-              <ButtonContainer>
                 <NextButton
                   goToNext={this.goToNextSlide}
                   active={
                     this.state.slideIndex !== this.lessonContent.length - 1 //&& this.state.posIndex !== 0
                   }
                 />
-              </ButtonContainer>
             :
-              <ButtonContainer>
-                <button onClick={() => this.finishLesson()}>
-                  <FinishButton to="/home" style={{textDecoration:"none"}}>Complete this Lesson</FinishButton>
-                </button>
-              </ButtonContainer>
+              <FinishDiv onClick={() => this.finishLesson()}>
+                <FinishButton to="/home" style={{textDecoration:"none"}}>
+                    Complete this Lesson
+                </FinishButton>
+              </FinishDiv>
             }
           </LessonNav>
         </StyledContent>
@@ -183,6 +183,8 @@ class Carousel extends Component {
     }
   }
 }
+
+
 
 const mapStateToProps = state => {
   return ({

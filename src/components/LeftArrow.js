@@ -7,7 +7,13 @@ import './arrow.css';
 
 const ColorChange = styled.div`
   color: ${props => props.active ? "limegreen" : "gray"};
-`
+
+`;
+
+const Button = styled.p`
+border: 1px solid;
+  margin: 0;
+`;
 
 const LeftArrow = (props) => {
 
@@ -22,7 +28,7 @@ const LeftArrow = (props) => {
 
   return (
     <ColorChange className="navArrow" onClick={onClick} active={props.active}>
-      <span>◀</span>
+      <Button>◀ Previous</Button>
     </ColorChange>
   );
 }

@@ -8,7 +8,7 @@ import { Link }             from 'react-router-dom'
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
-  font-size: 1.5em;
+  /* font-size: 1.5em; */
   align-self: center;
   width: 100%;
   background-color: papayawhip;
@@ -16,12 +16,13 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
 border: 1px solid;
-  width: 80%;
-  margin-top: 1em;
+  width: 96%;
+  margin: .5em;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -18,14 +18,6 @@ const StyledContent = styled.div`
 
 class LessonContainer extends Component {
 
-  styles = {
-    width:"796px",
-    padding:"10px",
-    marginTop:"10px",
-    backgroundColor:"#ccc",
-    border:"1px solid",
-  }
-
   componentDidMount() {
     const cl = this.props.currentUser.current_lesson
     const id = parseInt(this.props.match.params.id)

@@ -17,6 +17,7 @@ const StyledContent = styled.div`
   margin: .5em;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const SubmitButton = styled.button`

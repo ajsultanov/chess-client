@@ -14,7 +14,7 @@ border: 5px solid lightpink;
   text-decoration: none;
   background-color: lightpink;
   color: ${props => props.completed ? "red" : "blue"};
-  width: 40%;
+  width: 30%;
   min-width: 300px;
   height: 20vh;
   margin: .5em;

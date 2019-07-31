@@ -9,12 +9,21 @@ import styled               from 'styled-components'
 
 const StyledContent = styled.div`
 border: 1px solid;
-  width: 90%;
+  width: 100%;
+  background-color: papayawhip;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  padding: 1em;
+  overflow: hidden;
+`;
+
+const Wrapper = styled.div`
+border: 1px solid;
+  width: 96%;
+  display: flex;
   margin: .5em;
+  flex-direction: column;
+  align-items: center;
+  background-color: wheat;
 `;
 
 class LessonsContainer extends Component {
@@ -22,9 +31,11 @@ class LessonsContainer extends Component {
   render() {
     return (
       <StyledContent>
-        {this.props.allLessons.map(lesson => {
-          return <LessonLink key={lesson.id} {...lesson} />
-        })}
+        <Wrapper>
+          {this.props.allLessons.map(lesson => {
+            return <LessonLink key={lesson.id} {...lesson} />
+          })}
+        </Wrapper>
       </StyledContent>
     );
   }

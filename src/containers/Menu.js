@@ -16,6 +16,7 @@ border: 1px solid yellow;
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`

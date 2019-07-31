@@ -8,7 +8,7 @@ const StyledContent = styled.div`
 border: 1px solid;
   background-color: seashell;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 1em;
 `;
 
@@ -16,8 +16,8 @@ const StyledImg = styled.img`
 border: 1px solid purple;
   background-color: rgba(100,100,100,.25);
   min-height: 200px;
-  max-height: 360px;
-  min-width: 50%;
+  max-height: 50vh;
+  width: 50%;
   display: block;
   margin: 0;
 `;
@@ -35,10 +35,13 @@ border: 1px solid;
 const TitleBox = styled.div`
 border: 1px solid;
   background-color: lightseagreen;
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  height: 60px;
   text-align: center;
   margin: .25em;
   padding: 0;
+  overflow: hidden;
 `
 
 const Title = styled.h3`

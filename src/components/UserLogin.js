@@ -17,6 +17,7 @@ const StyledContent = styled.div`
   margin: .5em;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const SubmitButton = styled.button`
@@ -65,7 +66,7 @@ class UserLogin extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.user) {this.props.history.push("/lessons/3")}        // <--- CHANGE THIS BACK TO 'HOME' !!!!!!!!!
+    if (this.props.user) {this.props.history.push("/lessons/1")}        // <--- CHANGE THIS BACK TO 'HOME' !!!!!!!!!
   }
 
   render() {

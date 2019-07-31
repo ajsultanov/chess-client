@@ -17,8 +17,10 @@ class TestBoard extends Component {
 
   // square = the square thats been clicked on
   onSquareClick = square => {
+    console.log(square, this.props.moves[1]);
 
     if (square === this.state.activeSquare) {
+      console.log("same square");
       this.setState({
         activeSquare: "",
       }, () => this.highlightSquare())
@@ -29,6 +31,8 @@ class TestBoard extends Component {
       //square === this.props.moves[0]
 
       if (moves.length > 0){
+        console.log("square with moves");
+
         this.setState({
           activeSquare: square
         }, () => this.highlightSquare(square))
@@ -76,7 +80,7 @@ class TestBoard extends Component {
 
         <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={360}
+            width={400}
             position={this.props.positions[this.props.index]}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#BCB'}}

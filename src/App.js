@@ -20,13 +20,18 @@ console.log("%c ♞ ", "color:#fc0;font-size:48px;text-shadow:0px 5px 3px #A45,-
 
 const Wrapper = styled.div`
 border: 1px solid;
-  background-color: mistyrose;
+  /* background-color: mistyrose; */
+  background-image: url('./polka.png');
+  background-repeat: repeat;
+
   width: 100%;
-  min-height: 700px;
-  max-height: 100%;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
 `;
 
@@ -36,7 +41,7 @@ border: 1px solid;
   color: white;
   text-align: right;
   padding-right: 1em;
-  align-self: flex-end;
+  /* align-self: flex-end; */
 `;
 
 class App extends Component {
@@ -76,6 +81,7 @@ class App extends Component {
       {/* dev routes */}
 
         <Route path="/constructor" component={ConstructorBoard} />
+        </Wrapper>
 
         <Footer className="hello">
           <Link to="/play">
@@ -83,7 +89,6 @@ class App extends Component {
           </Link>
         </Footer>
 
-      </Wrapper>
       </BrowserRouter>
     );
   }

@@ -3,11 +3,18 @@
 
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
-import Lesson               from '../components/Lesson';
+import Carousel             from '../components/Carousel';
 import { setCurrentLesson,
          setLesson,
          getLessonSlides,
          getLessonPuzzles } from '../actions';
+import styled               from 'styled-components'
+
+const StyledContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 class LessonContainer extends Component {
 
@@ -30,17 +37,17 @@ class LessonContainer extends Component {
   render() {
     console.log("current lesson", this.props.currentUser.current_lesson);
     return (
-      <div style={this.styles}>
+      <StyledContent>
         {
           this.props.allLessons.length !== 0
         ?
-          <Lesson
+          <Carousel
             lesson={this.props.allLessons[this.props.match.params.id - 1]}
           />
         :
           null
         }
-      </div>
+      </StyledContent>
     );
   }
 }

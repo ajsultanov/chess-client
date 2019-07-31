@@ -8,12 +8,12 @@ let chess = new Chess();
 const StyledContent = styled.div`
 border: 1px solid blue;
   background-color: honeydew;
-  margin: 1em;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  self-align: center;
+  width: 75%;
 `;
 
 const BoardContainer = styled.div`
@@ -54,7 +54,7 @@ border: 1px solid;
 `;
 
 const Button = styled.button`
-  border: 1px solid;
+  border: 5px dashed orange;
   margin: 1em;
   padding: 0 2em;
   font-size: 1em;
@@ -178,19 +178,25 @@ class NewBoard extends Component {
       if (mySquare && chess.get(mySquare.dataset.squareid) !== null) {
         // mySquare.style.boxShadow = "inset 0 0 10px #FCACAD"
         if (chess.square_color(square) === "dark") {
-          mySquare.style.outline = "3px dotted rgba(255,176,170,1)"
+          mySquare.style.outline = "3px dashed rgba(224,115,85,1)"
           mySquare.style.outlineOffset = "-5px"
         }
         else {
-          mySquare.style.outline = "3px dotted rgba(255,195,195,1)"
+          mySquare.style.outline = "3px dashed rgba(240,130,100,1)"
           mySquare.style.outlineOffset = "-5px"
         }
       }
       // empty square
       else {
         // mySquare.style.boxShadow = "inset 0 0 10px #ACFCD0"
-        mySquare.style.outline = "3px dashed rgba(210,255,225,1)"
-        mySquare.style.outlineOffset = "-5px"
+        if (chess.square_color(square) === "dark") {
+          mySquare.style.outline = "3px dashed rgba(195,240,210,1)"
+          mySquare.style.outlineOffset = "-5px"
+        }
+        else {
+          mySquare.style.outline = "3px dashed rgba(210,255,225,1)"
+          mySquare.style.outlineOffset = "-5px"
+        }
       }
     }
   }
@@ -212,8 +218,8 @@ class NewBoard extends Component {
             width={500}
             position={this.state.position}
             onSquareClick={this.onSquareClick}
-            lightSquareStyle={{backgroundColor:'#99A',boxShadow:'0 0 20px inset rgba(255,192,245,.8)'}}
-            darkSquareStyle={{backgroundColor:'#778',boxShadow:'0 0 20px inset rgba(255,192,245,1)'}}
+            lightSquareStyle={{backgroundColor:'#A8C',boxShadow:'0 0 2px 4px inset rgba(255,192,245,1)'}}
+            darkSquareStyle={{backgroundColor:'#86A',boxShadow:'0 0 2px 4px inset rgba(255,192,245,.8)'}}
             showNotation={false}
             onDrop={this.onDrop}
             dropSquareStyle={{

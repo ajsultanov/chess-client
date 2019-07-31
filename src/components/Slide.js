@@ -4,44 +4,101 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+const StyledContent = styled.div`
+border: 1px solid;
+  background-color: seashell;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+`;
+
+const StyledImg = styled.img`
+border: 1px solid purple;
+  background-color: rgba(100,100,100,.25);
+  min-height: 200px;
+  max-height: 360px;
+  min-width: 50%;
+  display: block;
+  margin: 0;
+`;
+
+const Card = styled.div`
+border: 1px solid;
+  background-color: lightyellow;
+  display: flex;
+  width: 40%;
+  mid-width: 300px;
+  flex-direction: column;
+  align-items: stretch;
+`;
+
+const TitleBox = styled.div`
+border: 1px solid;
+  background-color: lightseagreen;
+  display: inline;
+  text-align: center;
+  margin: .25em;
+  padding: 0;
+`
+
+const Title = styled.h3`
+  margin: 0;
+`
+const Desc = styled.p`
+  margin: 0;
+  font-size: .75em;
+`
+
+const TextBox = styled.div`
+border: 1px solid;
+  background-color: lightsteelblue;
+
+  min-height: 400px;
+  margin: .5em;
+  padding: 0;
+`;
+const Text = styled.p`
+  margin: .25em;
+  font-size: 1em;
+`
 
 const ToolTip = styled.div`
   color: red;
-  background-color: seashell;
+  background-color: wheat;
   display: block;
-  padding: 5px 10px;
-  margin: 5px;
+  padding: .5em .75em;
+  margin: 1em;
 
     ::before {
-      content: "🗺 ";
+      content: "♟ ";
     }
+`;
+
+const Footie = styled.span`
+border: 1px solid;
+  self-align: flex-end;
+  text-align: center;
+  font-family: Ultra;
 `;
 
 
 class Slide extends Component {
 
-  styles = {
-    padding:"5px",
-    margin:"5px",
-    backgroundColor:"#fff",
-    border:"2px solid orange",
-    overflow:"hidden"
-  }
-
   componentDidMount() {
     this.props.goToNext()
   }
+  componentDidUpdate(prevProps, prevState) {
 
-  slide = this.props.content
-
-  dumbo = this.slide.content.split(/%%/)
+  }
 
   render() {
+    let slide = this.props.content
+    let textAry = slide.content.split(/%%/)
 
     let text = []
     let tips = []
 
-    this.dumbo.forEach((item, i) => {
+    textAry.forEach((item, i) => {
       if (i % 2 === 0) {
         text.push(item.trim())
       }
@@ -50,39 +107,40 @@ class Slide extends Component {
       }
     })
 
-    console.log(tips[0]);
-
     if (!this.props.content) {
       return <div />
     } else {
+      return (
+        <StyledContent>
+          <StyledImg
+            src={slide.image}
+            alt={slide.description}
+          />
+          <Card>
+            <TitleBox>
+              <Title>~ {slide.id}: {slide.title} ~</Title>
+              <Desc>desc: {slide.description}</Desc>
+            </TitleBox>
 
-      return <div className="slide" style={this.styles}>
-        [inside the slide component]
-        <h4>id: {this.slide.id} - title: {this.slide.title}</h4>
-        <p>desc: {this.slide.description}</p>
-        <img
-          src={this.slide.image}
-          style={{height:"360px", width:"256px", border:"1px solid black", display:"block", position:"relative", float:"left", marginRight:"10px"}}
-          alt="ok"
-        />
-        <p>{text[0]}......{tips[0]}......{text[1]}</p>
-
-        {
-          text.map((para, i) => {
-            if (tips[i]) {
-              return <div>
-                       <p key={"p"+i}>{para}</p>
-                       <ToolTip key={"t"+i}>{tips[i]}</ToolTip>
-                     </div>
-            }
-            else {
-              return <p key={"p"+i}>{para}</p>
-            }
-          })
-        }
-
-
-      </div>
+            <TextBox>
+              {
+                text.map((para, i) => {
+                  if (tips[i]) {
+                    return <div key={"t" + 1}>
+                             <Text>{para}</Text>
+                             <ToolTip>{tips[i]}</ToolTip>
+                           </div>
+                  }
+                  else {
+                    return <Text key={"p"+i}>{para}</Text>
+                  }
+                })
+              }
+            </TextBox>
+            <Footie>~~~</Footie>
+          </Card>
+        </StyledContent>
+      )
     }
   }
 }

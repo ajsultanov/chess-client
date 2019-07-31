@@ -8,13 +8,15 @@ const ok = "https://images.unsplash.com/photo-1523875194681-bedd468c58bf?ixlib=r
 
 const Billboard = styled.div`
 border: 1px solid;
-  width: 80%;
   height: 600px;
-  margin: 1rem;
   padding: 2em;
   align-self: center;
-  background-image: url(${ok});
   box-shadow: inset 0 0 20px green;
+`;
+
+const Background = styled.div`
+border: 5px solid lime;
+  background-image: url(${ok});
 `;
 
 const Title = styled.div`
@@ -26,6 +28,7 @@ border: 1px solid;
 const Column = styled.div`
 border: 1px solid;
   width: 50%;
+  min-width: 400px;
   color: white;
   max-height: 100%;
   display: flex;
@@ -51,6 +54,7 @@ border: 1px solid;
   font-size: .75em;
   color: white;
   width: 50%;
+  max-width: 200px;
   background-color: slateblue;
   text-align: center;
   margin-top: 1em;
@@ -60,20 +64,24 @@ border: 1px solid;
 class Splash extends Component {
   render() {
     return (
-      <Billboard>
-        <Title>
-          SPLASH&nbsp;PAGE!!!!!
-        </Title>
-        <Column>
-          <TopText>
-            Hello yes here is some filler text love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </TopText>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Text>
-          <Button to="/signup">Click here to get started</Button>
-        </Column>
-      </Billboard>
+      <div>
+      <Background>
+        <Billboard>
+          <Title>
+            SPLASH&nbsp;PAGE!!!!!
+          </Title>
+          <Column>
+            <TopText>
+              Hello yes here is some filler text love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </TopText>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Text>
+            <Button to="/signup">Click here to get started</Button>
+          </Column>
+        </Billboard>
+      </Background>
+      </div>
     );
   }
 }

@@ -4,11 +4,51 @@
 import React, { Component } from 'react';
 import { Link }             from 'react-router-dom'
 import { connect }          from 'react-redux'
-import { addXP, markAsComplete } from '../actions'
+import { addXP, noXP, markAsComplete } from '../actions'
 import Slide                from './Slide';
 import Puzzle               from './Puzzle';
 import LeftArrow            from './LeftArrow';
 import RightArrow           from './RightArrow';
+import styled               from 'styled-components'
+
+const StyledContent = styled.div`
+border: 1px solid;
+  background-color: lightcyan;
+  margin: 0;
+  width: 90%;
+  min-width: 600px;
+  margin: .5em;
+  padding: .5em;
+`;
+
+const LessonNav = styled.div`
+border: 1px solid;
+  background-color: lightslategray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+border: 1px solid;
+  background-color: yellow;
+  width: 100px;
+`;
+
+const PreviousButton = styled(LeftArrow)`
+border: 1px solid;
+  background-color: white;
+`;
+
+const NextButton = styled(RightArrow)`
+border: 1px solid;
+  background-color: green;
+`;
+
+const FinishButton = styled(Link)`
+border: 1px solid;
+`
+
 
 class Carousel extends Component {
 
@@ -56,7 +96,6 @@ class Carousel extends Component {
   }
 
   goToNextPos = () => {
-
     if (this.lessonContent[this.state.slideIndex].positions) {
       if (this.state.posIndex !== this.lessonContent[this.state.slideIndex].positions.length - 1) {
         this.setState({
@@ -79,8 +118,8 @@ class Carousel extends Component {
     console.log(this.ul);
     if (this.ul) {
       if (this.ul.completed) {
+        this.props.noXP("hello")
         window.alert("You have already completed this lesson")
-        // redirect to lessons
       }
       else {
         this.props.addXP(this.props.currentUser, this.props.lesson.xp_worth)
@@ -96,9 +135,7 @@ class Carousel extends Component {
     }
     else {
       return (
-        <div className="carousel" style={this.styles}>
-          [inside the carousel component]
-
+        <StyledContent>
           {
             this.lessonContent[this.state.slideIndex].style === "slide"
           ?
@@ -114,27 +151,34 @@ class Carousel extends Component {
               goToPrev={this.goToPrevPos}
             />
           }
-
-          <LeftArrow
-            goToPrev={this.goToPrevSlide}
-            active={this.state.slideIndex !== 0}
-          />
-          <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length} </span>
-          {
-            this.state.slideIndex !== this.lessonContent.length - 1
-          ?
-            <RightArrow
-              goToNext={this.goToNextSlide}
-              active={
-                this.state.slideIndex !== this.lessonContent.length - 1 && this.state.posIndex !== 0
-              }
-            />
-          :
-            <button onClick={() => this.finishLesson()}>
-              <Link to="/home" style={{textDecoration:"none"}}>Complete this Lesson</Link>
-            </button>
-          }
-        </div>
+          <LessonNav>
+            <ButtonContainer>
+              <PreviousButton
+                goToPrev={this.goToPrevSlide}
+                active={this.state.slideIndex !== 0}
+              />
+            </ButtonContainer>
+            <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length} </span>
+            {
+              this.state.slideIndex !== this.lessonContent.length - 1
+            ?
+              <ButtonContainer>
+                <NextButton
+                  goToNext={this.goToNextSlide}
+                  active={
+                    this.state.slideIndex !== this.lessonContent.length - 1 //&& this.state.posIndex !== 0
+                  }
+                />
+              </ButtonContainer>
+            :
+              <ButtonContainer>
+                <button onClick={() => this.finishLesson()}>
+                  <FinishButton to="/home" style={{textDecoration:"none"}}>Complete this Lesson</FinishButton>
+                </button>
+              </ButtonContainer>
+            }
+          </LessonNav>
+        </StyledContent>
       )
     }
   }
@@ -146,4 +190,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { addXP, markAsComplete })(Carousel)
+export default connect(mapStateToProps, { addXP, noXP, markAsComplete })(Carousel)

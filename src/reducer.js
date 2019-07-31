@@ -71,6 +71,13 @@ export default function reducer(state = {
         currentUser: action.payload
       }
 
+    case "NO_XP":
+      console.log("they tried to pull a fast one, boss -- 😛")
+      return {
+        ...state,
+        currentLesson: state.currentLesson + 1,
+      }
+
     case "MARK_COMPLETE":
       console.log("completin the lesson, boss -- ", action.payload)
       return {

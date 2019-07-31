@@ -10,22 +10,13 @@ import './login.css'
 const StyledContent = styled.div`
   font-size: 1.5em;
   align-self: center;
-  width: 75%
-  margin: 1rem;
+  width: 90%
   background-color: papayawhip;
   border: 1px solid;
   border-radius: 0px;
+  margin: .5em;
   display: flex;
   justify-content: center;
-`;
-
-const StyledBorder = styled.div`
-  width: 30%;
-  height: 14.5em;
-  position: absolute;
-  border: 2px solid;
-  border-radius: 0px;
-  top: 8em;
 `;
 
 const SubmitButton = styled.button`
@@ -90,7 +81,6 @@ class UserSignup extends Component {
 
     return (
       <StyledContent>
-        <StyledBorder />
         <form className="form" onSubmit={(event) => this.handleOnSubmit(event)}>
           <h2 className="title">Sign&nbsp;Up</h2>
 

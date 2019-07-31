@@ -1,24 +1,15 @@
 /* ^ Carousel ^ & ^ ExampleBoard ^ */
 /* this component decrements the currentIndex by one */
 
-import React from 'react';
+import React  from 'react';
+import styled from 'styled-components';
+import './arrow.css';
+
+const ColorChange = styled.div`
+  color: ${props => props.active ? "limegreen" : "gray"};
+`
 
 const LeftArrow = (props) => {
-
-  const activeStyles = {
-    display: "inline-block",
-    cursor: "pointer",
-    color: "blue",
-    fontSize: "24px",
-    margin: "5px 10px",
-  }
-  const styles = {
-    display: "inline-block",
-    cursor: "pointer",
-    color: "gray",
-    fontSize: "24px",
-    margin: "5px 10px",
-  }
 
   const onClick = () => {
     if (props.active) {
@@ -30,10 +21,12 @@ const LeftArrow = (props) => {
   }
 
   return (
-    <div className="navArrow backArrow" onClick={onClick} style={props.active ? activeStyles : styles}>
-      <span className="arrow-left">◀</span>
-    </div>
+    <ColorChange className="navArrow" onClick={onClick} active={props.active}>
+      <span>◀</span>
+    </ColorChange>
   );
 }
+
+// {"navArrow" + props.active ? "active" : null}
 
 export default LeftArrow;

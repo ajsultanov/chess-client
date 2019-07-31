@@ -10,22 +10,13 @@ import './login.css'
 const StyledContent = styled.div`
   font-size: 1.5em;
   align-self: center;
-  width: 75%
-  margin: 1rem;
+  width: 90%
   background-color: papayawhip;
   border: 1px solid;
   border-radius: 0px;
+  margin: .5em;
   display: flex;
   justify-content: center;
-`;
-
-const StyledBorder = styled.div`
-  width: 30%;
-  height: 13em;
-  position: absolute;
-  border: 2px solid;
-  border-radius: 0px;
-  top: 8em;
 `;
 
 const SubmitButton = styled.button`
@@ -74,13 +65,12 @@ class UserLogin extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.user) {this.props.history.push("/home")}
+    if (this.props.user) {this.props.history.push("/lessons/3")}        // <--- CHANGE THIS BACK TO 'HOME' !!!!!!!!!
   }
 
   render() {
     return (
       <StyledContent>
-        <StyledBorder />
         <form className="form" onSubmit={(event) => this.handleOnSubmit(event)}>
           <h2 className="title">Log&nbsp;In</h2>
 

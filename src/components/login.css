@@ -8,6 +8,7 @@ border: 1px solid red;
   display: inline;
   padding: 0 .5em;
   margin: 0 0 .75em;
+  transform: translateY(-20px)
 }
 
 .border {
@@ -20,10 +21,10 @@ border: 1px solid red;
 }
 
 .form {
-border: 1px dashed lime;
+border: 4px dashed lime;
   z-index: 1;
-  margin: 1em 1em 2em;
-  width: 40%;
+  margin: 2em 1em 2em;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;

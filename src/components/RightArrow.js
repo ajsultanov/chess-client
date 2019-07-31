@@ -1,24 +1,15 @@
 /* ^ Carousel ^ */
 /* this component advances the currentIndex by one */
 
-import React from 'react';
+import React  from 'react';
+import styled from 'styled-components';
+import './arrow.css';
+
+const ColorChange = styled.div`
+  color: ${props => props.active ? "limegreen" : "gray"};
+`
 
 const RightArrow = (props) => {
-
-  const activeStyles = {
-    display: "inline-block",
-    cursor: "pointer",
-    color: "blue",
-    fontSize: "24px",
-    margin: "5px 10px",
-  }
-  const styles = {
-    display: "inline-block",
-    cursor: "pointer",
-    color: "gray",
-    fontSize: "24px",
-    margin: "5px 10px",
-  }
 
   const onClick = () => {
     if (props.active) {
@@ -30,9 +21,9 @@ const RightArrow = (props) => {
   }
 
   return (
-    <div className="navArrow nextArrow" onClick={onClick} style={props.active ? activeStyles : styles}>
-      <span className="arrow-right">▶</span>
-    </div>
+    <ColorChange className="navArrow" onClick={onClick} active={props.active}>
+      <span>▶</span>
+    </ColorChange>
   );
 }
 

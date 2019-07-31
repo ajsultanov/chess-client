@@ -5,40 +5,60 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import Profile              from '../components/Profile';
 import { Link }             from 'react-router-dom'
+import styled               from 'styled-components'
+
+const StyledContent = styled.div`
+  font-size: 1.5em;
+  align-self: center;
+  width: 100%;
+  background-color: papayawhip;
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+border: 1px solid;
+  width: 80%;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: wheat;
+`;
+
+const LinkWrapper = styled.div`
+border: 1px solid;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  background-color: lightyellow;
+`;
+
+const ProfileLink = styled(Link)`
+border: 1px solid;
+  padding: 0;
+  margin: .5em;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: greenyellow;
+  text-align: center;
+  width: 50%;
+`;
+
+const LinkText = styled.span`
+border 1px solid;
+  padding: 1em;
+  background-color: lavenderblush;
+`;
 
 class ProfileContainer extends Component {
 
-
   ok = "https://images.unsplash.com/photo-1505461296292-7d67beed10a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
   twok = "https://images.unsplash.com/photo-1529699310859-b163e33e4556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1122&q=80"
-
-  styles = {
-    width:"796px",
-    padding:"10px",
-    border:"1px solid",
-  }
-  styles2 = {
-    padding:"5px",
-    margin:"5px",
-    height:"100px",
-    color:"white",
-    border:"1px solid",
-    backgroundImage:`url(${this.twok})`,
-    backgroundSize:"100%",
-    backgroundPosition:"50% 50%",
-    boxShadow:"inset 0px 0px 20px black"
-  }
-  styles3 = {
-    padding:"5px",
-    margin:"5px",
-    height:"100px",
-    color:"white",
-    border:"1px solid",
-    backgroundImage:`url(${this.ok})`,
-    backgroundSize:"100%",
-    backgroundPosition:"25% 60%",
-    boxShadow:"inset 0px 0px 20px black"
-  }
 
   currentLessonTitle = ""
 
@@ -48,42 +68,42 @@ class ProfileContainer extends Component {
     }
 
     return (
-      <div style={this.styles}>
+      <StyledContent>
         {
           this.props.currentUser
         ?
-          <div>
+          <Wrapper>
             <Profile
               username={this.props.currentUser.username}
               xp={this.props.currentUser.xp}
             />
 
-            {
-              this.props.currentUser.current_lesson
-            ?
-              <Link to={`/lessons/${this.props.currentUser.current_lesson}`}>
-                <div style={this.styles3}>
-                  Next Lesson - {`${this.currentLessonTitle}`}
-                </div>
-              </Link>
-            :
-              <Link to={`/lessons/1`}>
-                <div style={this.styles3}>
-                  Go to the first Lesson!
-                </div>
-              </Link>
-            }
+            <LinkWrapper>
+              {
+                this.props.currentUser.current_lesson
+              ?
+                <ProfileLink to={`/lessons/${this.props.currentUser.current_lesson}`}>
 
-            <Link to="/lessons/">
-              <div style={this.styles2}>
-                Link to All Lessons
-              </div>
-            </Link>
-          </div>
+                    <LinkText>Next Lesson:<br/>{`${this.currentLessonTitle}`}</LinkText>
+
+                </ProfileLink>
+              :
+                <ProfileLink to={`/lessons/1`}>
+
+                    <LinkText>Go to the first Lesson!</LinkText>
+
+                </ProfileLink>
+              }
+
+              <ProfileLink to="/lessons/">
+                  <LinkText>Link to All Lessons</LinkText>
+              </ProfileLink>
+            </LinkWrapper>
+          </Wrapper>
         :
           null
         }
-      </div>
+      </StyledContent>
     );
   }
 }

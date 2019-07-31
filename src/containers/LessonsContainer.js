@@ -5,23 +5,27 @@ import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import { fetchLessons }     from '../actions'
 import LessonLink           from '../components/LessonLink'
+import styled               from 'styled-components'
+
+const StyledContent = styled.div`
+border: 1px solid;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+  margin: .5em;
+`;
 
 class LessonsContainer extends Component {
 
-  styles = {
-    width:"796px",
-    padding:"10px",
-    border:"1px solid",
-  }
-
   render() {
     return (
-      <div style={this.styles}>
-        Lessons!
+      <StyledContent>
         {this.props.allLessons.map(lesson => {
           return <LessonLink key={lesson.id} {...lesson} />
         })}
-      </div>
+      </StyledContent>
     );
   }
 }

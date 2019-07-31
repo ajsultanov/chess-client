@@ -12,7 +12,7 @@ const StyledContent = styled.div`
   align-self: center;
   width: 90%
   background-color: papayawhip;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 0px;
   margin: .5em;
   display: flex;
@@ -21,7 +21,7 @@ const StyledContent = styled.div`
 `;
 
 const SubmitButton = styled.button`
-border: 2px solid ${props => props.active ? "brown" : "navajowhite" };
+  border: 2px solid ${props => props.active ? "brown" : "navajowhite" };
   background-color: ${props => props.active ? "palevioletred" : "pink" };
   color: ${props => props.active ? "white" : "navajowhite" };
 
@@ -66,7 +66,7 @@ class UserLogin extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.user) {this.props.history.push("/lessons/1")}        // <--- CHANGE THIS BACK TO 'HOME' !!!!!!!!!
+    if (this.props.user) {this.props.history.push("/home")}
   }
 
   render() {

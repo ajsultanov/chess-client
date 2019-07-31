@@ -12,7 +12,7 @@ const StyledContent = styled.div`
   align-self: center;
   width: 100%;
   background-color: papayawhip;
-  border: 1px solid;
+  /* border: 1px solid; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,40 +20,47 @@ const StyledContent = styled.div`
 `;
 
 const Wrapper = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   width: 96%;
   margin: .5em;
+  padding: .5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: wheat;
+  /* background-color: wheat; */
 `;
 
 const LinkWrapper = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   width: 90%;
   display: flex;
   flex-direction: row;
-  background-color: lightyellow;
+  /* background-color: lightyellow; */
 `;
 
 const ProfileLink = styled(Link)`
-border: 1px solid;
+/* border: 1px solid; */
   padding: 0;
   margin: .5em;
   height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: greenyellow;
+  background-color: lightpink;
   text-align: center;
   width: 50%;
+
+  border-radius: 5px;
+  border: 5px solid lightpink;
+  box-shadow: 0 0 0 4px inset white;
 `;
 
 const LinkText = styled.span`
-border 1px solid;
+/* border: 1px solid; */
   padding: 1em;
+  font-size: 2em;
   background-color: lavenderblush;
+  border-radius: 50%;
 `;
 
 class ProfileContainer extends Component {
@@ -84,15 +91,11 @@ class ProfileContainer extends Component {
                 this.props.currentUser.current_lesson
               ?
                 <ProfileLink to={`/lessons/${this.props.currentUser.current_lesson}`}>
-
-                    <LinkText>Next Lesson:<br/>{`${this.currentLessonTitle}`}</LinkText>
-
+                  <LinkText>Next Lesson:<br/>{`${this.currentLessonTitle}`}</LinkText>
                 </ProfileLink>
               :
                 <ProfileLink to={`/lessons/1`}>
-
-                    <LinkText>Go to the first Lesson!</LinkText>
-
+                  <LinkText>Go to the first Lesson!</LinkText>
                 </ProfileLink>
               }
 

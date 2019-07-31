@@ -4,29 +4,28 @@ import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
 import styled               from 'styled-components';
 
-const ok = "https://images.unsplash.com/photo-1523875194681-bedd468c58bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-
 const Billboard = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   height: 600px;
   padding: 2em;
   align-self: center;
-  box-shadow: inset 0 0 20px green;
+  box-shadow: inset 0 0 20px mediumorchid;
 `;
 
 const Background = styled.div`
-border: 5px solid lime;
-  background-image: url(${ok});
+/* border: 5px solid lime; */
+  background-image: url("https://images.unsplash.com/photo-1523875194681-bedd468c58bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80");
+  background-size: cover;
 `;
 
 const Title = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   font-size: 64pt;
   color: pink;
 `;
 
 const Column = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   width: 50%;
   min-width: 400px;
   color: white;
@@ -37,21 +36,22 @@ border: 1px solid;
 `;
 
 const Text = styled.p`
-border: 1px solid;
+/* border: 1px solid; */
   color: black;
-  background-color: rgba(240, 240, 255, .5);
+  background-color: rgba(240, 240, 255, .75);
   margin: 0 0 1em;
+  padding: 1em;
 `;
 
 const TopText = styled(Text)`
-border: 1px solid red;
+/* border: 1px solid red; */
   margin-top: 1em;
 `;
 
 const Button = styled(Link)`
-border: 1px solid;
+/* border: 1px solid; */
   font-family: BioRhyme;
-  font-size: .75em;
+  font-size: 1em;
   color: white;
   width: 50%;
   max-width: 200px;
@@ -59,6 +59,10 @@ border: 1px solid;
   text-align: center;
   margin-top: 1em;
   padding: 1.25em 1.5em;
+
+  &:hover {
+    box-shadow: 0 0 1em inset mediumorchid;
+  }
 `;
 
 class Splash extends Component {
@@ -77,7 +81,7 @@ class Splash extends Component {
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Text>
-            <Button to="/signup">Click here to get started</Button>
+            <Button to="/signup">Get started</Button>
           </Column>
         </Billboard>
       </Background>

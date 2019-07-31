@@ -7,14 +7,12 @@ import { Link }             from 'react-router-dom'
 import styled               from 'styled-components'
 
 const StyledLink = styled(Link)`
-border: 5px solid lightpink;
-  /* color: navy; */
   font-weight: normal;
   font-family: BioRhyme;
   text-decoration: none;
   background-color: lightpink;
   color: ${props => props.completed ? "red" : "blue"};
-  width: 30%;
+  width: 35%;
   min-width: 300px;
   height: 20vh;
   margin: .5em;
@@ -24,11 +22,12 @@ border: 5px solid lightpink;
   justify-content: space-between;
 
   border-radius: 25px;
+  border: 5px solid lightpink;
   box-shadow: 0 0 0 4px inset white;
 `;
 
 const Title = styled.h3`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   margin: 0;
   max-height: 40%;
   overflow: hidden;
@@ -36,14 +35,14 @@ border: 1px solid;
 `;
 
 const Description = styled.p`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   margin: 0 .5em;
   line-height: 1em;
   font-size: .9em;
 `;
 
 const XP = styled.p`
-border: 1px solid;
+/* /* border: 1px solid; */ */
 background-color: palegreen;
   margin: 0 .5em;
   align-self: flex-end;

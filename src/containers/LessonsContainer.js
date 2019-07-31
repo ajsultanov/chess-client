@@ -8,7 +8,7 @@ import LessonLink           from '../components/LessonLink'
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   width: 100%;
   background-color: papayawhip;
   display: flex;
@@ -17,12 +17,13 @@ border: 1px solid;
 `;
 
 const Wrapper = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   width: 96%;
   display: flex;
   margin: .5em;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: wheat;
 `;
 

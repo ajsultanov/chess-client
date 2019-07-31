@@ -9,7 +9,7 @@ import RightArrow           from "./RightArrow";
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: seashell;
   display: flex;
   justify-content: space-around;
@@ -17,21 +17,30 @@ border: 1px solid;
 `;
 
 const BoardContainer = styled.div`
-border: 1px solid purple;
+/* border: 1px solid purple; */
   background-color: rgba(100,100,100,.25);
   min-height: 200px;
   max-height: 70vh;
   min-width: 500px;
   width: 60%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 0;
   overflow: hidden;
 `;
 
+const BoardContainer2 = styled(BoardContainer)`
+  justify-content: center;
+`;
+
+const Win = styled.h4`
+/* border: 1px solid; */
+  font-size: 4em;
+`;
+
 const NavButton = styled.div`
-border: 1px solid red;
+/* border: 1px solid red; */
   background-color: ${props => props.active ? "green" : "gray"};
   width: 10%;
   max-width: 100px;
@@ -45,7 +54,7 @@ border: 1px solid red;
 `;
 
 const Card = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightyellow;
   display: flex;
   width: 30%;
@@ -55,7 +64,7 @@ border: 1px solid;
 `;
 
 const TitleBox = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightseagreen;
   display: flex;
   flex-direction: column;
@@ -75,7 +84,7 @@ const Desc = styled.p`
 `
 
 const TextBox = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightsteelblue;
 
   min-height: 400px;
@@ -88,7 +97,7 @@ const Text = styled.p`
 `
 
 const Footie = styled.span`
-border: 1px solid;
+/* border: 1px solid; */
   self-align: flex-end;
   text-align: center;
   font-family: Ultra;
@@ -118,6 +127,7 @@ class Puzzle extends Component {
             <ExampleBoard
               positions={puzzle.positions}
               index={this.props.index}
+              style={{left:"10px"}}
             />
             <NavButton
               onClick={this.props.goToNext}
@@ -127,21 +137,20 @@ class Puzzle extends Component {
             </NavButton>
           </BoardContainer>
         :
-          <BoardContainer>
-            <TestBoard
-              positions={puzzle.positions}
-              moves={puzzle.moves}
-              goToNext={this.props.goToNext}
-              index={this.props.index}
-            />
+          <BoardContainer2>
             {
               this.props.index === puzzle.positions.length - 1
             ?
-              <h4>Wow you did it!</h4>
+              <Win>You did it!</Win>
             :
-              null
+              <TestBoard
+                positions={puzzle.positions}
+                moves={puzzle.moves}
+                goToNext={this.props.goToNext}
+                index={this.props.index}
+              />
             }
-          </BoardContainer>
+          </BoardContainer2>
         }
         <Card>
           <TitleBox>

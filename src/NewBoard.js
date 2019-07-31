@@ -6,25 +6,25 @@ import styled               from "styled-components";
 let chess = new Chess();
 
 const StyledContent = styled.div`
-border: 1px solid blue;
+/* border: 1px solid blue; */
   background-color: honeydew;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   self-align: center;
-  width: 75%;
+  width: 100%;
 `;
 
 const BoardContainer = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: wheat;
-  max-height: 32em;
   display: flex;
+  margin: 1em;
 `;
 
 const MovesContainer = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: papayawhip;
   margin: .5em .5em .5em 1em ;
   display: flex;
@@ -37,7 +37,7 @@ border: 1px solid;
   overflow: auto;
 `;
 const Moves = styled.div`
-border: 1px solid red;
+/* border: 1px solid red; */
   background-color: papayawhip;
   margin: 0;
   text-align: center;
@@ -48,13 +48,13 @@ border: 1px solid red;
   line-height: 2em;
 `;
 const Move = styled.p`
-border: 1px solid;
+/* border: 1px solid; */
   margin: 0;
   text-align: left;
 `;
 
 const Button = styled.button`
-  border: 5px dashed orange;
+  /* border: 5px dashed orange; */
   margin: 1em;
   padding: 0 2em;
   font-size: 1em;
@@ -215,7 +215,7 @@ class NewBoard extends Component {
       <StyledContent>
         <BoardContainer>
           <Chessboard
-            width={500}
+            width={600}
             position={this.state.position}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#A8C',boxShadow:'0 0 2px 4px inset rgba(255,192,245,1)'}}

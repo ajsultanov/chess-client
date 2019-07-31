@@ -8,9 +8,8 @@ import { logout }           from '../actions'
 import styled               from 'styled-components'
 
 const StyledMenu = styled.div`
-border: 1px solid yellow;
+/* border: 1px solid yellow; */
   background-color: skyblue;
-  border-bottom: 1px solid;
   padding: .5em;
 
   display: flex;
@@ -20,7 +19,7 @@ border: 1px solid yellow;
 `;
 
 const Wrapper = styled.div`
-border: 1px solid lime;
+/* border: 1px solid lime; */
   width: 98%;
   background-color: skyblue;
   display: flex;
@@ -29,7 +28,7 @@ border: 1px solid lime;
 `;
 
 const Logo = styled.h1`
-/* border: 1px solid; */
+/* /* border: 1px solid; */
   font-weight: normal;
   font-size: 36pt;
   margin: 0 .75em;
@@ -38,17 +37,17 @@ const Logo = styled.h1`
 `;
 
 const StyledNav = styled.span`
-border: 1px solid ;
+/* border: 1px solid ; */
   background-color: azure;
   align-self: center;
   padding: .5em .75em;
   margin: 0 ;
   min-width: 220px;
-  border-radius: 0px;
+  border-radius: 3px;
 `;
 
 const StyledLink = styled(Link)`
-border: 1px solid red;
+/* border: 1px solid red; */
   color: navy;
   font-weight: normal;
   font-family: BioRhyme;

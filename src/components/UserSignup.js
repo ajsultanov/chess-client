@@ -12,7 +12,7 @@ const StyledContent = styled.div`
   align-self: center;
   width: 90%
   background-color: papayawhip;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 0px;
   margin: .5em;
   display: flex;

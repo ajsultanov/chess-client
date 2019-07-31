@@ -74,13 +74,11 @@ class TestBoard extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        <div>Hello yes this is TEST board</div>
-
-        <div style={{float:"left",marginRight:"10px"}}>
           <Chessboard
-            width={400}
+            width={460}
             position={this.props.positions[this.props.index]}
             onSquareClick={this.onSquareClick}
             lightSquareStyle={{backgroundColor:'#BCB'}}
@@ -93,7 +91,6 @@ class TestBoard extends Component {
             }}
             boardStyle={{border:'5px solid pink',borderRadius:'5px'}}
           />
-        </div>
       </div>
     );
   }

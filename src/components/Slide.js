@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const StyledContent = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: seashell;
   display: flex;
   justify-content: space-around;
@@ -13,7 +13,7 @@ border: 1px solid;
 `;
 
 const StyledImg = styled.img`
-border: 1px solid purple;
+/* border: 1px solid purple; */
   background-color: rgba(100,100,100,.25);
   min-height: 200px;
   max-height: 50vh;
@@ -23,7 +23,7 @@ border: 1px solid purple;
 `;
 
 const Card = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightyellow;
   display: flex;
   width: 40%;
@@ -33,7 +33,7 @@ border: 1px solid;
 `;
 
 const TitleBox = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightseagreen;
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ const Desc = styled.p`
 `
 
 const TextBox = styled.div`
-border: 1px solid;
+/* border: 1px solid; */
   background-color: lightsteelblue;
 
   min-height: 400px;
@@ -78,7 +78,7 @@ const ToolTip = styled.div`
 `;
 
 const Footie = styled.span`
-border: 1px solid;
+/* border: 1px solid; */
   self-align: flex-end;
   text-align: center;
   font-family: Ultra;

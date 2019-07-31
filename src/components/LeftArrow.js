@@ -11,7 +11,7 @@ const ColorChange = styled.div`
 `;
 
 const Button = styled.p`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   margin: 0;
 `;
 

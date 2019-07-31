@@ -12,10 +12,10 @@ import RightArrow           from './RightArrow';
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   background-color: lightcyan;
   margin: 0;
-  width: 96%;
+  width: 100%;
   min-width: 600px;
   margin: .5em;
   padding: .5em;
@@ -24,7 +24,7 @@ border: 1px solid;
 `;
 
 const LessonNav = styled.div`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   background-color: lightslategray;
   display: flex;
   justify-content: space-between;
@@ -32,12 +32,12 @@ border: 1px solid;
 `;
 
 const NextButton = styled(RightArrow)`
-border: 1px solid;
+/* /* border: 1px solid; */ */
   background-color: green;
 `;
 
 const FinishDiv = styled.div`
-border: 1px solid limegreen;
+/* border: 1px solid limegreen; */
   background-color: mistyrose;
   width: 200px;
   font-size: 1.25em;
@@ -48,7 +48,7 @@ border: 1px solid limegreen;
 `;
 
 const FinishButton = styled(Link)`
-border: 1px solid red;
+/* border: 1px solid red; */
   background: salmon;
   font-size: .75em;
 `

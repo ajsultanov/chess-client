@@ -22,6 +22,7 @@ const StyledImg = styled.img`
   margin: 0;
   border-radius: 3px;
   object-fit: cover;
+  object-position: 50%;
 `;
 
 const Card = styled.div`

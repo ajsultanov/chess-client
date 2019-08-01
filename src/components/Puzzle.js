@@ -182,8 +182,7 @@ class Puzzle extends Component {
         }
         <Card>
           <TitleBox>
-            <Title>~ {puzzle.id}: {puzzle.title} ~</Title>
-            <Desc>desc: {puzzle.description}</Desc>
+            <Title>{puzzle.title}</Title>
           </TitleBox>
 
           <TextBox>

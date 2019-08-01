@@ -14,21 +14,23 @@ const StyledContent = styled.div`
 
 const StyledImg = styled.img`
 /* border: 1px solid purple; */
-  background-color: rgba(128, 128, 128, .25);
+  /* background-color: rgba(128, 128, 128, .25); */
   min-height: 200px;
-  max-height: 50vh;
+  max-height: 60vh;
   width: 50%;
   display: block;
   margin: 0;
   border-radius: 3px;
+  object-fit: cover;
 `;
 
 const Card = styled.div`
 /* border: 1px solid; */
   background-color: ivory;
   display: flex;
+  max-width: 600px;
   width: 40%;
-  mid-width: 300px;
+  min-width: 300px;
   flex-direction: column;
   align-items: stretch;
   border-radius: 3px;
@@ -48,9 +50,12 @@ const TitleBox = styled.div`
 
 const Title = styled.h3`
   margin: 0;
+  color: navy;
+  font-weight: normal;
 `
 const Desc = styled.p`
   margin: 0;
+  color: slateblue;
   font-size: .75em;
 `
 
@@ -63,13 +68,14 @@ const TextBox = styled.div`
   padding: 0;
 `;
 const Text = styled.p`
+  color: navy;
   margin: .25em;
   font-size: 1em;
 `
 
 const ToolTip = styled.div`
-  color: red;
-  background-color: wheat;
+  color: darkslategray;
+  background-color: gainsboro;
   display: block;
   padding: .5em .75em;
   margin: 1em;
@@ -81,9 +87,10 @@ const ToolTip = styled.div`
 
 const Footie = styled.span`
 /* border: 1px solid; */
+  color: navy;
   self-align: flex-end;
   text-align: center;
-  font-family: Ultra;
+  font-family: Shrikhand;
   font-size: 1.5em;
 `;
 
@@ -124,8 +131,8 @@ class Slide extends Component {
           />
           <Card>
             <TitleBox>
-              <Title>~ {slide.id}: {slide.title} ~</Title>
-              <Desc>desc: {slide.description}</Desc>
+              <Title>{slide.title}</Title>
+              <Desc>{slide.description}</Desc>
             </TitleBox>
 
             <TextBox>

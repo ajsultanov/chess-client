@@ -36,7 +36,7 @@ const Logo = styled.h1`
   text-decoration: none;
   transform: rotate(-3deg);
   color: white;
-  text-shadow: -2px -1px 6px navy;
+  text-shadow: -2px 1px 3px deepskyblue;
 `;
 
 const Star1 = styled.span`
@@ -46,7 +46,7 @@ const Star1 = styled.span`
   margin: 0;
   padding: 0;
   top: -10px;
-  left: 15px;
+  left: 30px;
   color: white;
 `;
 

@@ -79,9 +79,9 @@ class Carousel extends Component {
     if (e.key === "ArrowLeft") {
       this.goToPrevSlide()
     }
-    if (e.key === "Enter" && this.state.slideIndex === this.lessonContent.length - 1) {
-      this.finishLesson()
-    }
+    // if (e.key === "Enter" && this.state.slideIndex === this.lessonContent.length - 1) {
+    //   this.finishLesson()
+    // }
   }
 
   goToPrevSlide = () => {

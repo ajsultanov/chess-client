@@ -63,6 +63,8 @@ class ConstructorBoard extends Component {
         <button style={{width:'250px',margin:'10px'}} onClick={() => this.clear()}>clear</button>
         <button style={{width:'250px',margin:'10px'}} onClick={() => this.print()}>log</button><br/>
         <label style={{fontSize:'12px'}} for="fen">enter fen string here ></label><input style={{width:'300px',margin:'10px'}} type="text" id="fen" name="fen" size="10" onChange={this.enterFen}/>
+        <br/>
+        <input type="text-area" value={chess.fen()} style={{width:"100%"}}/>
       </div>
     )
   }

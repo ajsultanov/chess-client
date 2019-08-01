@@ -21,7 +21,7 @@ const StyledContent = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  border: 2px solid ${props => props.active ? "brown" : "navajowhite" };
+  border: 2px solid ${props => props.active ? "transparent" : "navajowhite" };
   background-color: ${props => props.active ? "palevioletred" : "pink" };
   color: ${props => props.active ? "white" : "navajowhite" };
 

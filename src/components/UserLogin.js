@@ -66,7 +66,7 @@ class UserLogin extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.user) {this.props.history.push("/lessons/1")}  // <---------CHANGE BACK TO HOME !!!!!!!!!!!!
+    if (this.props.user) {this.props.history.push("/home")}  // <---------CHANGE BACK TO HOME !!!!!!!!!!!!
   }
 
   render() {

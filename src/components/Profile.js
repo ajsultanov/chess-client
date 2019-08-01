@@ -4,6 +4,12 @@
 import React, { Component } from 'react';
 import styled               from 'styled-components'
 
+const images = [
+  "./wK.png", "./wQ.png", "./wR.png", "./wB.png", "./wN.png", "./wP.png",
+  "./bK.png", "./bQ.png", "./bR.png", "./bB.png", "./bN.png", "./bP.png"
+]
+const avatar = images[Math.floor(Math.random() * images.length)];
+
 const StyledContent = styled.div`
 /* border: 1px solid; */
   font-size: 2em;
@@ -17,14 +23,25 @@ const StyledContent = styled.div`
   width: 75%
 `;
 
-const ProfileImg = styled.div`
+const ImgDiv = styled.div`
 /* border: 1px solid red; */
-  background-color: gray;
+  background-color: ivory;
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  display: inline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
+`;
+
+
+const ProfileImg = styled.img`
+/* border: 1px solid red; */
+  width: 110%;
+  height: 110%;
+  /* background-color: ivory; */
+  border-radius: 50%;
 `;
 
 const Username = styled.h3`
@@ -67,7 +84,9 @@ class Profile extends Component {
     return (
       <StyledContent>
         <div style={{display:"flex"}}>
-          <ProfileImg></ProfileImg>
+          <ImgDiv>
+            <ProfileImg src={avatar}/>
+          </ImgDiv>
           <Username>{this.props.username}</Username>
         </div>
         <div style={{display:"flex"}}>

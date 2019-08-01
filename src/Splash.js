@@ -20,7 +20,7 @@ const Background = styled.div`
 
 const Billboard = styled.div`
 /* border: 1px solid; */
-height: 600px;
+height: 80vh;
 padding: 2em;
 align-self: center;
 /* box-shadow: inset 0 10px 20px 5px azure; */
@@ -43,15 +43,16 @@ const Column = styled.div`
   color: white;
   max-height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const Text = styled.p`
 /* border: 1px solid; */
   color: black;
-  background-color: rgba(240, 240, 255, .75);
-  margin: 0 0 1em;
+  background-color: rgba(250, 250, 255, .8);
+  margin: 0 1em 1em;
   padding: 1em;
   border-radius: 3px;
 `;
@@ -67,6 +68,7 @@ const Button = styled(Link)`
   font-size: 1em;
   color: white;
   width: 50%;
+  margin: 0 14em;
   max-width: 200px;
   background-color: slateblue;
   text-align: center;
@@ -90,10 +92,30 @@ class Splash extends Component {
             </Title>
             <Column>
               <TopText>
-                Hello yes here is some filler text love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Chess has been persuasively linked with improving children's concentration, problem-solving, critical, original and creative thinking – and even mathematical abilities. It is also said to help with memory storage and how young brains manage information – and should not only be perceived as a game for gifted children.
+                <a href="https://theconversation.com/why-chess-is-good-for-young-brains-53657">*</a>
+                <br/><br/>&nbsp;Some of the benefits of playing chess for children include:
               </TopText>
               <Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Improves memory and concentration
+              </Text>
+              <Text>
+                Teaches planning and foresight
+              </Text>
+              <Text>
+                Increases creativity
+              </Text>
+              <Text>
+                Improves reading skills
+              </Text>
+              <Text>
+                Improves visual memory
+              </Text>
+              <Text>
+                Lengthens attention span
+              </Text>
+              <Text>
+                Develops spatial-reasoning
               </Text>
               <Button to="/signup">Get started</Button>
             </Column>

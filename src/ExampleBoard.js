@@ -6,17 +6,17 @@ class ExampleBoard extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        <div style={{float:"left", marginRight:"10px"}}>
-          <Chessboard
-            width={420}
-            position={this.props.positions[this.props.index]}
-            transitionDuration={200}
-            allowDrag={() => false}
-            boardStyle={{border:'5px solid lightblue', borderRadius:'5px'}}
-          />
-        </div>
-
+      <div style={{textAlign:'center'}}>
+        <Chessboard
+          width={420}
+          position={this.props.positions[this.props.index]}
+          transitionDuration={200}
+          allowDrag={() => false}
+          lightSquareStyle={{backgroundColor:'lightblue'}}
+          darkSquareStyle={{backgroundColor:'deepskyblue'}}
+          boardStyle={{border:'5px solid lightblue', borderRadius:'5px'}}
+        />
+        <p style={{color:'lightcoral'}}>use the arrows to advance</p>
       </div>
     );
   }

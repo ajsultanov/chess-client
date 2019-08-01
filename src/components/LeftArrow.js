@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import './arrow.css';
 
 const ColorChange = styled.div`
-  color: ${props => props.active ? "limegreen" : "gray"};
+  color: ${props => props.active ? "white" : "gray"};
   /* border: 1px solid; */
 `;
 
@@ -28,7 +28,7 @@ const LeftArrow = (props) => {
 
   return (
     <ColorChange className="navArrow" onClick={onClick} active={props.active}>
-      <Button>◀&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Previous</Button>
+      <Button>◀&nbsp;&nbsp;&nbsp;Previous</Button>
     </ColorChange>
   );
 }

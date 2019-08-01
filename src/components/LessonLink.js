@@ -6,14 +6,14 @@ import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom'
 import styled               from 'styled-components'
 
-const colors = ["lightpink", "aquamarine", "powderblue", "lightsalmon", "plum"]
+const colors = ["lightpink", "turquoise", "powderblue", "lightsalmon", "plum", "sandybrown", "skyblue", "darkseagreen", "burlywood"]
 const color = colors[Math.floor(Math.random() * colors.length)];
 
 const StyledLink = styled(Link)`
   font-weight: normal;
   font-family: BioRhyme;
   text-decoration: none;
-  background-color: ${props => props.completed ? "lightsteelblue" : color};
+  background-color: ${props => props.completed ? "lightgray" : color};
   color: ${props => props.completed ? "gray" : "darkslateblue"};
   width: 35%;
   min-width: 300px;
@@ -79,8 +79,8 @@ class LessonLink extends Component {
 
     return (
       <StyledLink to={`/lessons/${this.props.id}`} completed={this.state.thisLesson.completed ? 1 : 0}>
-        <Title>title: {this.props.title}</Title>
-        <Description>description: {this.props.description}</Description>
+        <Title>{this.props.title}</Title>
+        <Description>{this.props.description}</Description>
         <XP>
         {
           this.state.thisLesson.completed

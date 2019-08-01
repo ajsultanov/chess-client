@@ -2,9 +2,9 @@
 /* this component holds the slide and arrow button components and the slideshow logic */
 
 import React, { Component } from 'react';
-import { Link }             from 'react-router-dom'
+import { Link, Redirect }   from 'react-router-dom'
 import { connect }          from 'react-redux'
-import { addXP, noXP, markAsComplete } from '../actions'
+import { addXP, markAsComplete } from '../actions'
 import Slide                from './Slide';
 import Puzzle               from './Puzzle';
 import LeftArrow            from './LeftArrow';
@@ -33,14 +33,16 @@ const LessonNav = styled.div`
 `;
 
 const FinishDiv = styled.div`
-  border: 1px solid red;
-  background-color: mistyrose;
+/* border: 1px solid red; */
+  font-family: BioRhyme;
+  background-color: powderblue;
   width: 200px;
   font-size: 1.25em;
   text-align: center;
   padding: 10px;
   margin: .5em 3em;
   height: 30px;
+  box-shadow: 0 0 1em .5em inset skyblue;
   border-radius: 3px;
 `;
 
@@ -48,6 +50,8 @@ const FinishButton = styled(Link)`
 /* border: 1px solid red; */
   /* background: salmon; */
   font-size: .75em;
+  color: white;
+  font-weight: bold;
 `
 
 class Carousel extends Component {
@@ -65,6 +69,7 @@ class Carousel extends Component {
   state = {
     slideIndex: 0,
     posIndex: 0,
+    finished: false,
   }
 
   handleKeyPress = (e) => {
@@ -127,15 +132,21 @@ class Carousel extends Component {
   })
 
   finishLesson = () => {
-    console.log(this.ul);
+    // console.log(this.ul);
+    console.log(this.props.currentUser);
     if (this.ul) {
       if (this.ul.completed) {
-        this.props.noXP("hello")
+        this.props.addXP(this.props.currentUser, 0)
         window.alert("You have already completed this lesson")
+        this.setState({
+          finished: true,
+        })
       }
       else {
         this.props.addXP(this.props.currentUser, this.props.lesson.xp_worth)
         this.props.markAsComplete(this.ul)
+        console.log(this.props);
+        // this.props.history.push("/home")
       }
     }
   }
@@ -180,8 +191,8 @@ class Carousel extends Component {
                 />
             :
               <FinishDiv onClick={() => this.finishLesson()}>
-                <FinishButton to="/home" style={{textDecoration:"none"}}>
-                    Complete this Lesson
+                <FinishButton to="/home" >
+                    Complete Lesson
                 </FinishButton>
               </FinishDiv>
             }
@@ -200,4 +211,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { addXP, noXP, markAsComplete })(Carousel)
+export default connect(mapStateToProps, { addXP, markAsComplete })(Carousel)

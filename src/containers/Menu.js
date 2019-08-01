@@ -9,7 +9,7 @@ import styled               from 'styled-components'
 
 const StyledMenu = styled.div`
 /* border: 1px solid yellow; */
-  background-color: skyblue;
+  background-color: powderblue;
   padding: .5em;
 
   z-index: 2;
@@ -21,8 +21,8 @@ const StyledMenu = styled.div`
 
 const Wrapper = styled.div`
 /* border: 1px solid lime; */
+/* background-color: skyblue; */
   width: 98%;
-  background-color: skyblue;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

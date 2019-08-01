@@ -76,21 +76,22 @@ class TestBoard extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-          <Chessboard
-            width={460}
-            position={this.props.positions[this.props.index]}
-            onSquareClick={this.onSquareClick}
-            lightSquareStyle={{backgroundColor:'#BCB'}}
-            darkSquareStyle={{backgroundColor:'#898'}}
-            showNotation={false}
-            onDrop={this.onDrop}
-            dropSquareStyle={{
-              outline: "2px dashed rgba(255,240,85,.6)",
-              outlineOffset: "-5px",
-            }}
-            boardStyle={{border:'5px solid pink',borderRadius:'5px'}}
-          />
+      <div style={{textAlign:'center'}}>
+        <Chessboard
+          width={460}
+          position={this.props.positions[this.props.index]}
+          onSquareClick={this.onSquareClick}
+          lightSquareStyle={{backgroundColor:'pink'}}
+          darkSquareStyle={{backgroundColor:'plum'}}
+          showNotation={false}
+          onDrop={this.onDrop}
+          dropSquareStyle={{
+            outline: "2px dashed rgba(255,240,85,.6)",
+            outlineOffset: "-5px",
+          }}
+          boardStyle={{border:'5px solid pink',borderRadius:'5px'}}
+        />
+        <p style={{color:'darkseagreen'}}>choose the correct move</p>
       </div>
     );
   }

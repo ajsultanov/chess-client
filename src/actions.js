@@ -181,12 +181,6 @@ const addXP = (user, xp) => {
   }
 }
 
-const noXP = () => {
-  return {
-    type: 'NO_XP'
-  }
-}
-
 const markAsComplete = (ul) => {
   console.log(ul);
   return function(dispatch){
@@ -239,6 +233,5 @@ export {
   getLessonSlides,
   getLessonPuzzles,
   addXP,
-  noXP,
   markAsComplete
 }

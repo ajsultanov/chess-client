@@ -7,7 +7,7 @@ let chess = new Chess();
 
 const StyledContent = styled.div`
 /* border: 1px solid blue; */
-  background-color: honeydew;
+  background-color: papayawhip;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,18 +18,19 @@ const StyledContent = styled.div`
 
 const BoardContainer = styled.div`
 /* border: 1px solid; */
-  background-color: wheat;
+  /* background-color: wheat; */
   display: flex;
   margin: 1em;
 `;
 
 const MovesContainer = styled.div`
 /* border: 1px solid; */
-  background-color: papayawhip;
-  margin: .5em .5em .5em 1em ;
+  /* background-color: papayawhip; */
+  margin: 0 .5em 0 1em ;
   display: flex;
   width: 12em;
   line-height: 2em;
+  border-radius: 3px;
 
   /* ???? */
   background-size: cover;
@@ -38,13 +39,13 @@ const MovesContainer = styled.div`
 `;
 const Moves = styled.div`
 /* border: 1px solid red; */
-  background-color: papayawhip;
+  background-color: ivory;
   margin: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   width: 6em;
-  padding: .25em;
+  padding: .25em .5em;
   line-height: 2em;
 `;
 const Move = styled.p`
@@ -60,6 +61,8 @@ const Button = styled.button`
   font-size: 1em;
   font-family: BioRhyme;
   display: inline;
+  background-color: springgreen
+  color: blue;
 `;
 
 class NewBoard extends Component {
@@ -322,7 +325,7 @@ class NewBoard extends Component {
           />
           <MovesContainer>
             <Moves>
-              <u>White</u>
+              <span style={{borderBottom: "1px solid"}}>White</span>
               {
                 this.state.history.map((move, i) => {
                   let j = Math.floor(i / 2) + 1
@@ -335,7 +338,7 @@ class NewBoard extends Component {
               }
             </Moves>
             <Moves>
-              <u>Black</u>
+              <span style={{borderBottom: "1px solid"}}>Black</span>
               {
                 this.state.history.map((move, i) => {
 

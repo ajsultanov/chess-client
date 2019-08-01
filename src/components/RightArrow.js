@@ -35,7 +35,7 @@ const RightArrow = (props) => {
 
   return (
     <ColorChange className="navArrow" onClick={onClick} active={props.active}>
-      <Button>Next ▶</Button>
+      <Button>Next&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶</Button>
     </ColorChange>
   );
 }

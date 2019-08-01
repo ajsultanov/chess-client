@@ -24,17 +24,20 @@ const Wrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: wheat;
+  /* background-color: wheat; */
 `;
+
 
 class LessonsContainer extends Component {
 
+
   render() {
+
     return (
       <StyledContent>
         <Wrapper>
           {this.props.allLessons.map(lesson => {
-            return <LessonLink key={lesson.id} {...lesson} />
+            return <LessonLink key={lesson.id} {...lesson}/>
           })}
         </Wrapper>
       </StyledContent>

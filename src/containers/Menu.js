@@ -12,6 +12,7 @@ const StyledMenu = styled.div`
   background-color: skyblue;
   padding: .5em;
 
+  z-index: 2;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -28,20 +29,56 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.h1`
-/* /* border: 1px solid; */
+/* border: 1px solid; */
   font-weight: normal;
-  font-size: 36pt;
   margin: 0 .75em;
+  font-size: 36pt;
   text-decoration: none;
   transform: rotate(-3deg);
+  color: white;
+  text-shadow: -2px -1px 6px navy;
 `;
+
+const Star1 = styled.span`
+/* border: 1px solid; */
+  font-size: 36pt;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: -10px;
+  left: 15px;
+  color: white;
+`;
+
+const Star2 = styled.span`
+/* border: 1px solid; */
+  font-size: 30pt;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 20px;
+  left: 455px;
+  color: white;
+`;
+
+const Star3 = styled.span`
+/* border: 1px solid; */
+  font-size: 20pt;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 45px;
+  left: 425px;
+  color: white;
+`;
+
 
 const StyledNav = styled.span`
 /* border: 1px solid ; */
   background-color: azure;
   align-self: center;
   padding: .5em .75em;
-  margin: 0 ;
+  margin: 0;
   min-width: 220px;
   border-radius: 3px;
 `;
@@ -56,7 +93,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 const LogoLink = styled(StyledLink)`
-  color: purple;
   padding: 0;
   margin: 0 0 0 1em;
 `;
@@ -74,9 +110,12 @@ class Menu extends Component {
         :
           "/"
         }>
+          <Star1>✴</Star1>
           <Logo>
             ROOKIE&nbsp;Chess
           </Logo>
+          <Star2>✴</Star2>
+          <Star3>✶</Star3>
         </LogoLink>
 
         {

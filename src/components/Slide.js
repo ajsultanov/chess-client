@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const StyledContent = styled.div`
 /* border: 1px solid; */
-  background-color: seashell;
+  /* background-color: seashell; */
   display: flex;
   justify-content: space-around;
   padding: 1em;
@@ -14,27 +14,29 @@ const StyledContent = styled.div`
 
 const StyledImg = styled.img`
 /* border: 1px solid purple; */
-  background-color: rgba(100,100,100,.25);
+  background-color: rgba(128, 128, 128, .25);
   min-height: 200px;
   max-height: 50vh;
   width: 50%;
   display: block;
   margin: 0;
+  border-radius: 3px;
 `;
 
 const Card = styled.div`
 /* border: 1px solid; */
-  background-color: lightyellow;
+  background-color: ivory;
   display: flex;
   width: 40%;
   mid-width: 300px;
   flex-direction: column;
   align-items: stretch;
+  border-radius: 3px;
 `;
 
 const TitleBox = styled.div`
 /* border: 1px solid; */
-  background-color: lightseagreen;
+  /* background-color: lightseagreen; */
   display: flex;
   flex-direction: column;
   height: 60px;
@@ -54,7 +56,7 @@ const Desc = styled.p`
 
 const TextBox = styled.div`
 /* border: 1px solid; */
-  background-color: lightsteelblue;
+  /* background-color: lightyellow; */
 
   min-height: 400px;
   margin: .5em;
@@ -82,6 +84,7 @@ const Footie = styled.span`
   self-align: flex-end;
   text-align: center;
   font-family: Ultra;
+  font-size: 1.5em;
 `;
 
 

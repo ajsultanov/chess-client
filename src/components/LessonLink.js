@@ -6,12 +6,15 @@ import { connect }          from 'react-redux';
 import { Link }             from 'react-router-dom'
 import styled               from 'styled-components'
 
+const colors = ["lightpink", "aquamarine", "powderblue", "lightsalmon", "plum"]
+const color = colors[Math.floor(Math.random() * colors.length)];
+
 const StyledLink = styled(Link)`
   font-weight: normal;
   font-family: BioRhyme;
   text-decoration: none;
-  background-color: lightpink;
-  color: ${props => props.completed ? "red" : "blue"};
+  background-color: ${props => props.completed ? "lightsteelblue" : color};
+  color: ${props => props.completed ? "gray" : "darkslateblue"};
   width: 35%;
   min-width: 300px;
   height: 20vh;
@@ -22,30 +25,37 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
 
   border-radius: 25px;
-  border: 5px solid lightpink;
-  box-shadow: 0 0 0 4px inset white;
+  border: 5px solid ${props => props.completed ? "lightsteelblue" : color};
+  box-shadow: 0 0 0 4px inset papayawhip;
 `;
 
 const Title = styled.h3`
-/* /* border: 1px solid; */ */
+/* border: 1px solid; */
   margin: 0;
   max-height: 40%;
   overflow: hidden;
   margin-bottom: .5em;
+  font-weight: normal;
 `;
 
 const Description = styled.p`
-/* /* border: 1px solid; */ */
+/* border: 1px solid; */
   margin: 0 .5em;
   line-height: 1em;
   font-size: .9em;
 `;
 
-const XP = styled.p`
-/* /* border: 1px solid; */ */
-background-color: palegreen;
+const XP = styled.div`
+/* border: 1px solid; */
+  background-color: ${props => props.completed ? "black" : "rgba(255, 240, 225, .8)"};
+  width: 50px;
+  height: 50px;
   margin: 0 .5em;
   align-self: flex-end;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 class LessonLink extends Component {
@@ -64,19 +74,22 @@ class LessonLink extends Component {
     })
   }
 
-
-
   render() {
     // console.log(this.state.thisLesson.completed);
-
-    const description = this.props.description.split(",")[0]
-    const xp = this.props.description.split(",")[1]
 
     return (
       <StyledLink to={`/lessons/${this.props.id}`} completed={this.state.thisLesson.completed ? 1 : 0}>
         <Title>title: {this.props.title}</Title>
-        <Description>description: {description}</Description>
-        <XP>{xp}</XP>
+        <Description>description: {this.props.description}</Description>
+        <XP>
+        {
+          this.state.thisLesson.completed
+        ?
+          "✓"
+        :
+          this.props.xp_worth + "xp"
+        }
+        </XP>
       </StyledLink>
     );
   }

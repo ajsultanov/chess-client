@@ -12,8 +12,8 @@ import RightArrow           from './RightArrow';
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
-/* /* border: 1px solid; */ */
-  background-color: lightcyan;
+/* border: 1px solid; */
+  /* background-color: lightcyan; */
   margin: 0;
   width: 100%;
   min-width: 600px;
@@ -24,15 +24,16 @@ const StyledContent = styled.div`
 `;
 
 const LessonNav = styled.div`
-/* /* border: 1px solid; */ */
-  background-color: lightslategray;
+/* border: 1px solid; */
+  /* background-color: lightslategray; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid;
 `;
 
 const NextButton = styled(RightArrow)`
-/* /* border: 1px solid; */ */
+/* border: 1px solid; */
   background-color: green;
 `;
 
@@ -160,7 +161,7 @@ class Carousel extends Component {
                 goToPrev={this.goToPrevSlide}
                 active={this.state.slideIndex !== 0}
               />
-            <span>{this.state.slideIndex + 1 + "/" + this.lessonContent.length} </span>
+            <span>{this.state.slideIndex + 1 + " | " + this.lessonContent.length} </span>
             {
               this.state.slideIndex !== this.lessonContent.length - 1
             ?

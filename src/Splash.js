@@ -4,24 +4,36 @@ import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
 import styled               from 'styled-components';
 
-const Billboard = styled.div`
-/* border: 1px solid; */
-  height: 600px;
-  padding: 2em;
-  align-self: center;
-  box-shadow: inset 0 0 20px mediumorchid;
-`;
 
-const Background = styled.div`
+const Splish = styled.div`
 /* border: 5px solid lime; */
   background-image: url("https://images.unsplash.com/photo-1523875194681-bedd468c58bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80");
   background-size: cover;
+  /* opacity: .5; */
+`;
+
+const Background = styled.div`
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 239, 213, 0.5);
+`;
+
+const Billboard = styled.div`
+/* border: 1px solid; */
+height: 600px;
+padding: 2em;
+align-self: center;
+/* box-shadow: inset 0 10px 20px 5px azure; */
 `;
 
 const Title = styled.div`
 /* border: 1px solid; */
   font-size: 64pt;
-  color: pink;
+  color: white;
+  font-style: italic;
+  text-align: center;
+  background-color: salmon;
+  border-radius: 60px;
 `;
 
 const Column = styled.div`
@@ -41,11 +53,12 @@ const Text = styled.p`
   background-color: rgba(240, 240, 255, .75);
   margin: 0 0 1em;
   padding: 1em;
+  border-radius: 3px;
 `;
 
 const TopText = styled(Text)`
 /* border: 1px solid red; */
-  margin-top: 1em;
+  margin-top: 2em;
 `;
 
 const Button = styled(Link)`
@@ -57,8 +70,9 @@ const Button = styled(Link)`
   max-width: 200px;
   background-color: slateblue;
   text-align: center;
-  margin-top: 1em;
+  /* margin-top: 1em; */
   padding: 1.25em 1.5em;
+  border-radius: 3px;
 
   &:hover {
     box-shadow: 0 0 1em inset mediumorchid;
@@ -68,24 +82,24 @@ const Button = styled(Link)`
 class Splash extends Component {
   render() {
     return (
-      <div>
-      <Background>
-        <Billboard>
-          <Title>
-            SPLASH&nbsp;PAGE!!!!!
-          </Title>
-          <Column>
-            <TopText>
-              Hello yes here is some filler text love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </TopText>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Text>
-            <Button to="/signup">Get started</Button>
-          </Column>
-        </Billboard>
-      </Background>
-      </div>
+      <Splish>
+        <Background>
+          <Billboard>
+            <Title>
+              CHESS&nbsp;&nbsp;for&nbsp;&nbsp;Rookies!
+            </Title>
+            <Column>
+              <TopText>
+                Hello yes here is some filler text love it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </TopText>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </Text>
+              <Button to="/signup">Get started</Button>
+            </Column>
+          </Billboard>
+        </Background>
+      </Splish>
     );
   }
 }

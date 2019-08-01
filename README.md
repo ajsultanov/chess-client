@@ -7,6 +7,8 @@ lightsquare:  #F0D9B5
 darksquare:   #B58863
 
 
+✶
+✴
 
 
 

@@ -8,7 +8,7 @@ const StyledContent = styled.div`
 /* border: 1px solid; */
   font-size: 2em;
   line-height: 1.5em;
-  color: purple;
+  color: slateblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@ const StyledContent = styled.div`
 
 const ProfileImg = styled.div`
 /* border: 1px solid red; */
-    background-color: gray;
+  background-color: gray;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -50,15 +50,18 @@ const Stat = styled.p`
 
 const StatName = styled.span`
   font-size: .75em;
-  background-color: purple;
+  background-color: slateblue;
   color: white;
-  border: 5px solid purple;
+  border: 5px solid slateblue;
   border-radius: 5px;
   padding: 0 .5em;
+  margin: 0 .5em 0 0;
   font-weight: bold;
 `;
 
 class Profile extends Component {
+
+
 
   render() {
     return (
@@ -69,7 +72,22 @@ class Profile extends Component {
         </div>
         <div style={{display:"flex"}}>
           <Stat><StatName>xp :</StatName>&nbsp;{this.props.xp}</Stat>
-          <Stat><StatName>rank :</StatName>&nbsp;total&nbsp;rookie</Stat>
+          <Stat><StatName>rank :</StatName>
+            {
+              this.props.xp < 20
+            ?
+              "total rookie"
+            : this.props.xp < 50
+              ?
+                "rookie"
+              :
+                this.props.xp < 100
+                ?
+                  "not bad not bad"
+                :
+                  "chess master"
+            }
+          </Stat>
         </div>
       </StyledContent>
     );

@@ -10,7 +10,7 @@ import styled               from 'styled-components'
 
 const StyledContent = styled.div`
 /* border: 1px solid; */
-  background-color: seashell;
+  /* background-color: seashell; */
   display: flex;
   justify-content: space-around;
   padding: 1em;
@@ -18,7 +18,7 @@ const StyledContent = styled.div`
 
 const BoardContainer = styled.div`
 /* border: 1px solid purple; */
-  background-color: rgba(100,100,100,.25);
+  /* background-color: rgba(100,100,100,.25); */
   min-height: 200px;
   max-height: 70vh;
   min-width: 500px;
@@ -41,21 +41,27 @@ const Win = styled.h4`
 
 const NavButton = styled.div`
 /* border: 1px solid red; */
-  background-color: ${props => props.active ? "green" : "gray"};
+  background-color: ${props => props.active ? "orange" : "lightslategray"};
   width: 10%;
   max-width: 100px;
-  height: 70%;
+  height: 30%;
   font-size: 2em;
   text-align: center
   vertical-align: middle;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 40px;
+  color: ${props => props.active ? "white" : "lightgray"};
+`;
+
+const Stretch = styled.span`
+  transform: scale(1, 2);
 `;
 
 const Card = styled.div`
 /* border: 1px solid; */
-  background-color: lightyellow;
+  background-color: ivory;
   display: flex;
   width: 30%;
   min-width: 250px;
@@ -65,7 +71,7 @@ const Card = styled.div`
 
 const TitleBox = styled.div`
 /* border: 1px solid; */
-  background-color: lightseagreen;
+  /* background-color: lightseagreen; */
   display: flex;
   flex-direction: column;
   height: 60px;
@@ -85,7 +91,7 @@ const Desc = styled.p`
 
 const TextBox = styled.div`
 /* border: 1px solid; */
-  background-color: lightsteelblue;
+  /* background-color: papayawhip; */
 
   min-height: 400px;
   margin: .5em;
@@ -101,6 +107,7 @@ const Footie = styled.span`
   self-align: flex-end;
   text-align: center;
   font-family: Ultra;
+  font-size: 1.5em;
 `;
 
 class Puzzle extends Component {
@@ -122,7 +129,7 @@ class Puzzle extends Component {
               onClick={this.props.goToPrev}
               active={this.props.index !== 0}
             >
-              ◀
+              <Stretch>◀</Stretch>
             </NavButton>
             <ExampleBoard
               positions={puzzle.positions}
@@ -133,7 +140,7 @@ class Puzzle extends Component {
               onClick={this.props.goToNext}
               active={this.props.index !== puzzle.positions.length - 1}
             >
-              ▶
+              <Stretch>▶</Stretch>
             </NavButton>
           </BoardContainer>
         :

@@ -63,6 +63,13 @@ const LinkText = styled.span`
   border-radius: 50%;
 `;
 
+const Sm = styled.span`
+/* border: 1px solid; */
+
+  padding: .5em;
+  font-size: .75em;
+`;
+
 class ProfileContainer extends Component {
 
   ok = "https://images.unsplash.com/photo-1505461296292-7d67beed10a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
@@ -91,7 +98,7 @@ class ProfileContainer extends Component {
                 this.props.currentUser.current_lesson
               ?
                 <ProfileLink to={`/lessons/${this.props.currentUser.current_lesson}`}>
-                  <LinkText>Next Lesson:<br/>{`${this.currentLessonTitle}`}</LinkText>
+                  <LinkText><Sm>Next Lesson:</Sm><br/>{`${this.currentLessonTitle}`}</LinkText>
                 </ProfileLink>
               :
                 <ProfileLink to={`/lessons/1`}>
@@ -100,7 +107,7 @@ class ProfileContainer extends Component {
               }
 
               <ProfileLink to="/lessons/">
-                  <LinkText>Link to All Lessons</LinkText>
+                  <LinkText>All Lessons</LinkText>
               </ProfileLink>
             </LinkWrapper>
           </Wrapper>

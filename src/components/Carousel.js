@@ -27,49 +27,56 @@ const LessonNav = styled.div`
 /* border: 1px solid; */
   /* background-color: lightslategray; */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-top: 1px solid;
 `;
 
-const NextButton = styled(RightArrow)`
-/* border: 1px solid; */
-  background-color: green;
-`;
-
 const FinishDiv = styled.div`
-/* border: 1px solid limegreen; */
+  border: 1px solid red;
   background-color: mistyrose;
   width: 200px;
   font-size: 1.25em;
   text-align: center;
   padding: 10px;
-  margin: .5em;
+  margin: .5em 3em;
   height: 30px;
+  border-radius: 3px;
 `;
 
 const FinishButton = styled(Link)`
 /* border: 1px solid red; */
-  background: salmon;
+  /* background: salmon; */
   font-size: .75em;
 `
 
-
 class Carousel extends Component {
 
-  lessonContent = [...this.props.lesson.slides, ...this.props.lesson.puzzles].sort((a, b) => a.sort_order - b.sort_order);
-
-  styles = {
-    padding:"5px",
-    margin:"5px",
-    backgroundColor:"#eee",
-    border:"2px solid mediumorchid",
-    overflow:"hidden"
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress, false);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  lessonContent = [...this.props.lesson.slides, ...this.props.lesson.puzzles].sort((a, b) => a.sort_order - b.sort_order);
 
   state = {
     slideIndex: 0,
     posIndex: 0,
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === "ArrowRight") {
+      this.goToNextSlide()
+    }
+    if (e.key === "ArrowLeft") {
+      this.goToPrevSlide()
+    }
+    if (e.key === "Enter" && this.state.slideIndex === this.lessonContent.length - 1) {
+      this.finishLesson()
+    }
   }
 
   goToPrevSlide = () => {
@@ -165,10 +172,10 @@ class Carousel extends Component {
             {
               this.state.slideIndex !== this.lessonContent.length - 1
             ?
-                <NextButton
+                <RightArrow
                   goToNext={this.goToNextSlide}
                   active={
-                    this.state.slideIndex !== this.lessonContent.length - 1 //&& this.state.posIndex !== 0
+                    this.state.slideIndex !== this.lessonContent.length - 1
                   }
                 />
             :
@@ -185,7 +192,7 @@ class Carousel extends Component {
   }
 }
 
-
+// && this.state.posIndex !== 0
 
 const mapStateToProps = state => {
   return ({

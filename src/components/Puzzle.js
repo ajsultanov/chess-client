@@ -24,10 +24,10 @@ const BoardContainer = styled.div`
   min-width: 500px;
   width: 60%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
 `;
 
 const BoardContainer2 = styled(BoardContainer)`
@@ -41,18 +41,21 @@ const Win = styled.h4`
 
 const NavButton = styled.div`
 /* border: 1px solid red; */
-  background-color: ${props => props.active ? "orange" : "lightslategray"};
+  background-color: ${props => props.active ? "sandybrown" : "lightgray"};
   width: 10%;
-  max-width: 100px;
+  min-width: 50px;
+  max-width: 80px;
   height: 30%;
+  margin: 4%;
+  z-index: 1;
   font-size: 2em;
   text-align: center
   vertical-align: middle;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 40px;
-  color: ${props => props.active ? "white" : "lightgray"};
+  border-radius: 10px;
+  color: ${props => props.active ? "white" : "gainsboro"};
 `;
 
 const Stretch = styled.span`
@@ -112,6 +115,24 @@ const Footie = styled.span`
 
 class Puzzle extends Component {
 
+  handleKeyPress = (e) => {
+    if (e.key === "ArrowRight") {
+      this.props.goToNext()
+    }
+    if (e.key === "ArrowLeft") {
+      this.props.goToPrev()
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+
+
   render() {
     if (!this.props.content) {
       return <div />
@@ -124,7 +145,7 @@ class Puzzle extends Component {
         {
           this.props.content.style === "puzzle"
         ?
-          <BoardContainer>
+          <BoardContainer onKeyPress={this.handleKeyPress}>
             <NavButton
               onClick={this.props.goToPrev}
               active={this.props.index !== 0}

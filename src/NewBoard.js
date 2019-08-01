@@ -61,17 +61,31 @@ const Button = styled.button`
   font-size: 1em;
   font-family: BioRhyme;
   display: inline;
-  background-color: springgreen
-  color: blue;
+  background-color: darkseagreen;
+  color: white;
+`;
+
+const StyledInput = styled.input`
+  /* border: 5px dashed orange; */
+  margin: 0;
+  width: 100%
+  background-color: lavenderblush;
+  text-align: center;
 `;
 
 class NewBoard extends Component {
 
   state = {
-    position: "start",
+    position: chess.fen(),
     activeSquare: "",
     validSquares: [],
     history: [],
+    expo: false,
+  }
+
+  componentDidMount() {
+    console.log("reset");
+    chess.reset()
   }
 
   // square = the square thats been clicked on
@@ -167,7 +181,6 @@ class NewBoard extends Component {
     })
   }
   highlightSquare = square => {
-    console.log(chess.square_color(square));
     let mySquare = document.querySelector(`[data-squareid=${square}]`)
     // highlighting on active square
     if (square === this.state.activeSquare) {
@@ -213,6 +226,33 @@ class NewBoard extends Component {
     })
   }
 
+  reset = () => {
+    chess.reset()
+    this.setState({
+      position: "start",
+      activeSquare: "",
+      validSquares: [],
+      history: [],
+      expo: false,
+    })
+  }
+
+  expo = () => {
+    this.setState({
+      expo: !this.state.expo
+    })
+  }
+
+  impo = () => {
+    const pos = document.getElementById("input").value
+
+    if (chess.load(pos)) {
+      this.setState({
+        position: pos
+      })
+    }
+  }
+
   render() {
     return (
       <StyledContent>
@@ -221,8 +261,8 @@ class NewBoard extends Component {
             width={600}
             position={this.state.position}
             onSquareClick={this.onSquareClick}
-            lightSquareStyle={{backgroundColor:'#A8C',boxShadow:'0 0 2px 4px inset rgba(255,192,245,1)'}}
-            darkSquareStyle={{backgroundColor:'#86A',boxShadow:'0 0 2px 4px inset rgba(255,192,245,.8)'}}
+            lightSquareStyle={{backgroundColor:'rgba(255,192,245,.9', boxShadow:'0 0 1px 2px inset rgba(255,192,245,1)'}}
+            darkSquareStyle={{backgroundColor:'#A8C', boxShadow:'0 0 1px 2px inset rgba(255,192,245,1)'}}
             showNotation={false}
             onDrop={this.onDrop}
             dropSquareStyle={{
@@ -352,8 +392,21 @@ class NewBoard extends Component {
           </MovesContainer>
         </BoardContainer>
         <div>
-          <Button>Import Position</Button>
-          <Button>Export Position</Button>
+          <Button onClick={this.reset}>Reset</Button>
+          <Button onClick={this.impo}>Import Position</Button>
+          <Button onClick={this.expo}>Export Position</Button>
+          <br/>
+          <StyledInput
+            id="input"
+            type="text-area"
+            value={
+              this.state.expo
+            ?
+              chess.fen()
+            :
+              null
+            }
+          />
         </div>
       </StyledContent>
     );

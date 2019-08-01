@@ -44,6 +44,7 @@ const ProfileLink = styled(Link)`
   margin: .5em;
   height: 50vh;
   display: flex;
+  color: slateblue;
   justify-content: center;
   align-items: center;
   background-color: lightpink;
@@ -53,6 +54,16 @@ const ProfileLink = styled(Link)`
   border-radius: 5px;
   border: 5px solid lightpink;
   box-shadow: 0 0 0 4px inset white;
+`;
+
+const ProfileLink1 = styled(ProfileLink)`
+  background-color: plum;
+  border: 5px solid plum;
+`;
+
+const ProfileLink2 = styled(ProfileLink)`
+  background-color: aquamarine;
+  border: 5px solid aquamarine;
 `;
 
 const LinkText = styled.span`
@@ -97,13 +108,13 @@ class ProfileContainer extends Component {
               {
                 this.props.currentUser.current_lesson
               ?
-                <ProfileLink to={`/lessons/${this.props.currentUser.current_lesson}`}>
+                <ProfileLink1 to={`/lessons/${this.props.currentUser.current_lesson}`}>
                   <LinkText><Sm>Next Lesson:</Sm><br/>{`${this.currentLessonTitle}`}</LinkText>
-                </ProfileLink>
+                </ProfileLink1>
               :
-                <ProfileLink to={`/lessons/1`}>
+                <ProfileLink2 to={`/lessons/1`}>
                   <LinkText>Go to the first Lesson!</LinkText>
-                </ProfileLink>
+                </ProfileLink2>
               }
 
               <ProfileLink to="/lessons/">

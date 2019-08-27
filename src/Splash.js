@@ -38,7 +38,7 @@ const Title = styled.div`
 
 const Column = styled.div`
 /* border: 1px solid; */
-  width: 50%;
+  width: 70%;
   min-width: 400px;
   color: white;
   max-height: 100%;

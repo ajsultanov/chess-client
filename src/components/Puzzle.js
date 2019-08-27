@@ -4,8 +4,6 @@
 import React, { Component } from 'react'
 import ExampleBoard         from '../ExampleBoard'
 import TestBoard            from '../TestBoard'
-import LeftArrow            from "./LeftArrow";
-import RightArrow           from "./RightArrow";
 import styled               from 'styled-components'
 
 const StyledContent = styled.div`
@@ -86,10 +84,6 @@ const TitleBox = styled.div`
 
 const Title = styled.h3`
   margin: 0;
-`
-const Desc = styled.p`
-  margin: 0;
-  font-size: .75em;
 `
 
 const TextBox = styled.div`

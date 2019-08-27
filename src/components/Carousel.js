@@ -2,7 +2,7 @@
 /* this component holds the slide and arrow button components and the slideshow logic */
 
 import React, { Component } from 'react';
-import { Link, Redirect }   from 'react-router-dom'
+import { Link }             from 'react-router-dom'
 import { connect }          from 'react-redux'
 import { addXP, markAsComplete } from '../actions'
 import Slide                from './Slide';

@@ -10,6 +10,7 @@ import LessonContainer          from './containers/LessonContainer'
 import LessonsContainer         from './containers/LessonsContainer'
 import Menu                     from './containers/Menu'
 import NewBoard                 from './NewBoard'
+import MyBoard                  from './MyBoard'
 import ConstructorBoard         from './ConstructorBoard'
 import Splash                   from './Splash'
 import { fetchLessons }         from './actions'
@@ -85,6 +86,7 @@ class App extends Component {
       {/* dev routes */}
 
         <Route path="/constructor" component={ConstructorBoard} />
+        <Route path="/MyBoard" component={MyBoard} />
         </Wrapper>
 
         <Footer className="hello">

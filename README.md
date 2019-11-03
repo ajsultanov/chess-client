@@ -5,7 +5,7 @@
 
 ![rookie logo](./public/rookie.jpeg "ROOKIE")
 
-#### Click the screenshot below to watch a demo
+### [Click the screenshot below to watch a demo](https://youtu.be/5VXiCOyqIKk "Rookie Chess Demo")
 [![Rookie Chess Splash Page](./public/splash.png)](https://youtu.be/5VXiCOyqIKk "Rookie Chess Demo")
 
 [Link to repository for the backend](https://github.com/ajsultanov/chess-backend)
